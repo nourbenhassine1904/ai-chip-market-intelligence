@@ -1,0 +1,4 @@
+ticker,observed_dates,union_dates,common_dates,missing_from_union,non_common_dates,unique_to_asset,identical_calendars,missing_date_examples,non_common_date_examples,unique_date_examples
+NVDA,2200,2200,2200,0,0,0,True,[],[],[]
+AMD,2200,2200,2200,0,0,0,True,[],[],[]
+SOXX,2200,2200,2200,0,0,0,True,[],[],[]

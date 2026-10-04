@@ -2,6 +2,9 @@
 
 Multivariate Forecasting, Dynamic Interdependencies and Volatility Risk Analysis of NVIDIA, AMD and the Semiconductor Market
 
+Current project status: **Phase 1 — Data Acquisition & Audit**.
+See [`docs/phase1_data_acquisition.md`](docs/phase1_data_acquisition.md) for execution and audit details.
+
 ## Context
 
 Mini-project for the course **Séries Temporelles pour Data Science & IA**  
@@ -27,7 +30,7 @@ The presence of a method in the roadmap does not imply that it will automaticall
 ## Repository structure
 
 - `data/` — placeholders for raw and processed local data; market data is not committed.
-- `python/` and `r/` — planned analysis scripts, currently documentation headers only.
+- `python/` — canonical data acquisition and future analysis scripts; `r/` — future analysis placeholders.
 - `notebooks/` — guidance for future notebooks.
 - `outputs/` — locations for selected final figures and tables.
 - `llm/` — human analysis, prompts and responses for the later critical analysis phase.
@@ -41,7 +44,7 @@ The presence of a method in the roadmap does not imply that it will automaticall
 - Record package versions used for each analysis.
 - Use paths relative to the repository root; do not use absolute local file paths.
 - Preserve downloaded raw data and do not modify it manually. Generated or downloaded data stays out of Git.
-- No data or statistical results are included at this initial setup stage.
+- Raw data stays local; Phase 1 audit tables and SHA-256 manifests document actual acquisition runs.
 
 ## Collaboration workflow
 
