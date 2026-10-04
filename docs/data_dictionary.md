@@ -23,6 +23,31 @@ yfinance OHLC adjustment and does not reverse Yahoo's existing adjustments.
 See [Yahoo historical field definitions](https://finance.yahoo.com/quote/NVDA/history/).
 Missing observations remain unchanged; no derived variables are calculated here.
 
+## Canonical aligned dataset
+
+`data/processed/market_aligned.csv` is the common local input for future
+Python/R analyses. It contains `Date` and 18 financial columns in wide format,
+ordered by NVDA, AMD, SOXX, then Open, High, Low, Close, Adj_Close, Volume.
+
+Financial columns follow `<TICKER>_<VARIABLE>`:
+
+- `TICKER` ∈ {`NVDA`, `AMD`, `SOXX`}.
+- `VARIABLE` ∈ {`Open`, `High`, `Low`, `Close`, `Adj_Close`, `Volume`}.
+- `Date` is an ISO trading-date column, shared by all three assets.
+
+The definitions, numeric types, units and Yahoo/yfinance source in the raw
+dictionary above also apply to the prefixed financial columns. Only the
+column labels change: raw `Adj Close` becomes `<TICKER>_Adj_Close`.
+An inner join retains only the intersection of observed trading dates;
+date losses are measured explicitly in the alignment audit. Market values
+are neither adjusted, rounded, imputed nor otherwise transformed.
+The generated CSV is ignored by Git and identified by its SHA-256 manifest.
+
+Both Close (the vendor's session closing price) and Adj_Close (adjusted for
+applicable corporate actions) are retained. Adj_Close is the envisaged main
+historical price variable; its use for each model will be reviewed in Phase 2.
+No returns are calculated during Phase 1.5.
+
 ## Derived variables — future phases
 
 The following variables are planned:

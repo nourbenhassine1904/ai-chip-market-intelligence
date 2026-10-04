@@ -2,8 +2,9 @@
 
 Multivariate Forecasting, Dynamic Interdependencies and Volatility Risk Analysis of NVIDIA, AMD and the Semiconductor Market
 
-Current project status: **Phase 1 — Data Acquisition & Audit**.
-See [`docs/phase1_data_acquisition.md`](docs/phase1_data_acquisition.md) for execution and audit details.
+Current project status: **Phase 1.5 — Canonical Dataset Preparation**.
+Acquisition completed; audit completed; canonical aligned dataset generated locally.
+See [`docs/phase1_5_data_preparation.md`](docs/phase1_5_data_preparation.md) for preparation and validation details.
 
 ## Context
 
