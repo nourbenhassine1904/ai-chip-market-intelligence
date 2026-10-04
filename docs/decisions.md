@@ -42,3 +42,37 @@ statistical diagnostics justify them.
 
 Status:  
 Accepted
+
+---
+
+## D005 — Canonical data acquisition
+
+Decision:
+
+Python/yfinance is the canonical acquisition pipeline.
+R will later consume the same validated dataset.
+
+Reason:
+
+Avoid divergent datasets between languages and team members.
+
+Status:
+
+Accepted
+
+---
+
+## D006 — Raw market data and Git
+
+Decision:
+
+Raw downloaded market data is kept locally and excluded from Git.
+
+Reason:
+
+The repository stores reproducible acquisition code instead of
+duplicating generated raw files.
+
+Status:
+
+Accepted
