@@ -76,3 +76,38 @@ duplicating generated raw files.
 Status:
 
 Accepted
+
+---
+
+## D007 — Canonical aligned dataset
+
+Decision:
+
+Use one aligned wide-format dataset built from NVDA, AMD and SOXX
+as the common input for downstream analyses.
+
+Reason:
+
+Ensure all team members and both Python/R pipelines work from
+the same trading dates and the same validated market observations.
+
+Status:
+
+Accepted
+
+---
+
+## D008 — Alignment strategy
+
+Decision:
+
+Align NVDA, AMD and SOXX using the intersection of observed
+trading dates.
+
+Reason:
+
+Avoid artificial calendar rows and avoid imputing market observations.
+
+Status:
+
+Accepted
