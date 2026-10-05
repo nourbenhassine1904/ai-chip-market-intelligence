@@ -6,6 +6,7 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 .cache/yfinance/
+.cache/matplotlib/
 .coverage
 htmlcov/
 build/

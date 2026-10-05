@@ -111,3 +111,46 @@ Avoid artificial calendar rows and avoid imputing market observations.
 Status:
 
 Accepted
+
+---
+
+## D009 — Reference historical price
+
+Decision:
+Use Adjusted Close as the main historical price series
+for log-price and return transformations.
+
+Reason:
+Adjusted Close provides a historically comparable price series
+after relevant corporate-action adjustments.
+
+Status:
+Accepted
+
+---
+
+## D010 — Final holdout policy
+
+Decision:
+Reserve the last 10% of observations as a strictly chronological
+final test set.
+
+Reason:
+Prevent temporal information leakage and preserve a genuine
+out-of-sample evaluation period.
+
+Status:
+Accepted
+
+---
+
+## D011 — Diagnostic scope
+
+Decision:
+Use the training period for diagnostics that influence model selection.
+
+Reason:
+The final test set must not influence transformation or model choices.
+
+Status:
+Accepted
