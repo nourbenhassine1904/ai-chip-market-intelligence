@@ -1,0 +1,2 @@
+cointegration_rank,rank_r,rank_python,vecm_justified,reason,level_lags,k_ar_diff,deterministic_if_estimated,language,scope,train_md5,protocol_md5,implementation_md5
+0,0,0,False,no cointegration supported; VECM not justified,3,2,unrestricted constant outside beta,Python,TRAIN_only_no_final_evaluation,23b4e319310d569b6f2ebb52c98539e7,c75a5d243559e3ec522b71739d2a3b46,2d381c7c937b8da1ed3ff3b72b9531c2
