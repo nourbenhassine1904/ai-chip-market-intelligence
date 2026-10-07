@@ -8,6 +8,7 @@ __pycache__/
 .cache/yfinance/
 .cache/matplotlib/
 .cache/R-library/
+.cache/phase6/
 .coverage
 htmlcov/
 build/
