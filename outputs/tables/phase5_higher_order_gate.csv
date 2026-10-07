@@ -1,0 +1,2 @@
+garch11_arch_remaining,squared_residual_dependence_remaining,higher_order_justified,reason,baseline_model,baseline_distribution,language,scope,train_md5,protocol_md5,selection_rule_md5,implementation_md5
+False,False,False,No Holm-significant ARCH or squared dependence; higher orders not justified,"GARCH(1,1)_Normal",Normal,Python,TRAIN_only_volatility_no_final_evaluation,23b4e319310d569b6f2ebb52c98539e7,ebebfb53bc7f8709e4fedf28616cd07c,9a6df100e9d79b93afe38a549f88f2ca,75bbfb87635b05b434a8a94d3243e1cc

@@ -1,0 +1,4 @@
+"package","version","language","scope","train_md5","protocol_md5","selection_rule_md5","implementation_md5"
+"R","4.5.2","R","TRAIN_only_volatility_no_final_evaluation","23b4e319310d569b6f2ebb52c98539e7","ebebfb53bc7f8709e4fedf28616cd07c","9a6df100e9d79b93afe38a549f88f2ca","82c0f9f5c29f8b086ea20258a106ba8b"
+"rugarch","1.5.6","R","TRAIN_only_volatility_no_final_evaluation","23b4e319310d569b6f2ebb52c98539e7","ebebfb53bc7f8709e4fedf28616cd07c","9a6df100e9d79b93afe38a549f88f2ca","82c0f9f5c29f8b086ea20258a106ba8b"
+"FinTS","0.4.9","R","TRAIN_only_volatility_no_final_evaluation","23b4e319310d569b6f2ebb52c98539e7","ebebfb53bc7f8709e4fedf28616cd07c","9a6df100e9d79b93afe38a549f88f2ca","82c0f9f5c29f8b086ea20258a106ba8b"

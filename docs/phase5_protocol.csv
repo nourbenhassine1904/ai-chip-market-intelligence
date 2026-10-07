@@ -1,0 +1,2 @@
+expected_rows,first_date,last_date,train_sha256,train_md5,return_variable,mean_burn,mean_strong_failure_p,alpha,arch_required_rejections,student_ic_improvement,forecast_horizon,annualization_sessions,maxiter,seed
+1980,2018-01-02,2025-11-14,c3651f95959a49d8d64c791a8d48443dd520b978c3887b8793256dfff76c8f1c,23b4e319310d569b6f2ebb52c98539e7,NVDA_Log_Return,0,0.01,0.05,2,10,10,252,2000,2026
