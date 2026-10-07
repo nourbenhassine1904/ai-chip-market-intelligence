@@ -1,0 +1,3 @@
+language,student_AIC_gain,student_BIC_gain,normal_tail_rmse,student_tail_rmse,student_tail_improves,student_superiority_all_conditions,native_distribution_proposal,shared_locked_specification,scope
+R,161.52045106861988,155.9301041230101,0.151076458489628,0.15511778615665,False,False,Normal,"GARCH(1,1)_Normal",TRAIN_only_volatility_no_final_evaluation
+Python,161.67926123816324,156.08891429256073,0.1495337875786069,0.1393145366089124,True,True,Student-t,"GARCH(1,1)_Normal",TRAIN_only_volatility_no_final_evaluation

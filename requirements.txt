@@ -3,6 +3,7 @@ numpy
 matplotlib
 scipy
 statsmodels
+arch>=8,<9
 pmdarima>=2.1.1,<3
 yfinance
 scikit-learn
