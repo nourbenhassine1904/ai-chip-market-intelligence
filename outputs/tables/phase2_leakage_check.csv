@@ -1,0 +1,13 @@
+check,status,details
+chronological_split,PASS,max(train.Date) < min(test.Date)
+no_date_overlap,PASS,Disjoint observed dates
+canonical_row_split,PASS,floor(0.90*N) before any NA exclusion
+all_rows_and_original_values_preserved,PASS,Original 19 columns preserved exactly; no global drop
+training_features_independent_of_holdout,PASS,Train features equal recomputation on canonical train alone
+no_future_features,PASS,Changing later observations leaves every earlier feature unchanged
+backward_rolling_windows,PASS,"Uncentered rolling(20/60), min_periods=window; shift(1)/diff() only"
+adf_kpss_train_only,PASS,Code audit: stationarity_tables(train); full/test never passed to test functions
+acf_pacf_train_only,PASS,Code audit: generate_figures ACF/PACF loops read train only
+stl_train_only,PASS,"Code audit: STL(train log-price, period=5, robust=True)"
+iqr_thresholds_train_only,PASS,Code audit: build_tables fits IQR bounds from train log-returns only
+no_full_data_fitted_normalization,PASS,Code audit: no scaler; descriptive Base 100 uses first observed price only

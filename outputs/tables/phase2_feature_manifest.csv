@@ -1,0 +1,2 @@
+file_name,rows,columns,first_date,last_date,sha256,derived_variable_count,source_sha256,train_sha256,test_sha256,notes
+market_features.csv,2200,34,2018-01-02,2026-10-02,d64fe085b919bf20c4bf0fc372235cb4f42a2b45d6815883573ec0746aeff00a,15,e4f69e14cb46c797c6eb383c0f60ecc8b5d6a918ccd248288696f08557473b04,c3651f95959a49d8d64c791a8d48443dd520b978c3887b8793256dfff76c8f1c,124ebdff5b37de4459fcd9738e8d8ad968b3f945b66b647310f741640fa55fe4,Canonical values retained; structural NA preserved; trailing windows; no model fit
