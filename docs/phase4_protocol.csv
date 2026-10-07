@@ -1,0 +1,2 @@
+expected_rows,first_date,last_date,train_sha256,train_md5,max_var_lag,serial_gate_1,serial_gate_2,bic_tie_units,johansen_level_lags,johansen_sensitivity_lags,irf_horizon,alpha,cholesky_order
+1980,2018-01-02,2025-11-14,c3651f95959a49d8d64c791a8d48443dd520b978c3887b8793256dfff76c8f1c,23b4e319310d569b6f2ebb52c98539e7,10,20,30,2,3,2;4,20,0.05,NVDA;AMD;SOXX

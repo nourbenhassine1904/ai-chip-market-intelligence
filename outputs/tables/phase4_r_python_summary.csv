@@ -1,0 +1,3 @@
+language,aic_proposed_lag,bic_proposed_lag,hqic_proposed_lag,fpe_proposed_lag,selected_lag,stable,max_companion_modulus,serial_p20,serial_p30,serial_adequate,normality_p_value,granger_reject_raw,granger_reject_holm,johansen_rank,vecm_justified,irf_fevd_permitted,scope,train_md5,protocol_md5
+R,1,1,1,1,9,True,0.840222609558998,0.0587904231414175,0.156799645978905,True,0.0,SOXX->NVDA;SOXX->AMD,SOXX->NVDA;SOXX->AMD,0,False,True,TRAIN_only_no_final_evaluation,23b4e319310d569b6f2ebb52c98539e7,c75a5d243559e3ec522b71739d2a3b46
+Python,1,1,1,1,9,True,0.8402226095589954,0.0587904231414193,0.1567996459789065,True,0.0,SOXX->NVDA;SOXX->AMD,SOXX->NVDA;SOXX->AMD,0,False,True,TRAIN_only_no_final_evaluation,23b4e319310d569b6f2ebb52c98539e7,c75a5d243559e3ec522b71739d2a3b46

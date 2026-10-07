@@ -10,6 +10,7 @@
 
 # Keep Phase 3B protocol fingerprints stable across Windows/Unix checkouts.
 docs/phase3b_validation_*.csv text eol=lf
+docs/phase4_protocol.csv text eol=lf
 
 *.bat text eol=crlf
 *.ps1 text eol=crlf
