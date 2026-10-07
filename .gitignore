@@ -49,3 +49,4 @@ outputs/**/*.temp
 *.log
 *.tmp
 *.temp
+.Rproj.user
