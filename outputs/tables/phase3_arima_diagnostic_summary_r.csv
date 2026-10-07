@@ -1,0 +1,2 @@
+"language","model","scope","ljung_box_10","ljung_box_20","jarque_bera","arch_lm_5","arch_lm_10","arch_lm_20","residual_mean","residual_std","white_noise_mean_supported","normality_supported","arch_effect_supported","qualification"
+"R","ARIMA(2,1,2)_drift","train",0.869790651249448,0.784384684378389,0,1.50216867751425e-12,9.44313238265779e-12,1.06283445639531e-10,-2.23293948303006e-05,0.0321768710769031,TRUE,FALSE,TRUE,"provisional selected mean model"

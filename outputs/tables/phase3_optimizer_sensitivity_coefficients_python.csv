@@ -1,0 +1,13 @@
+initialization,model,term,estimate
+independent_default_start,"ARIMA(2,1,2)_drift",x1,0.0018420388803088215
+independent_default_start,"ARIMA(2,1,2)_drift",ar.L1,-0.2630096525299203
+independent_default_start,"ARIMA(2,1,2)_drift",ar.L2,0.11113569724131855
+independent_default_start,"ARIMA(2,1,2)_drift",ma.L1,0.18549299508965594
+independent_default_start,"ARIMA(2,1,2)_drift",ma.L2,-0.08583969598830642
+independent_default_start,"ARIMA(2,1,2)_drift",sigma2,0.0010423736498022887
+R_initialized_sensitivity,"ARIMA(2,1,2)_drift",x1,0.0018421126192652705
+R_initialized_sensitivity,"ARIMA(2,1,2)_drift",ar.L1,-1.6998640103835414
+R_initialized_sensitivity,"ARIMA(2,1,2)_drift",ar.L2,-0.8685774051202972
+R_initialized_sensitivity,"ARIMA(2,1,2)_drift",ma.L1,1.637468297514756
+R_initialized_sensitivity,"ARIMA(2,1,2)_drift",ma.L2,0.8107230903896395
+R_initialized_sensitivity,"ARIMA(2,1,2)_drift",sigma2,0.0010344613072390922

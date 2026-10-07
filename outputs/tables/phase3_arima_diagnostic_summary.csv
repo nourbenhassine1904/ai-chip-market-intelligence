@@ -1,0 +1,3 @@
+language,model,scope,ljung_box_10,ljung_box_20,jarque_bera,arch_lm_5,arch_lm_10,arch_lm_20,residual_mean,residual_std,white_noise_mean_supported,normality_supported,arch_effect_supported,qualification,primary_pedagogical_model
+R,"ARIMA(2,1,2)_drift",train,0.869790651249448,0.784384684378389,0.0,1.5021686775142499e-12,9.443132382657789e-12,1.06283445639531e-10,-2.23293948303006e-05,0.0321768710769031,True,False,True,provisional selected mean model,True
+Python,"ARIMA(1,1,1)_drift",train,0.0674649411029807,0.1181220223193528,0.0,1.0999640076662337e-13,1.0215575932942675e-13,2.0269785767856906e-12,7.180820177876836e-06,0.0322976033370686,True,False,True,provisional selected mean model,False

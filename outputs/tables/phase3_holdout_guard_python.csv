@@ -1,0 +1,8 @@
+check,status,details
+python_fit_TRAIN_only,PASS,Closed input allowlist; same validated y/delta used by all stages.
+python_order_selection_TRAIN_only,PASS,Closed input allowlist; same validated y/delta used by all stages.
+python_residual_diagnostics_TRAIN_only,PASS,Closed input allowlist; same validated y/delta used by all stages.
+python_seasonality_gate_TRAIN_only,PASS,Closed input allowlist; same validated y/delta used by all stages.
+python_frozen_TRAIN_integrity,PASS,SHA-256=c3651f95959a49d8d64c791a8d48443dd520b978c3887b8793256dfff76c8f1c
+python_all_observation_reads_allowlisted,PASS,outputs/tables/phase2_split_metadata.csv; outputs/tables/phase2_feature_manifest.csv; data/processed/market_train.csv; outputs/tables/phase2_stationarity_summary.csv; outputs/tables/phase2_leakage_check.csv; outputs/tables/phase2_stationarity_tests.csv; outputs/tables/phase2_weekday_returns.csv
+python_no_forecast_or_final_metrics,PASS,"Code audit: no predict/forecast, final errors or Diebold-Mariano calls."

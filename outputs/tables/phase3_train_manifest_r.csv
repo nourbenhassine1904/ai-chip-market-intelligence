@@ -1,0 +1,2 @@
+"language","input","scope","rows","effective_rows","first_date","last_date","md5","sum_log_price","sum_delta_log_price"
+"R","data/processed/market_train.csv","train",1980,1979,"2018-01-02","2025-11-14","23b4e319310d569b6f2ebb52c98539e7",5977.57240777717,3.65282124420418

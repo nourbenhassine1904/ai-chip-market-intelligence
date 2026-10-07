@@ -1,0 +1,5 @@
+"package","version"
+"R","4.5.2"
+"forecast","9.0.2"
+"tseries","0.10.63"
+"FinTS","0.4.9"

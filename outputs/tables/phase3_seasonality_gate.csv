@@ -1,0 +1,8 @@
+evidence,result,interpretation
+Phase2_STL_period_5,0,Robust STL recomputed on TRAIN; a seasonal component alone is not proof.
+returns_seasonal_acf,"{""5"": 0.014468856254487069, ""10"": -0.025299531890672078, ""15"": -0.026976256347030495, ""20"": 0.021551060195081875}",Bonferroni 4-lag bound=0.0561459; 0/4 exceed; isolated spikes insufficient.
+Phase2_weekday_means_pct,"{""Monday"": 0.2119971164345729, ""Tuesday"": 0.25543129823105526, ""Wednesday"": 0.2629201255406733, ""Thursday"": 0.28651261634762554, ""Friday"": -0.09533197059772797}",Descriptive calendar weekdays differ from five consecutive sessions.
+weekday_ANOVA_auxiliary_p,0.4318796891327378,TRAIN auxiliary mean test; unequal variance/heavy tails limit inference.
+sarima_justified,False,Insufficient joint evidence; no seasonal fit. R nsdiffs checked in summary.
+R_nsdiffs_frequency_5_seas,0,"forecast seasonal-strength auxiliary, frequency=5 trading sessions."
+R_nsdiffs_frequency_5_ocsb,0,OCSB seasonal-unit-root auxiliary; not a test for every seasonal mean effect.
