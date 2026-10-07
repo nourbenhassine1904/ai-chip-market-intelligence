@@ -1,0 +1,4 @@
+"phase2_conclusion","auxiliary_test","ndiffs_result","final_d","agrees_with_final_d"
+"Log_Price nonstationary; first difference stationary","KPSS level (forecast default)",1,1,TRUE
+"Log_Price nonstationary; first difference stationary","KPSS trend",1,1,TRUE
+"Log_Price nonstationary; first difference stationary","ADF trend",1,1,TRUE

@@ -1,0 +1,7 @@
+"language","model","scope","test","lag","statistic","p_value","df","model_df","nobs","reject_5pct"
+"R","ARIMA(2,1,2)_drift","train","Ljung-Box",10,2.48815765458933,0.869790651249448,6,4,1979,FALSE
+"R","ARIMA(2,1,2)_drift","train","Ljung-Box",20,11.3963606355897,0.784384684378389,16,4,1979,FALSE
+"R","ARIMA(2,1,2)_drift","train","Jarque-Bera",0,1704.15226722028,0,2,0,1979,TRUE
+"R","ARIMA(2,1,2)_drift","train","ARCH-LM",5,64.3865738384446,1.50216867751425e-12,5,0,1979,TRUE
+"R","ARIMA(2,1,2)_drift","train","ARCH-LM",10,73.468633979629,9.44313238265779e-12,10,0,1979,TRUE
+"R","ARIMA(2,1,2)_drift","train","ARCH-LM",20,89.1040247168636,1.06283445639531e-10,20,0,1979,TRUE

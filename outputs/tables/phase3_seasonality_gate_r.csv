@@ -1,0 +1,8 @@
+"evidence","result","interpretation"
+"Phase2_STL_period_5","0","Robust TRAIN STL; component alone not proof. Smoothers differ slightly from Python."
+"returns_seasonal_acf","lag5=0.01446886; lag10=-0.02529953; lag15=-0.02697626; lag20=0.02155106","Bonferroni four-lag bound=0.056146; 0/4 exceed."
+"Phase2_weekday_means_pct","Monday=0.211997; Tuesday=0.255431; Wednesday=0.262920; Thursday=0.286513; Friday=-0.095332","Descriptive weekdays; holidays prevent equivalence to five-session periodicity."
+"weekday_ANOVA_auxiliary_p","0.431879689132744","Auxiliary TRAIN mean test; heavy tails/unequal variance limit inference."
+"R_nsdiffs_frequency_5_seas","0","forecast seasonal-strength auxiliary, frequency=5 trading sessions."
+"R_nsdiffs_frequency_5_ocsb","0","OCSB seasonal-unit-root auxiliary; not a test for every seasonal mean effect."
+"sarima_justified","FALSE","Joint evidence insufficient: no SARIMA estimated."

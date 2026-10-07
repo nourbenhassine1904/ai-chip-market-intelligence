@@ -1,0 +1,2 @@
+"language","source","model","p","d","q","drift","seasonal_order","scope","converged","k","n_eff","log_likelihood","AIC","AICc","BIC","ljung_box_10","ljung_box_20","warnings","error","selected_by_auto","selected_candidate"
+"R","auto.arima","ARIMA(2,1,2)_drift",2,1,2,TRUE,"(0,0,0,0)","train",TRUE,6,1979,3993.22899835894,-7974.45799671787,-7974.41540036899,-7940.91591504426,0.869790651249448,0.784384684378389,"","",TRUE,TRUE

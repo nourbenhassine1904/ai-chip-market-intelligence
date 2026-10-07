@@ -1,0 +1,7 @@
+language,model,scope,test,lag,statistic,p_value,df,model_df,nobs,reject_5pct
+Python,"ARIMA(1,1,1)_drift",train,Ljung-Box,10,14.597311801074042,0.06746494110298079,8,2,1979,False
+Python,"ARIMA(1,1,1)_drift",train,Ljung-Box,20,25.252331576124778,0.1181220223193528,18,2,1979,False
+Python,"ARIMA(1,1,1)_drift",train,Jarque-Bera,0,1776.1068387972978,0.0,2,0,1979,True
+Python,"ARIMA(1,1,1)_drift",train,ARCH-LM,5,69.85226236440626,1.0999640076662335e-13,5,0,1979,True
+Python,"ARIMA(1,1,1)_drift",train,ARCH-LM,10,83.52003756613894,1.0215575932942674e-13,10,0,1979,True
+Python,"ARIMA(1,1,1)_drift",train,ARCH-LM,20,98.84409391246949,2.0269785767856906e-12,20,0,1979,True

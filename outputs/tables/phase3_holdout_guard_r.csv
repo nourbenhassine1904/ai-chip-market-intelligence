@@ -1,0 +1,7 @@
+"check","status","details"
+"r_fit_TRAIN_only","PASS","Closed input allowlist; validated y/delta used by all stages."
+"r_order_selection_TRAIN_only","PASS","Closed input allowlist; validated y/delta used by all stages."
+"r_residual_diagnostics_TRAIN_only","PASS","Closed input allowlist; validated y/delta used by all stages."
+"r_seasonality_gate_TRAIN_only","PASS","Closed input allowlist; validated y/delta used by all stages."
+"r_all_observation_reads_allowlisted","PASS","data/processed/market_train.csv; outputs/tables/phase2_split_metadata.csv; outputs/tables/phase2_stationarity_summary.csv; outputs/tables/phase2_leakage_check.csv; outputs/tables/phase2_weekday_returns.csv"
+"r_no_forecast_or_final_metrics","PASS","Code audit: no final forecasts or evaluation metrics."

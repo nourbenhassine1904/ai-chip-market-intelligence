@@ -1,0 +1,13 @@
+language,model,scope,test,lag,statistic,p_value,df,model_df,nobs,reject_5pct,initialization
+Python,"ARIMA(2,1,2)_drift",train,Ljung-Box,10,14.483577675737175,0.024676921184923765,6,4,1979,True,independent_default_start
+Python,"ARIMA(2,1,2)_drift",train,Ljung-Box,20,25.15533644743766,0.06713341450480734,16,4,1979,False,independent_default_start
+Python,"ARIMA(2,1,2)_drift",train,Jarque-Bera,0,1777.0586856787002,0.0,2,0,1979,True,independent_default_start
+Python,"ARIMA(2,1,2)_drift",train,ARCH-LM,5,69.75513834381536,1.1523591740072152e-13,5,0,1979,True,independent_default_start
+Python,"ARIMA(2,1,2)_drift",train,ARCH-LM,10,83.55618917037756,1.0049525889310664e-13,10,0,1979,True,independent_default_start
+Python,"ARIMA(2,1,2)_drift",train,ARCH-LM,20,98.8732977557849,2.002789436437229e-12,20,0,1979,True,independent_default_start
+Python,"ARIMA(2,1,2)_drift",train,Ljung-Box,10,2.4876226068424367,0.8698503130660306,6,4,1979,False,R_initialized_sensitivity
+Python,"ARIMA(2,1,2)_drift",train,Ljung-Box,20,11.3948558595415,0.784482281959153,16,4,1979,False,R_initialized_sensitivity
+Python,"ARIMA(2,1,2)_drift",train,Jarque-Bera,0,1703.920482743477,0.0,2,0,1979,True,R_initialized_sensitivity
+Python,"ARIMA(2,1,2)_drift",train,ARCH-LM,5,64.35165116931378,1.527423385233478e-12,5,0,1979,True,R_initialized_sensitivity
+Python,"ARIMA(2,1,2)_drift",train,ARCH-LM,10,73.4447878783502,9.544351374198324e-12,10,0,1979,True,R_initialized_sensitivity
+Python,"ARIMA(2,1,2)_drift",train,ARCH-LM,20,89.07684043720967,1.0745024164281648e-10,20,0,1979,True,R_initialized_sensitivity
