@@ -9,6 +9,7 @@ __pycache__/
 .cache/matplotlib/
 .cache/R-library/
 .cache/phase6/
+.cache/phase7/
 .coverage
 htmlcov/
 build/
