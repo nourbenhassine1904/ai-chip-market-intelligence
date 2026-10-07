@@ -1,0 +1,2 @@
+model,order,drift,selection_reason,validation_scope,status,phase3a_note
+Naive,"(0,1,0)",False,No challenger satisfies complete convergence and >=1% RMSE AND MAE gain at BOTH horizons in BOTH languages; retain naive. Phase3A random-walk residual autocorrelation remains a limitation.,TRAIN_only_internal_rolling_origin,locked_arima_specification_baseline_with_diagnostic_warning,Phase3A random walk fails Ljung-Box; benchmark fallback retains this warning
