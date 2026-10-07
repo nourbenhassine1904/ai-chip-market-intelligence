@@ -1,0 +1,6 @@
+model,p,d,q,drift,k,phase3a_mean_adequate,phase3a_note
+Naive,0,1,0,FALSE,1,FALSE,Phase3A random walk fails Ljung-Box; benchmark fallback retains this warning
+RW_drift,0,1,0,TRUE,2,FALSE,Phase3A drift random walk fails Ljung-Box; retain warning if locked
+ARIMA111_drift,1,1,1,TRUE,4,TRUE,Phase3A Ljung-Box passes in R/Python; nonnormality and ARCH remain
+ARIMA212_drift,2,1,2,TRUE,6,TRUE,Phase3A Ljung-Box passes in R; nonnormality and ARCH remain
+ARIMA313_no_drift,3,1,3,FALSE,7,TRUE,Phase3A Ljung-Box passes in Python refit; R automatic attempts rejected; nonnormality and ARCH remain
