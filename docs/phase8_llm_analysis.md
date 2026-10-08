@@ -2,20 +2,22 @@
 
 ## Objective
 
-**Phase 8A is preparation only.** The official LLM response is **not yet generated**.
-Statistical development and final holdout evaluation are complete. This package
-extracts existing results, freezes a self-contained interpretive prompt and
-prepares empty response, comparison and hallucination-audit files. It adds no
-model result or LLM-generated interpretation of the project.
+**Phase 8A preparation and Phase 8B documentary comparison/audit are complete.**
+Phase 8A froze a self-contained prompt and empty assessment templates. The
+complete official response was subsequently recorded in the separate local
+commit `67d60efba09c05ec571cd6907014e08ada9a2cd6`,
+"docs: add official LLM response". Phase 8B audits that exact artifact against
+the supplied project facts and development baselines. It changes no statistical
+analysis, result, model or official response.
 
 ## Why use an LLM?
 
-The subsequent manual exercise will examine how an LLM formulates modeling
-hypotheses from evidence, explains technical findings, provides a simulated
-investment interpretation and critiques the study. Its usefulness and accuracy
-are questions for the subsequent team comparison, not outcomes established by
-this preparation. Since outcomes are supplied, this is retrospective
-interpretation, not an independent prospective model-selection experiment.
+The exercise evaluates retrospective interpretation, explanation and critical
+review of completed results, including a cautious educational investment
+simulation. It is not prospective model selection: the LLM already received
+the outcomes. Correctly restating those outcomes is useful, but does not
+constitute a new statistical finding or demonstrate independent forecasting
+ability.
 
 ## Inputs supplied to the LLM
 
@@ -23,54 +25,54 @@ interpretation, not an independent prospective model-selection experiment.
 chronology, TRAIN stationarity/correlations/tails, ARIMA identification and
 internal validation, VAR/Granger/Johansen/FEVD, GARCH, neural validation and
 costs, final holdout price metrics, Diebold-Mariano and the Naive recommendation.
-Every numerical table identifies its CSV source; accompanying documentary
-facts cite internal sections. Scope and units accompany the results.
+Every numerical table cites its CSV; documentary statements cite internal
+sections. Scope and units are explicit.
 
-[Source manifest](../llm/prompts/phase8_source_manifest.json) records the Phase 7
-base commit/tag, normalized-text source fingerprints, selected CSV columns,
-row filters and expected row counts. CSV row order is retained. The tables use
-Python's six-significant-digit numeric formatting; NA denotes an empty source
-cell, not zero. CRLF is normalized to LF only for manifest hashes, so those
-hashes are distinct from historical raw-byte dataset/prediction fingerprints.
-The package tests reconstruct every table from the frozen CSV summaries and
-check that the complete facts block is embedded verbatim in the official prompt.
-They do not fit or forecast anything.
+The [unchanged source manifest](../llm/prompts/phase8_source_manifest.json)
+records the Phase 7 base commit/tag, normalized-text source fingerprints,
+selected columns, filters and expected counts. Tables retain CSV row order
+and use six significant digits; NA is an empty source value, not zero. Manifest
+hashes normalize CRLF to LF and are distinct from historical raw-byte hashes.
+Tests reconstruct the existing summary tables and check that the complete facts
+and disclaimer remain embedded in the official prompt. No model is run.
 
-The manual ChatGPT session receives the complete official prompt as one input.
-No repository access, external browsing, additional tests or raw market data
-are needed. Internal paths in the prompt are provenance labels. The full team
-baseline texts are reserved for the later comparison, not silently presented
-as additional empirical evidence to the model.
+The prompt is self-contained; repository paths are provenance labels, and no
+repository access or external browsing is supplied. Full baseline texts are
+reserved for this subsequent comparison. The audit uses only existing facts,
+CSV summaries, protocols and baseline interpretations; it performs no new
+statistical estimation or holdout evaluation.
 
 ## Official prompt
 
-Use [phase8_official_llm_prompt.md](../llm/prompts/phase8_official_llm_prompt.md)
-verbatim, including its complete embedded facts and disclaimer. It requires
-exactly the four requested sections: model hypotheses, vulgarisation, simulated
-investment interpretation and critical review. It forbids unsupported statistics,
-p-values, intervals, causal claims and economic stories, and requires the LLM
-to state when a conclusion cannot be drawn.
+[phase8_official_llm_prompt.md](../llm/prompts/phase8_official_llm_prompt.md)
+remains unchanged. It requests exactly A, B, C and D: model hypotheses,
+vulgarisation, simulated investment interpretation and critical review.
+It forbids invented statistics, p-values, intervals, causal/economic claims
+and requires unsupported conclusions to be identified as such.
 
-For the later manual run, preserve the exact input and record in this document
-the visible ChatGPT model label, run date/time with timezone, and any nondefault
-settings that are exposed. Mark unavailable model/version/settings information
-as unavailable; do not infer it. The current generation record is **pending**.
-Keep the complete first official response, including errors or refusals,
-unedited. Any later alternative run must be separately identified rather than
-replacing the official response. Input reproducibility does not promise an
-identical stochastic response or the same future hosted model version.
+The recorded response is the official artifact supplied for this audit.
+The precise ChatGPT model label/version, generation timestamp and exposed
+settings were not recorded in the repository or supplied with the response;
+they are **unavailable**, not inferred. The response commit records storage,
+not the exact generation time or model identity. Input reproducibility does
+not promise an identical stochastic output or future hosted model version.
 
 ## Full LLM response
 
-**Pending manual generation.**
-[Response placeholder](../llm/responses/phase8_official_llm_response.md) contains
-only the requested title and paste instruction. No response is fabricated in
-Phase 8A. After manual generation, paste the complete, unedited response there.
+The complete [official response](../llm/responses/phase8_official_llm_response.md)
+is stored only in llm/responses/. It contains the four requested A/B/C/D
+sections, following the storage title, and is preserved without corrections,
+reformatting or deletion of the editorial suffix in section C.
+
+Frozen response commit: `67d60efba09c05ec571cd6907014e08ada9a2cd6`.
+Raw UTF-8 SHA-256:
+`eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4`.
+The Phase 8B tests compare the working bytes to this digest and the committed
+blob. The full response is not duplicated in this document.
 
 ## Team baseline interpretation
 
-The existing files are treated as **team-reviewed baseline interpretations
-produced during model development**:
+The reference documents are **team-reviewed baseline interpretations produced during model development**:
 
 - [phase2_interpretation.md](../llm/human_analysis/phase2_interpretation.md)
 - [phase3a_arima_interpretation.md](../llm/human_analysis/phase3a_arima_interpretation.md)
@@ -80,91 +82,128 @@ produced during model development**:
 - [phase6_lstm_gru_interpretation.md](../llm/human_analysis/phase6_lstm_gru_interpretation.md)
 - [phase7_final_evaluation_interpretation.md](../llm/human_analysis/phase7_final_evaluation_interpretation.md)
 
-This is the classification used for the exercise, not an independently blinded
-human control or a certification that no assistance was used. Independence
-from AI assistance has not been demonstrated; this is **not an independent human analysis**.
-The original files are preserved. Their phase-relative statements (for example,
-"holdout not yet evaluated") describe their development stage, not the current
-state. Historical phase reports may still describe their original interpretation
-templates as unanswered; the current baseline files contain working text.
-Numeric outputs take precedence over rounded prose in any later audit.
+They are **not an independent human analysis** or a blinded control. Their
+independence from AI assistance has not been demonstrated. This classification
+does not certify a separate human-only review. All baseline files are preserved.
+Statements about a future holdout describe their historical development stage,
+not the current completed evaluation. Existing CSV/protocol evidence takes
+precedence over rounded prose or rhetorical simplifications.
 
 ## Human/team vs LLM comparison
 
-**Pending.** [Comparison template](../llm/human_analysis/phase8_human_vs_llm_comparison.md)
-has only the requested title and twelve unanswered headings. The team fills it
-only after preserving the full manual response, checking agreement, disagreement,
-useful additions and relative weaknesses against source evidence. No preference
-for either author is assumed in advance.
+The completed [comparison](../llm/human_analysis/phase8_human_vs_llm_comparison.md)
+retains all twelve original headings. It documents agreement, real differences
+of caution/detail, every material reported number, Granger, non-significance,
+stationarity/cointegration, price/volatility, the Naive decision, simulated
+investment caution, useful synthesis and areas where baselines are more detailed.
+
+No material factual disagreement is found. The LLM is more precise than the
+final Phase 5 baseline wording about ARCH effects disappearing: it says no ARCH
+was detected at the tested lags, without a universal absence claim. Baselines
+provide more detail on temporal folds/scalers, incomplete fit coverage, costs,
+Johansen specifications and evaluation mechanics. These differences are tied
+to baseline sections and original documentation in the comparison.
 
 ## Hallucination audit
 
-**Pending.** [Audit CSV](../llm/human_analysis/phase8_hallucination_audit.csv)
-contains only its header. After the response exists, assign a stable claim_id,
-quote the relevant llm_claim, record whether supported_by_project is true,
-false or uncertain, and supply a precise source path plus row/column or document
-section. Use only these issue_type values:
+The completed [audit CSV](../llm/human_analysis/phase8_hallucination_audit.csv)
+contains 35 grouped material claims: A=11, B=8, C=6, D=10. Each row records a
+verbatim response excerpt, support status, precise source references, issue
+type, severity and an explanatory comment. Repeated ideas are grouped; counts
+are not independent observations or an estimate of general LLM reliability.
 
-- supported
-- invented_number
-- causal_overclaim
-- pvalue_misinterpretation
-- oversimplification
-- unsupported_financial_claim
-- other
+| issue_type | Number of claims |
+| --- | --- |
+| supported | 35 |
+| invented_number | 0 |
+| causal_overclaim | 0 |
+| pvalue_misinterpretation | 0 |
+| oversimplification | 0 |
+| unsupported_financial_claim | 0 |
+| other | 0 |
 
-Suggested severity values are none, low, medium and high; explain impact in
-team_comment. These are audit conventions, not completed audit judgments.
-Check numerical fidelity, raw/Holm distinctions, non-significance, Granger and
-Cholesky causal language, stationarity/cointegration claims, price versus
-volatility targets, the Phase 3B lock versus Phase 7 challenger, the GARCH
-selection policy and simulated-investment caution. Include supported claims
-as well as issues to avoid reporting only errors. No audit data row is created
-before the manual response exists.
+**No numerical hallucination was detected in the material reported values checked.**
+All 35 claims are supported, with severity none. Reasonable rounding is accepted.
+Raw versus Holm DM, the ARIMA h10 RMSE advantage, post-GARCH non-rejection,
+Johansen rank zero, GARCH sigma units and interval coverage/widths were checked.
+No causal overclaim, p-value misuse or unsupported financial claim is retained.
+
+The response is good overall, with specific limitations. Its local citations
+sometimes group a correct number under an imprecise source: correlation in
+A05/D02 belongs to the Phase 2 correlation CSV, and persistence in A08 belongs
+to the GARCH comparison CSV, not the cited diagnostic table. The audit gives
+the correct source; these are traceability defects, not invented numbers.
+The isolated phase8_investment_disclaimer suffix in C is editorial. The
+20-day feature and ARCH/clustering explanations are acceptable contextual
+simplifications, not material erroneous oversimplifications. Costs, inferential
+calibration and the Phase 3B lock versus Phase 7 challenger could be explained
+more fully. See comparison sections 2, 5, 6, 8, 9 and 11.
+
+The categorical audit evaluates factual claims. Editorial defects, incomplete
+citations and omissions are explicitly described in comments/comparison rather
+than mislabeled as false material claims. No anomaly is invented to populate
+an issue category. This is a documentary audit prepared in the repository;
+a second independent human review is not attested.
 
 ## Investment simulation and limitations
 
-[Investment disclaimer](../llm/prompts/phase8_investment_disclaimer.md) is also
-embedded in the official prompt. This is an academic, educational simulation,
-not personalized financial advice. Historical results and a single holdout do
-not establish profit, causal economics or future performance. Volatility does
-not identify price direction. The price-model recommendation concerns measured
-prediction errors, not an executable trading recommendation. No held-out
-volatility performance was measured; GARCH has a separate risk target.
+The unchanged [disclaimer](../llm/prompts/phase8_investment_disclaimer.md) remains
+embedded in the prompt. Response C respects its academic, simulated scope:
+no personalized financial advice, buy/sell instruction, portfolio allocation,
+promised return or guaranteed performance. It distinguishes price prediction
+from conditional-volatility risk and acknowledges historical uncertainty,
+a single holdout, unassessed costs and no executed trading backtest.
+
+The phrase about no robust directional signal means none is validated by the
+supplied price-loss evaluation; it is not a negative result from an unreported
+directional-accuracy test. No directional hit-rate is invented. Sigma near
+3.17% is daily innovation volatility at h10, not a signed return, expected
+profit or cumulative ten-session risk. GARCH has no held-out volatility score
+and remains excluded from price-model ranking.
 
 ## Scientific honesty
 
-No LLM response, comparison answer or audit finding is fabricated. The current
-state is preparation, not a completed generative-AI evaluation. Negative neural
-results, diagnostic warnings, language differences and policy-dependent locks
-are retained. No holdout observation is reloaded for analysis, no model is
-refitted and no final evaluation is recalculated in Phase 8A.
-
-The required post-generation chronology statement is reserved for the later
-manual-generation record:
+The LLM received the project results **after modeling and final holdout
+evaluation**. Its model proposals are retrospective. The baseline interpretations
+are team-reviewed development documents, not an independent blinded human
+control. The comparison assesses interpretation quality, not a pure experimental
+human-versus-AI competition. Model/version and generation metadata unavailable
+in the project are not fabricated, and no independent reviewer is invented.
 
 > The LLM response was generated only after the statistical analyses and final holdout evaluation had been completed.
 
-This quoted statement is **not yet a claim that generation has occurred**.
-After the response is produced, record its actual generation metadata and
-confirm this chronology. The existing team interpretations are not represented
-as wholly independent human work.
+This chronology is the recorded project sequence; the precise generation time
+is unavailable. The response was committed separately before Phase 8B and
+remains byte-identical. Negative neural results, diagnostic warnings,
+language differences and policy-dependent locks are retained.
+No holdout is reloaded for analysis, no model is refitted, and no original
+statistic, forecast, metric or final evaluation is recalculated in Phase 8B.
+No new external LLM call is made.
 
 ## Phase boundary
 
-Phase 8A stops after preparing and validating the package and making the local
-commit. No push, LLM invocation, comparison completion, populated claim audit,
-model tuning, holdout replay or earlier-phase edit is included. The holdout
-remains consumed for final evaluation, not a new tuning dataset.
+Phase 8B stops after the comparison, claim audit, documentation, appropriate
+tests and local commit. The official response, prompt/facts/disclaimer,
+source manifest and every Phase 1–7 tracked file remain unchanged.
+No push, PR, merge, Prophet or final-report work is performed. The consumed
+holdout does not become a new tuning dataset.
 
-Read-only preparation checks (from the repository root):
+Validation from the repository root:
 
 ```powershell
-.venv/Scripts/python.exe -m pytest tests/test_llm_package.py -q
 .venv/Scripts/python.exe -m ruff check tests/test_llm_package.py
+.venv/Scripts/python.exe -m pytest tests/test_llm_package.py
+.venv/Scripts/python.exe -m pytest
 ```
 
-The placeholder assertions deliberately validate the Phase 8A boundary. Once
-the manual response and team assessments are legitimately added in a subsequent
-phase, these preparation-state assertions must be explicitly revised for that
-new boundary; do not weaken them to hide premature completion.
+Validation completed: **Ruff PASS**, **128 targeted tests passed**, and the full
+suite **336 passed**. The four existing Phase 3A statsmodels acorr_lm
+FutureWarnings remain; no Phase 8B warning was reported.
+
+Phase 8B tests replace the deliberately obsolete Phase 8A placeholder assertions
+with checks for the frozen complete response, four sections, filled comparison,
+valid sourced audit rows, counts consistent with the documentation, preserved
+source summaries/disclaimer and no earlier-phase changes. Numeric checks read
+existing source cells and verify the response's reported rounding only; they
+are not statistical recalculation. Existing synthetic unit tests remain separate
+from execution of historical analysis pipelines.
