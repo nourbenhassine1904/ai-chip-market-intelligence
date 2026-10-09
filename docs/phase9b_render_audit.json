@@ -1,0 +1,195 @@
+{
+  "renderer": "Microsoft Word COM; PDF ExportAsFixedFormat; pypdf independent page/text inspection",
+  "total_pages": 30,
+  "word_saved_page_count": 30,
+  "front_matter_pages": 3,
+  "body_start_page": 4,
+  "annex_start_page": 25,
+  "body_pages_excluding_annexes": 21,
+  "pages_excluding_annexes": 24,
+  "annex_pages": 6,
+  "sections": [
+    {
+      "title": "1 Introduction",
+      "page": 4
+    },
+    {
+      "title": "1.1 Problématique et choix du terrain",
+      "page": 4
+    },
+    {
+      "title": "1.2 Une démarche articulée autour de trois objectifs",
+      "page": 4
+    },
+    {
+      "title": "2 Données et préparation",
+      "page": 5
+    },
+    {
+      "title": "2.1 Acquisition et alignement des calendriers",
+      "page": 5
+    },
+    {
+      "title": "2.2 Prix fourni et prix ajusté",
+      "page": 5
+    },
+    {
+      "title": "2.3 Transformations et séparation chronologique",
+      "page": 6
+    },
+    {
+      "title": "3 EDA et stationnarité",
+      "page": 7
+    },
+    {
+      "title": "3.1 Dispersion et dépendance des rendements",
+      "page": 7
+    },
+    {
+      "title": "3.2 ACF PACF et tests complémentaires",
+      "page": 8
+    },
+    {
+      "title": "4 ARIMA et validation temporelle",
+      "page": 9
+    },
+    {
+      "title": "4.1 Identification sur le log-prix",
+      "page": 9
+    },
+    {
+      "title": "4.2 Adéquation de la moyenne et limites des innovations",
+      "page": 9
+    },
+    {
+      "title": "4.3 Validation rolling-origin exclusivement sur TRAIN",
+      "page": 10
+    },
+    {
+      "title": "5 Modélisation multivariée",
+      "page": 11
+    },
+    {
+      "title": "5.1 VAR sur les rendements stationnaires",
+      "page": 11
+    },
+    {
+      "title": "5.2 Précédence prédictive et correction multiple",
+      "page": 11
+    },
+    {
+      "title": "5.3 Johansen et dynamique des innovations",
+      "page": 12
+    },
+    {
+      "title": "6 Volatilité ARCH et GARCH",
+      "page": 13
+    },
+    {
+      "title": "6.1 Filtrer la moyenne avant la variance",
+      "page": 13
+    },
+    {
+      "title": "6.2 Normal et Student t",
+      "page": 13
+    },
+    {
+      "title": "6.3 Diagnostics et sens de la prévision de risque",
+      "page": 14
+    },
+    {
+      "title": "7 LSTM et GRU",
+      "page": 15
+    },
+    {
+      "title": "7.1 Fenêtres multivariées et prévention des fuites",
+      "page": 15
+    },
+    {
+      "title": "7.2 Configurations bornées et résultats négatifs",
+      "page": 16
+    },
+    {
+      "title": "8 Évaluation finale",
+      "page": 17
+    },
+    {
+      "title": "8.1 Un protocole commun gelé avant le scoring",
+      "page": 17
+    },
+    {
+      "title": "8.2 Lecture des erreurs selon l’horizon",
+      "page": 18
+    },
+    {
+      "title": "8.3 Diebold Mariano et recommandation",
+      "page": 19
+    },
+    {
+      "title": "9 IA générative et analyse critique",
+      "page": 20
+    },
+    {
+      "title": "9.1 Une interprétation rétrospective structurée",
+      "page": 20
+    },
+    {
+      "title": "9.2 Apports et réserves",
+      "page": 20
+    },
+    {
+      "title": "10 Discussion limites et conclusion",
+      "page": 21
+    },
+    {
+      "title": "10.1 Prévoir expliquer et quantifier le risque",
+      "page": 21
+    },
+    {
+      "title": "10.2 Complexité coût et interprétabilité",
+      "page": 21
+    },
+    {
+      "title": "10.3 Portée statistique et reproductibilité",
+      "page": 22
+    },
+    {
+      "title": "10.4 Conclusion et prolongements",
+      "page": 22
+    },
+    {
+      "title": "Références",
+      "page": 23
+    },
+    {
+      "title": "Annexes",
+      "page": 25
+    },
+    {
+      "title": "Annexe A Diagnostics univariés complémentaires",
+      "page": 25
+    },
+    {
+      "title": "Annexe B Décomposition multivariée et variance résiduelle",
+      "page": 26
+    },
+    {
+      "title": "Annexe C Trajectoires finales et spécifications techniques",
+      "page": 27
+    },
+    {
+      "title": "Annexe D Artefacts génératifs et reproduction",
+      "page": 28
+    },
+    {
+      "title": "Annexe E Explication vulgarisée originale du LLM",
+      "page": 29
+    }
+  ],
+  "markdown_sha256": "19e4587d592d3b1cfd9485ac32cb9b2eef9a6d6510605ad315f88da4d70cfc18",
+  "docx_sha256": "cb0047cebab714d5340610fd20789c4f096f88af175661a3a9d0838f8fc3dbc4",
+  "pdf_sha256": "3966bf38baa3bc81f5a1c64fd62a24c352aae3e208db4344c0df9952ecfac470",
+  "visual_review": "PASS",
+  "reviewed_pdf_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+  "visual_review_note": "Toutes les pages inspectées en PNG à leur résolution d’origine, 120 dpi. Couverture, sommaire, tableau ADF/KPSS, contexte GARCH, références et annexes D/E lisibles ; aucun texte tronqué, chevauchement ou élément manquant."
+}
