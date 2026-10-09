@@ -1,0 +1,8 @@
+check,status,detail
+frozen_before,PASS,305 exact SHA256 checks
+FAST_execution,PASS,nbclient: 52 code cells executed in order; current Python kernel
+FAST_guards,PASS,"Runtime guards deny data reads, network, subprocesses, model imports and repository writes"
+figures_displayable,PASS,PNG MIME outputs captured by the kernel; all source figures decoded
+frozen_metric_arithmetic,PASS,MSE/RMSE/MAE/MAPE checked against frozen predictions; no new forecasts or DM
+clean_copy_FAST,PASS,"Executed from committed LF bytes with no data/, .git or ignored historical model caches"
+frozen_after,PASS,305 exact SHA256 checks after execution

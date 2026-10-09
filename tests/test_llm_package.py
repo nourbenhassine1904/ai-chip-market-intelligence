@@ -639,7 +639,7 @@ def test_phase1_to_7_tracked_files_unchanged_from_phase7():
         git_output("ls-tree", "-r", "--name-only", base).decode().splitlines()
     )
     changed = set(
-        git_output("diff", "--no-renames", "--name-only", base, "--")
+        git_output("diff", "--no-renames", "--name-only", base, "v0.11.0-phase8", "--")
         .decode()
         .splitlines()
     )
@@ -654,7 +654,7 @@ def test_phase1_to_7_tracked_files_unchanged_from_phase7():
 
 def test_phase8b_changes_only_authorized_files():
     changed = set(
-        git_output("diff", "--no-renames", "--name-only", RESPONSE_COMMIT, "--")
+        git_output("diff", "--no-renames", "--name-only", RESPONSE_COMMIT, "v0.11.0-phase8", "--")
         .decode()
         .splitlines()
     )
