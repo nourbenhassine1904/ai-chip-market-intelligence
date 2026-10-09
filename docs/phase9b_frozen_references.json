@@ -1,0 +1,15 @@
+{
+  "base_tag": "v0.12.0-phase9a",
+  "artifacts": [
+    {
+      "path": "docs/phase9a_frozen_artifacts_manifest.json",
+      "sha256": "927f55b969fb7f9b06a6568a44c444728efbd1df5e2a9fef42668ef50812fc22",
+      "git_blob_sha256": "927f55b969fb7f9b06a6568a44c444728efbd1df5e2a9fef42668ef50812fc22"
+    },
+    {
+      "path": "notebooks/AI_Chip_Market_Intelligence.ipynb",
+      "sha256": "de72c4dd6eee2d6614d58149e5608b7f8ef1b5cba928b1db11521f8b098938c5",
+      "git_blob_sha256": "de72c4dd6eee2d6614d58149e5608b7f8ef1b5cba928b1db11521f8b098938c5"
+    }
+  ]
+}
