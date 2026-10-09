@@ -15,6 +15,8 @@ docs/phase5_protocol.csv text eol=lf
 
 # Preserve Phase 7 frozen-prediction and derivative SHA-256 across checkouts.
 outputs/tables/phase7_*.csv text eol=lf
+outputs/tables/phase9a_*.csv text eol=lf
+*.ipynb text eol=lf
 
 *.bat text eol=crlf
 *.ps1 text eol=crlf
