@@ -144,9 +144,9 @@ ADF teste une racine unitaire ; KPSS teste la stationnarité autour des termes d
 
 | Série | Actifs | ADF | KPSS | Lecture conjointe |
 | --- | --- | --- | --- | --- |
-| Adj_Close | NVDA AMD SOXX | Non rejet | Rejet | Non-stationnarité soutenue |
-| Log_Price | NVDA AMD SOXX | Non rejet | Rejet | Non-stationnarité soutenue |
-| Log_Return | NVDA AMD SOXX | Rejet | Non rejet | Stationnarité soutenue |
+| Adj_Close | NVDA, AMD, SOXX | Non rejet | Rejet | Non-stationnarité soutenue |
+| Log_Price | NVDA, AMD, SOXX | Non rejet | Rejet | Non-stationnarité soutenue |
+| Log_Return | NVDA, AMD, SOXX | Rejet | Non rejet | Stationnarité soutenue |
 
 <!-- endtable: stationarity -->
 
@@ -298,7 +298,7 @@ Après standardisation z=ε/σ, les tests Ljung-Box sur z et z² aux retards 10 
 
 Figure 6 — Sigmas ajustées Normal et Student-t. Source : `outputs/figures/phase5/phase5_conditional_volatility.png`. Périmètre : TRAIN, 2018-01-02–2025-11-14 ; première valeur structurellement indéfinie. Unité : pourcentage quotidien, non annualisé. Paramètres estimés sur TRAIN complet ; trajectoires rétrospectives, non disponibles à chaque origine passée sans réestimation.
 
-La figure 6 montre des épisodes de variance élevée qui se dissipent progressivement. Les deux langages donnent des trajectoires proches, avec des différences d’initialisation. Les pics décrivent des concentrations de risque ; aucune annonce économique particulière ne leur est attribuée. Ces sigmas rétrospectives ne sont pas ajoutées aux features neuronales, car elles utiliseraient des paramètres estimés au-delà d’une ancienne origine.
+Le pic de mars 2020, visible en figure 6, concorde descriptivement avec le contexte coronavirus et les conditions financières perturbées évoqués par le FOMC le 15 mars 2020 [R17]. Il ne démontre ni causalité ni effet d’annonce sur NVDA. Les trajectoires R/Python sont proches ; ces sigmas rétrospectifs ne sont pas des features disponibles à une ancienne origine.
 
 Depuis le 2025-11-14, le modèle Normal prévoit à h=10 une variance de 10,055229 points de pourcentage² en R et 10,038995 en Python. Les sigmas quotidiennes correspondantes sont 3,170998 % et 3,168437 %, soit environ 3,17 %. Il s’agit de l’incertitude de l’innovation au dixième horizon. Ce nombre n’est ni un rendement signé, ni un profit attendu, ni le risque cumulé sur dix séances. La variance des innovations se distingue également de la variance d’erreur du rendement après propagation par le filtre ARMA [R10].
 
@@ -460,7 +460,7 @@ Les 35 affirmations sont classées supported ; aucune hallucination numérique n
 
 La réponse souligne utilement qu’un ARCH-LM non rejeté ne prouve pas la disparition universelle des effets ARCH. Les baselines sont plus détaillées sur les folds, scalers, couvertures de convergence et coûts. Les risques généraux de p-values inventées, de fausse causalité, de surinterprétation et de confiance excessive motivent le contrôle des sources ; ils ne sont pas transformés artificiellement en anomalies détectées dans cette réponse.
 
-Le prompt et la réponse intégrale sont référencés en annexe D, sans correction de l’original. L’interprétation financière demeure éducative : l’étude ne teste pas une stratégie de trading et ne fournit pas de mesure de profit après frais.
+Le prompt et la réponse intégrale sont référencés en annexe D, sans correction de l’original ; la section B vulgarisée est reproduite fidèlement en annexe E comme texte du LLM. L’interprétation financière demeure éducative : l’étude ne teste pas une stratégie de trading et ne fournit pas de mesure de profit après frais.
 
 <!-- pagebreak -->
 
@@ -556,6 +556,8 @@ Les références méthodologiques et documentations ci-dessous ont été consult
 
 [R16] TensorFlow. *enable_op_determinism*, conditions et limites de déterminisme. [API](https://www.tensorflow.org/api_docs/python/tf/config/experimental/enable_op_determinism).
 
+[R17] Board of Governors of the Federal Reserve System. *Federal Reserve issues FOMC statement*, 15 mars 2020, contexte coronavirus et conditions financières. [Communiqué primaire](https://www.federalreserve.gov/newsevents/pressreleases/monetary20200315a.htm).
+
 **Références internes.** `docs/protocol.md`, `docs/data_dictionary.md`, `docs/decisions.md` ; documents Phases 1, 1.5, 2, 3A, 3B, 4, 5, 6, 7 et 8 ; protocoles gelés `docs/phase3b_validation_protocol.csv`, `docs/phase4_protocol.csv`, `docs/phase5_protocol.csv`, `docs/phase6_protocol.json`, `docs/phase7_final_evaluation_protocol.md` et JSON associé. Les références de figures et tableaux indiquent les fichiers exacts dans le dépôt.
 
 La table `docs/phase9b_results_traceability.csv` relie les affirmations quantitatives et décisions aux sources. L’audit `docs/phase9b_report_audit.md` consigne la production documentaire, la pagination rendue et les contrôles. Ces deux fichiers complètent le rapport sans constituer de nouveaux résultats statistiques.
@@ -618,4 +620,24 @@ Versions classiques historiques : Python 3.12.3, statsmodels 0.15.0, pmdarima 2.
 
 **Limite §8.3.** `notebooks/AI_Chip_Market_Intelligence.ipynb` est le notebook FAST exécuté. Un notebook FULL orchestré reste à implémenter et tester sur une machine vierge. Le runner Phase 7 refuse les prédictions préexistantes ; leur archivage ne doit concerner que la copie isolée. Les protocoles, l’historique et le gate de provenance doivent rester authentiques. Une divergence de snapshot ou de poids doit être rapportée, sans ajustement des locks ni réutilisation de l’ancien audit comme preuve d’un nouveau run. La réponse LLM officielle est un document à préserver, sans promettre sa régénération identique.
 
-**Périmètre documentaire.** Le PDF intégral du cahier des charges n’est pas disponible pour l’audit. Cette limite réduit la certification documentaire des clauses ; elle ne constitue pas un livrable scientifique obligatoire manquant. Les exigences transmises, dont la pagination et §8.3, restent explicitement prises en compte.
+**Périmètre documentaire.** Le PDF officiel du cahier des charges n’était pas intégré au dépôt lors de l’audit automatisé. Cette limite d’accès ne constitue pas un livrable scientifique obligatoire manquant. Aucune vérification indépendante exhaustive du PDF officiel n’est revendiquée. Les exigences transmises, dont l’annexe de vulgarisation LLM (§5), la pagination et §8.3, restent explicitement prises en compte.
+
+<!-- pagebreak -->
+
+## Annexe E Explication vulgarisée originale du LLM
+
+**Texte du LLM reproduit fidèlement.** La section B ci-dessous est extraite de `llm/responses/phase8_official_llm_response.md`, sans correction de son texte, de ses valeurs ni de ses références. Elle est incluse selon l’exigence de la section 5 du cahier des charges transmise par l’équipe. L’audit critique demeure au chapitre 9. La source officielle reste inchangée, SHA-256 : `eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4` ; l’empreinte de l’extrait est consignée dans `docs/phase9b_results_traceability.csv`.
+
+<!-- llm-section-b:start -->
+B. VULGARISATION
+La stationnarité revient à demander si une série conserve à peu près les mêmes propriétés statistiques au cours du temps. Un prix boursier peut monter pendant plusieurs années et changer fortement de niveau ; il est alors difficile de le traiter comme une série qui oscille autour d’un comportement stable. Dans ce projet, les tests ADF et KPSS conduisent ensemble à traiter les prix et log-prix comme non stationnaires, tandis que les log-rendements sont compatibles avec la stationnarité. ADF et KPSS ne démontrent toutefois pas une vérité absolue : chacun teste une hypothèse nulle différente, et « ne pas rejeter » n’est pas « prouver ».
+Le benchmark Naive ou random walk est extrêmement simple : pour prévoir le prix futur, on conserve le dernier prix observé. Ce modèle ne cherche presque aucune structure supplémentaire. Sa simplicité constitue justement un test exigeant : si un modèle complexe ne le bat pas de manière robuste, sa complexité n’a pas apporté de valeur prédictive démontrée.
+ARIMA cherche à exploiter la dépendance temporelle d’une série après les transformations nécessaires. Dans ce projet, il était raisonnable d’utiliser une différenciation d’ordre 1 du log-prix. Pourtant, lorsque plusieurs ARIMA ont été comparés en validation interne, aucun challenger n’a satisfait la règle complète permettant de remplacer Naive. Cela illustre une distinction essentielle : bien expliquer le passé et bien prévoir le futur ne sont pas la même chose.
+VAR élargit l’analyse à plusieurs séries. Au lieu de regarder seulement le passé de NVDA, on regarde aussi les historiques d’AMD et SOXX. Les tests de Granger indiquent ici que le passé de SOXX ajoute de l’information prédictive pour NVDA et AMD. Le mot « causalité » dans « causalité de Granger » est trompeur pour un non-spécialiste : il s’agit d’antériorité prédictive conditionnelle, pas d’une preuve économique selon laquelle une variation de SOXX produirait mécaniquement une variation de NVDA.
+La cointégration cherche à savoir si plusieurs séries non stationnaires partagent malgré tout une relation de long terme suffisamment stable. Ici, Johansen retient un rang nul dans les spécifications testées. La conclusion correcte est donc : aucune relation de cointégration n’est statistiquement soutenue dans ces spécifications. Il serait excessif de dire qu’aucune relation économique de long terme ne peut exister.
+GARCH répond encore à une autre question. ARIMA et VAR s’intéressent surtout à la dynamique de moyenne ; GARCH s’intéresse à la variance conditionnelle, donc à l’intensité des fluctuations. Les marchés alternent souvent périodes calmes et périodes agitées : c’est le « volatility clustering ». Ici, les ARCH-LM avant GARCH détectent cette structure, puis les diagnostics après GARCH n’en détectent plus aux horizons testés. La volatilité peut donc être modélisée séparément de la direction du prix.
+La prévision GARCH de sigma à l’horizon 10 vaut environ 3.17 % par jour pour le modèle Normal verrouillé à partir du 14/11/2025. Cela ne veut pas dire que NVDA doit monter ou baisser de 3.17 %. Sigma mesure l’ampleur conditionnelle des fluctuations, pas leur signe. Source : outputs/tables/phase5_volatility_forecast_train_end.csv.
+Les réseaux LSTM et GRU peuvent apprendre des relations non linéaires à partir de fenêtres historiques. Pourtant, ils perdent ici contre Naive. Plusieurs mécanismes sont plausibles — bruit d’estimation, quantité de données limitée, extrapolation d’un niveau de log-prix non stationnaire, changement de régime — mais le projet ne démontre pas lequel explique effectivement l’écart. Ce sont donc des limites plausibles, pas des causes établies.
+RMSE et MAE mesurent toutes deux l’erreur de prévision en USD ajustés. RMSE pénalise davantage les grosses erreurs parce qu’elle élève les erreurs au carré avant agrégation. MAE mesure l’écart absolu moyen et est moins dominée par les grandes erreurs. Sur le holdout final à h=5, Naive a RMSE 9.68557 et MAE 7.68782 ; à h=10, RMSE 11.4858 et MAE 9.07453. Source : outputs/tables/phase7_final_metrics.csv.
+Il faut enfin distinguer validation interne et holdout final. Les Phases 3B et 6 servent à choisir ou verrouiller les spécifications à partir de TRAIN. La Phase 7 est l’évaluation finale sur une période mise à part pour la comparaison hors échantillon. Elle utilise 211 origines communes et exactement les mêmes dates cibles pour tous les modèles. Les résultats de cette phase ne doivent plus servir à retuner les modèles.
+<!-- llm-section-b:end -->

@@ -12,7 +12,7 @@ import struct
 import xml.etree.ElementTree as ET
 from zipfile import ZIP_DEFLATED, ZipFile
 
-from report_sources import ROOT, markdown_table, tables, trace_csv
+from report_sources import ROOT, llm_section_b, markdown_table, tables, trace_csv
 
 NS = {
     "w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main",
@@ -162,7 +162,7 @@ class Document:
         if rows[0][0] == "Langue / loi":
             widths = [2700, 1200, 1200, 1200, 1300, 1450]
         if rows[0][0] == "Série":
-            widths = [1400, 1600, 1450, 1450, 3150]
+            widths = [1300, 2050, 1450, 1450, 2800]
         t = child(self.body, "w:tbl")
         props = child(t, "w:tblPr")
         child(props, "w:tblW", {"w:w": sum(widths), "w:type": "dxa"})
@@ -382,6 +382,15 @@ def refresh_tables(source):
     return source
 
 
+def refresh_llm_annex(source):
+    start = "<!-- llm-section-b:start -->"
+    end = "<!-- llm-section-b:end -->"
+    if start not in source or end not in source:
+        raise ValueError("Missing original LLM section B annex markers")
+    return re.sub(re.escape(start) + r".*?" + re.escape(end),
+                  lambda _: start + "\n" + llm_section_b() + end, source, flags=re.DOTALL)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--refresh-tables", action="store_true")
@@ -390,10 +399,13 @@ def main():
     source = path.read_text(encoding="utf-8")
     if args.refresh_tables:
         source = refresh_tables(source)
+        source = refresh_llm_annex(source)
         path.write_text(source, encoding="utf-8", newline="\n")
         (ROOT / "docs/phase9b_results_traceability.csv").write_text(trace_csv(), encoding="utf-8", newline="\n")
     elif refresh_tables(source) != source:
         raise ValueError("Canonical Markdown tables differ from archived CSVs; review before refreshing")
+    elif refresh_llm_annex(source) != source:
+        raise ValueError("Annex E differs from the original LLM section B")
     build(source, ROOT / "report/rapport_final.docx")
     print("DOCX built from Markdown; source SHA256=" + hashlib.sha256(path.read_bytes()).hexdigest())
     print("No models executed. Real page count requires the Word rendering step.")

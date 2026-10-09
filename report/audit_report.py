@@ -58,6 +58,7 @@ def main():
         "total_pages": len(pages), "word_saved_page_count": word_pages,
         "front_matter_pages": body_start - 1, "body_start_page": body_start,
         "annex_start_page": annex_start, "body_pages_excluding_annexes": annex_start - body_start,
+        "pages_excluding_annexes": annex_start - 1,
         "annex_pages": len(pages) - annex_start + 1, "sections": found,
         "markdown_sha256": digest(ROOT / "report/rapport_final.md"),
         "docx_sha256": digest(docx), "pdf_sha256": digest(pdf),

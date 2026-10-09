@@ -53,6 +53,7 @@ def test_deliverables_and_ten_chapters():
     assert "2026/2027" in text and "TEK-UP" in text
     assert "[noms et identifiants à compléter]" in text
     assert "[nom à compléter]" in text
+    assert "Date de remise : [à compléter]" in text
 
 
 @pytest.mark.parametrize("table_name", ["data", "descriptive", "stationarity", "granger", "garch",
@@ -132,7 +133,32 @@ def test_exact_internal_references_exist():
                 assert (ROOT / path).is_file(), path
     text = SOURCE.read_text(encoding="utf8")
     refs = re.findall(r"^\[R(\d+)\] ", text, re.MULTILINE)
-    assert refs == [str(i) for i in range(1, 17)]
+    assert refs == [str(i) for i in range(1, 18)]
+
+
+def test_llm_annex_e_is_exact_original_section_b(sources, document):
+    original = sources.llm_section_b()
+    text = SOURCE.read_text(encoding="utf8")
+    match = re.search(r"<!-- llm-section-b:start -->\n(.*?)<!-- llm-section-b:end -->", text, re.DOTALL)
+    assert match is not None and match[1] == original
+    paragraphs = ["".join(t.text or "" for t in p.findall(".//w:t", NS))
+                  for p in document.findall("w:body/w:p", NS)]
+    first = paragraphs.index("B. VULGARISATION")
+    original_lines = original.splitlines()
+    assert paragraphs[first:first + len(original_lines)] == original_lines
+    assert "Texte du LLM reproduit fidèlement" in text
+    assert "Annexe E Explication vulgarisée originale du LLM" in text
+    assert sources.LLM_RESPONSE_SHA256 == digest(ROOT / sources.LLM_RESPONSE)
+
+
+def test_stationarity_asset_list_and_documentary_scope(sources):
+    rows = sources.tables()["stationarity"][1]
+    assert all(row[1].split(", ") == ["NVDA", "AMD", "SOXX"] for row in rows)
+    text = SOURCE.read_text(encoding="utf8")
+    assert "Le PDF officiel du cahier des charges n’était pas intégré au dépôt lors de l’audit automatisé" in text
+    assert "Aucune vérification indépendante exhaustive du PDF officiel n’est revendiquée" in text
+    assert "ne démontre ni causalité ni effet d’annonce" in text
+    assert "[R17]" in text
 
 
 def test_traceability_is_current_and_sources_exist(sources):
@@ -189,6 +215,8 @@ def test_real_pagination_and_render_fingerprints():
     word_pages = int(app.find("{http://schemas.openxmlformats.org/officeDocument/2006/extended-properties}Pages").text)
     assert actual_pdf_pages == word_pages == audit["total_pages"]
     assert 15 <= audit["body_pages_excluding_annexes"] <= 25
+    assert 15 <= audit["pages_excluding_annexes"] <= 25
+    assert audit["pages_excluding_annexes"] == audit["annex_start_page"] - 1
     assert audit["body_pages_excluding_annexes"] == audit["annex_start_page"] - audit["body_start_page"]
     assert audit["visual_review"] == "PASS"
     for key, path in [("markdown_sha256", SOURCE), ("docx_sha256", DOCX), ("pdf_sha256", PDF)]:

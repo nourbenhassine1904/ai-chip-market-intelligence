@@ -1,12 +1,25 @@
 """Read archived evidence for Phase 9B; never estimate or write scientific outputs."""
 
 import csv
+import hashlib
 import io
 import json
 from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+LLM_RESPONSE = "llm/responses/phase8_official_llm_response.md"
+LLM_RESPONSE_SHA256 = "eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4"
+
+
+def llm_section_b():
+    """Exact original UTF-8 section, including its heading and final newline."""
+    data = (ROOT / LLM_RESPONSE).read_bytes()
+    if hashlib.sha256(data).hexdigest() != LLM_RESPONSE_SHA256:
+        raise ValueError("Official LLM response checksum changed")
+    start = data.index(b"B. VULGARISATION\n")
+    end = data.index(b"C. SIMULATED INVESTMENT INTERPRETATION\n", start)
+    return data[start:end].decode("utf8")
 
 
 def read_csv(name):
@@ -52,7 +65,7 @@ def tables():
     summary = read_csv("phase2_stationarity_summary")
     result["stationarity"] = (
         ["Série", "Actifs", "ADF", "KPSS", "Lecture conjointe"],
-        [[series, "NVDA AMD SOXX", "Non rejet" if series != "Log_Return" else "Rejet",
+        [[series, "NVDA, AMD, SOXX", "Non rejet" if series != "Log_Return" else "Rejet",
           "Rejet" if series != "Log_Return" else "Non rejet",
           "Non-stationnarité soutenue" if series != "Log_Return" else "Stationnarité soutenue"]
          for series in ["Adj_Close", "Log_Price", "Log_Return"]],
@@ -201,6 +214,16 @@ def traceability():
         ("10", "Proposed isolated FULL notebook, original snapshots/packages/CPU/clean Phase 7 gate and preserved LLM", "docs/reproduction_guide.md"),
     ]:
         add(section, claim, [name], "Documentary cross-check of protocol/method/limitation; not a numerical test.")
+    section_b = llm_section_b()
+    add("Annexe E", "Original LLM section B reproduced verbatim; SHA256="
+        + hashlib.sha256(section_b.encode("utf8")).hexdigest(), [LLM_RESPONSE],
+        "Exact source section, including heading and newline; whole response SHA256=" + LLM_RESPONSE_SHA256
+        + "; provided section 5 requirement; no independent review of the official specifications PDF.")
+    add("6", "March 2020 volatility episode placed in documented coronavirus/financial-conditions context",
+        ["outputs/tables/phase5_conditional_volatility.csv", "outputs/figures/phase5/phase5_conditional_volatility.png"],
+        "Descriptive date concordance only, no causal attribution or event-study test. Primary context verified: "
+        "Federal Reserve FOMC statement 2020-03-15, "
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20200315a.htm (consulted 2026-10-09).")
     return records
 
 

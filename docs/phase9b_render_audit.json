@@ -1,12 +1,13 @@
 {
   "renderer": "Microsoft Word COM; PDF ExportAsFixedFormat; pypdf independent page/text inspection",
-  "total_pages": 28,
-  "word_saved_page_count": 28,
+  "total_pages": 30,
+  "word_saved_page_count": 30,
   "front_matter_pages": 3,
   "body_start_page": 4,
   "annex_start_page": 25,
   "body_pages_excluding_annexes": 21,
-  "annex_pages": 4,
+  "pages_excluding_annexes": 24,
+  "annex_pages": 6,
   "sections": [
     {
       "title": "1 Introduction",
@@ -179,12 +180,16 @@
     {
       "title": "Annexe D Artefacts génératifs et reproduction",
       "page": 28
+    },
+    {
+      "title": "Annexe E Explication vulgarisée originale du LLM",
+      "page": 29
     }
   ],
-  "markdown_sha256": "27b02b2c5a2c891d1d7d51a09cea3c43d33afa884188327e3dfdd60dc8aa2645",
-  "docx_sha256": "05f80d8d01e8f7f82f32a5cdb3f52a9fc46f33181d287899e66b101fdecc38f3",
-  "pdf_sha256": "9940d6e843f0040d99d9da28894081aa3bdd6c33c64c092120f02b8b9e64267b",
+  "markdown_sha256": "19e4587d592d3b1cfd9485ac32cb9b2eef9a6d6510605ad315f88da4d70cfc18",
+  "docx_sha256": "cb0047cebab714d5340610fd20789c4f096f88af175661a3a9d0838f8fc3dbc4",
+  "pdf_sha256": "3966bf38baa3bc81f5a1c64fd62a24c352aae3e208db4344c0df9952ecfac470",
   "visual_review": "PASS",
-  "reviewed_pdf_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28],
-  "visual_review_notes": "All 28 final PDF pages inspected at original PNG resolution (120 dpi). No clipped text, overlapping tables, blank spill pages or missing equations/figures. Dense IRF and residual panels retain original graphics; team should check print readability."
+  "reviewed_pdf_pages": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
+  "visual_review_note": "Toutes les pages inspectées en PNG à leur résolution d’origine, 120 dpi. Couverture, sommaire, tableau ADF/KPSS, contexte GARCH, références et annexes D/E lisibles ; aucun texte tronqué, chevauchement ou élément manquant."
 }
