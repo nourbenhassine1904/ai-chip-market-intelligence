@@ -5,8 +5,10 @@ of NVIDIA, AMD and the Semiconductor Market**
 
 Mini-project for **Séries Temporelles pour Data Science & IA**, TEK-UP University,
 academic year 2026/2027. Phases 1–8 are completed and published through
-`v0.11.0-phase8`. Phase 9A prepares the executable notebook and technical delivery;
-its commit is local until subsequently shared. The final report belongs to Phase 9B.
+`v0.11.0-phase8`. Phase 9A provides the executable FAST notebook and technical
+delivery documentation. Select a repository revision containing these files,
+whether on the review branch or after integration into main. The final report
+belongs to Phase 9B.
 
 The study forecasts adjusted **NVDA** prices at **5 and 10 trading sessions**,
 examines dynamic links with **AMD** and **SOXX**, and analyzes conditional
@@ -49,6 +51,11 @@ These are **published historical results**. FAST displays them and performs
 **newly reproduced consistency checks** on frozen outputs. It does not download
 data, train models or produce a new holdout evaluation. FULL regeneration is
 separate and may differ because of revised Yahoo data or numerical execution.
+The official section 8.3 requirement is an end-to-end RMarkdown/Jupyter notebook
+on a clean machine with the listed packages. FAST has been executed successfully;
+that complete FULL workflow has **not been demonstrated**, so notebook compliance
+with section 8.3 is **PARTIAL**. See the
+[minimal FULL implementation plan](docs/reproduction_guide.md#minimal-plan-for-section-83-full-reproduction).
 
 ## Structure
 

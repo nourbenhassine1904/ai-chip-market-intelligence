@@ -5,7 +5,9 @@
 Turn the completed scientific study into a readable, executable and transferable
 university project. No new model, tuning, Yahoo download, new holdout forecast,
 Prophet, official LLM response change or final 15–25-page report is included.
-Naive remains the official recommended price model. Git delivery is local only.
+Naive remains the official recommended price model. Delivery is identified by
+the selected repository revision containing the Phase 9A files, independently
+of branch publication or subsequent integration.
 
 Baseline: `cdfb4e1`, tag `v0.11.0-phase8`, branch `feature/final-deliverables`,
 initially clean. Phases 1–8 scientific outputs are preserved byte-for-byte.
@@ -72,6 +74,14 @@ refuses to overwrite archived predictions and snapshot/cache/protocol provenance
 must be prepared in a separate evaluation run. `--summarize` replays derivatives
 from frozen predictions; it is not reestimation. Do not remove the gate in the
 reference checkout or retune from historical final scores.
+The successful FAST execution does **not** establish compliance with the user's
+supplied section 8.3: a complete RMarkdown/Jupyter reproduction on a clean machine
+with the listed packages. That notebook requirement remains **PARTIAL**.
+The [minimal FULL plan](reproduction_guide.md#minimal-plan-for-section-83-full-reproduction)
+recommends a separate orchestrating notebook and specifies data/package preparation,
+CPU execution, Phase 7 archiving/clean-gate handling, LLM protection and acceptance
+evidence. It is a proposed implementation, not a tested capability; no models
+are rerun by this corrective documentation review.
 
 RStudio uses the existing `ai-chip-market-intelligence.Rproj`, the same root
 and `.cache/R-library`. Required packages: forecast, tseries, FinTS, vars, urca,
@@ -88,8 +98,16 @@ Full pytest **348 passed**, four preexisting Phase 3A statsmodels FutureWarnings
 All five R sources parse successfully; no R model was rerun. All 305 scientific
 hashes and all seven historical local data hashes PASS. Evidence for local data
 is saved in outputs/tables/phase9a_data_checksum_audit.csv.
-Checklist: **30 PASS, 2 PARTIAL, 2 MISSING** (34 reviewed items).
+Corrected checklist: **29 PASS, 3 PARTIAL, 1 MISSING** (33 reviewed checks).
 Selection: **15 existing PNGs and four tables**.
+
+Corrective documentation review from `5599b646`: Ruff PASS, full pytest
+348 passed with the same four historical warnings, and git diff --check PASS.
+The 305 protected scientific files, frozen manifest and main notebook (307
+fingerprints) are unchanged. FAST execution/R parsing/data-hash evidence above
+is retained from the original Phase 9A delivery; the correction does not rerun
+FAST or any historical model and does not demonstrate FULL. Only documentation
+changes are committed in this review.
 
 The initial notebook attempt preceded completed dependency installation and
 reported ModuleNotFoundError; the subsequent kernel executed all code in both
@@ -127,14 +145,21 @@ Team baselines are not independently verified as human-only/blinded work.
 
 ## Checklist and Phase 9B
 
-The official specification PDF is unavailable, so compliance is checked against
-the user-supplied list only. All scientific methods have sourced evidence, including
-justified SARIMA/VECM omissions. Strict FULL portability and LLM generation provenance
-are PARTIAL. The PDF and final 15–25-page report are MISSING; the latter is expressly
-deferred. Notebook execution status must match the actual audit CSV.
+The complete official specification PDF is unavailable, so documentary coverage
+is limited to the task list and the section 8.3 requirement supplied by the user.
+PDF absence is an audit limitation, not a required scientific deliverable and
+not a MISSING checklist item. Scientific methods have sourced evidence, including
+justified SARIMA/VECM omissions. The section 8.3 end-to-end notebook, supporting
+FULL data/runtime readiness, and LLM generation provenance are PARTIAL. The final
+15–25-page report is the sole MISSING item, expressly deferred to Phase 9B.
+FAST execution remains PASS as recorded in the unchanged execution audit; it
+does not imply complete study reproduction.
 
-Phase 9B remaining work: obtain/review the official PDF, write the 15–25-page report
+If the full specification becomes available, review it to extend documentary
+coverage without treating a PDF copy as a scientific deliverable. Remaining
+technical work is to implement and test the proposed FULL notebook separately.
+Phase 9B remaining work: write the 15–25-page report
 using the selected 15 figures/four tables and established findings, finalize captions,
 citations/appendices and educational limitations, conduct team review, and arrange
-distribution of the local deliverables/original snapshots if needed. No Phase 9B
+distribution of the selected delivery revision/original snapshots if needed. No Phase 9B
 writing or new modeling starts here.

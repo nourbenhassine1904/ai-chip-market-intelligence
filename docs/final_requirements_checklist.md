@@ -1,10 +1,18 @@
 # Final requirements checklist
 
 The official specification PDF was not available in the repository or the supplied
-attachment resources. This audit covers the requirements enumerated in the Phase
-9A request; it does **not** certify a PDF that was not read. PASS means evidence
-exists for the stated item, not an assertion of universal model adequacy.
-PARTIAL identifies documented limits; MISSING includes intentional Phase 9B work.
+attachment resources. This is a **documentary audit limitation**, not a missing
+scientific deliverable requested by the professor. The original audit used the
+Phase 9A task list; this correction also incorporates the section 8.3 requirement
+provided by the user: an RMarkdown or Jupyter notebook reproducing the entire
+study end to end on a clean machine with the listed packages. The complete PDF
+has not been independently read, so other clauses cannot be certified from it.
+
+PASS means evidence exists for the stated item, not universal model adequacy.
+PARTIAL identifies incomplete compliance or supporting reproducibility/provenance
+checks; MISSING includes the report intentionally deferred to Phase 9B.
+**Totals: 29 PASS, 3 PARTIAL, 1 MISSING — 33 reviewed checks.** These counts include
+supporting checks and are not a count of independently verified PDF clauses.
 
 | Requirement | Status | Real evidence / file | Remaining action |
 | --- | --- | --- | --- |
@@ -37,10 +45,9 @@ PARTIAL identifies documented limits; MISSING includes intentional Phase 9B work
 | Complete LLM section | PASS | `docs/phase8_llm_analysis.md`: Official A/B/C/D prompt and unchanged response, simulated investment disclaimer. | Retain missing generation metadata. |
 | Critical LLM comparison | PASS | `llm/human_analysis/phase8_human_vs_llm_comparison.md`: Completed comparison plus 35-claim sourced audit. | Independence of human-only baselines not attested. |
 | Classic R and Python code | PASS | `r/04_garch.R`: Four real R model scripts and nine real Python pipeline scripts. | R EDA placeholder is not counted as implemented code. |
-| Executable main notebook | PASS | `notebooks/AI_Chip_Market_Intelligence.ipynb`: nbclient: 52 code cells executed in both reference and data/cache/Git-free contexts; phase9a_notebook_execution_audit.csv all PASS. | None; execution succeeded without fitting. |
-| Strict FULL from a clean clone | PARTIAL | `docs/reproduction_guide.md`: Isolated genuine command recipe; originals not distributed; Phase 7 immutable gate. | Archive snapshots/stack/caches and prepare a separate evaluation run if required. |
+| Section 8.3 — end-to-end RMarkdown/Jupyter notebook | PARTIAL | `notebooks/AI_Chip_Market_Intelligence.ipynb`: 52 FAST code cells executed successfully in the reference and data/cache/Git-free contexts; `outputs/tables/phase9a_notebook_execution_audit.csv` documents review of frozen outputs, not end-to-end model execution. | Implement a separate FULL notebook or a genuinely orchestrated isolated mode, provide verified input snapshots and listed package versions, prepare the Phase 7 run area, and execute the entire chain on a clean machine with saved logs/provenance. See the minimal plan in `docs/reproduction_guide.md`. |
+| Strict FULL data/runtime readiness (supporting check) | PARTIAL | `docs/reproduction_guide.md`: Authentic isolated command recipe exists; original snapshots/caches are not distributed and the final checkout retains the Phase 7 immutable-prediction gate. | Package or restore original inputs, reject divergent downloads for strict reproduction, record Python/R versions, validate CPU execution and archive new run outputs separately; demonstrate all stages rather than only `--summarize`. |
 | LLM generation provenance | PARTIAL | `docs/phase8_llm_analysis.md`: Response preserved; exact model/version/time unknown. | Record only if independently supplied. |
-| Official specification PDF | MISSING | `docs/phase9a_repository_audit.md`: No accessible PDF found; checklist follows supplied task list. | Obtain PDF for line-by-line compliance review. |
 | Final 15–25-page report | MISSING | `report/README.md`: Only planning placeholder; intentionally deferred. | Phase 9B, no new modeling. |
 
 Scientific conclusions, protocols and official LLM response stay frozen. Conditional

@@ -7,7 +7,7 @@ outputs must stay separate and must not replace the historical final evaluation.
 
 ## Mode A — REVIEW / FAST
 
-From a checkout containing the Phase 9A local commit, activate `.venv` as described
+From a checkout containing the Phase 9A files, activate `.venv` as described
 in [team_setup_windows.md](team_setup_windows.md). No Yahoo access, market CSVs,
 R, neural weights or GPU are needed. Execute:
 
@@ -28,6 +28,8 @@ writes inside the kernel. Only new audit evidence and ignored executed notebooks
 are written by the outer executor. It compares all 305 scientific hashes before
 and after. `--clean-copy` executes again without data/, .git or ignored model caches;
 this is a clean-checkout simulation, not a remote GitHub download.
+This evidence covers review and arithmetic checks, not the full end-to-end
+notebook required by section 8.3.
 
 Open the notebook in a compatible editor with `.venv` selected, or use the
 nbclient command above. No separate Jupyter server package is required for nbclient.
@@ -57,10 +59,11 @@ python -m pip check
 $env:LC_ALL = 'English_United States.utf8'
 ```
 
-`--no-local --no-hardlinks` makes independent Git storage. This clone includes
-the local Phase 9A commit, unlike a remote clone before publication. Ensure the
-path is short enough for Windows installations. Keep `$Reference` pointing to
-the original checkout for every historical comparison.
+`--no-local --no-hardlinks` makes independent Git storage. Selecting `$Revision`
+preserves the source revision regardless of its branch name or publication state.
+Confirm that it contains the Phase 9A files. Ensure the path is short enough for
+Windows installations. Keep `$Reference` pointing to the original checkout for
+every historical comparison.
 
 ## Reconstruct data, with a divergence gate
 
@@ -170,6 +173,94 @@ The historical evaluation remains definitive for the study. Its metrics/DM come
 from `phase7_final_predictions.csv`, identified by `phase7_prediction_freeze.csv`.
 The same 211 origins/horizon and observed prefixes are frozen; GARCH is separate
 volatility analysis. The consumed final holdout must never become a tuning set.
+
+## Minimal plan for section 8.3 FULL reproduction
+
+**Proposal only: not implemented, executed or demonstrated by this review.**
+Section 8.3, as supplied by the user, requires an RMarkdown/Jupyter notebook
+reproducing the entire study on a clean machine with the listed packages.
+The current FAST notebook and manual commands do not demonstrate this capability;
+compliance remains PARTIAL until the full notebook actually executes successfully.
+
+### Orchestrator and isolation
+
+Recommend a separate proposed `notebooks/AI_Chip_Market_Intelligence_FULL.ipynb`.
+It would reuse the existing model scripts, invoke them in order, stop on nonzero
+exit, capture stdout/stderr and elapsed time, and display **new run** outputs.
+This file does not currently exist. Adding a truly orchestrated FULL mode to the
+current notebook is possible, but requires the same workspace/gate handling plus
+an explicit mode choice and separate tests: the FAST executor intentionally
+blocks model imports, subprocesses and market-data reads. A separate notebook
+is the smaller extension that leaves the demonstrated FAST path unchanged.
+
+Use an independent clone/run workspace at a recorded source commit. Retain an
+immutable reference copy of all frozen Phase 1–8 outputs, protocols, final
+forecasts, official LLM response and Naive recommendation, and compare reference
+hashes before/after. Archive the workspace's initial historical output copies
+before regeneration. Scripts lack an output-directory option, so their repository
+root and working directory must resolve inside the new workspace. Regenerated
+tables/figures/logs must never replace reference files. Do not run on main or use
+the reference checkout as the output destination.
+
+### Prerequisites and ordered work
+
+| Step | Minimal implementation | Evidence / stop condition |
+| --- | --- | --- |
+| 1. Inputs | Supply the original three raw snapshots as an archive with historical SHA256 references. Rebuild canonical/features/TRAIN/TEST with `python/01_data_preparation.py` and `python/01_data_eda.py`. Alternatively run `python/00_data_acquisition.py` with the existing fixed dates in isolation. | Compare all seven data hashes to the untouched historical manifests. Stop strict reproduction on a revised Yahoo download or changed serialization; do not amend frozen input hashes. A new acquisition manifest alone proves only the new download's self-consistency. |
+| 2. Packages | Prepare Python 3.12.3, R 4.5.2, base/development requirements, nbformat/nbclient/ipykernel, and forecast, tseries, FinTS, vars, urca, rugarch. Record versions and prepare reproduction constraints from the recorded stack because current requirements do not pin it all. | Manual installation in the new environment, import/package checks, pip check, selected source commit and environment report. No installation is performed by this corrective review. |
+| 3. TRAIN pipeline | Orchestrate restoration/acquisition, preparation, EDA, ARIMA identification/sensitivity and rolling validation, VAR/Granger/Johansen, GARCH, and LSTM/GRU in the authentic command order above, including R before each shared Python summary. | Genuine command logs and regenerated outputs from each stage. Keep the bounded original grid, seed and rules; respect closed SARIMA/VECM/higher-GARCH gates. Stop on failed checks or inconsistent locks rather than retuning. |
+| 4. CPU learning | Run TensorFlow 2.21.0 on native Windows CPU with original features, windows, scalers, folds, 18 fits and two refits. | Actual loss histories, device/seed/epochs and measured runtime. No GPU required; no blanket bit-for-bit promise across machines or library versions. |
+| 5. Final evaluation | Prepare a new Phase 7 run area as described below and invoke the authentic no-option `python/06_evaluation.py`. | New forecasts, common origins, frozen parameters, four metrics, DM and fresh provenance. A historical `--summarize` replay is insufficient. Stop on historical data/lock mismatch; never change thresholds based on scores. |
+| 6. LLM and delivery | Load the unchanged official prompt/response, facts, team comparison and 35-claim audit; rerun source/provenance checks against the reference and render run outputs in the FULL notebook. | Preserve official LLM bytes. Reproducing the documentary analysis is distinct from generating another response; the unknown original model/version/time prevents a promise of identical generation. Save executed notebook, logs and comparisons. |
+
+New-run findings cannot change the official final Naive recommendation. Report
+differences as reproduction findings; never promote a holdout-selected challenger
+or replace published scores.
+
+### Explicit missing Phase 7 preparation
+
+`python/06_evaluation.py` refuses existing frozen predictions. Its
+`verify_protocol_commit` requires exact protocol bytes and committed protocol
+history; without historical runtime evidence, it also requires a clean working
+tree to create a **new** pre-access gate. Calling it in the final checkout cannot
+therefore demonstrate FULL.
+
+The future orchestrator must archive copied Phase 7 outputs outside active
+run-output paths and prepare an initially empty Phase 7 output area **only in
+the independent run workspace**, while preserving the reference artifacts.
+Retain original Git history and the unchanged predeclared protocol; create a
+documented local checkpoint of the prepared TRAIN-stage workspace and verify a
+clean working tree before evaluation. Do not copy historical `.cache/phase7/`
+gates or `phase7_runtime_audit.json` into the active evaluation area to pass off
+the old pre-access evidence as a new gate. No checkpoint, archive movement or
+evaluation action is performed in this review.
+
+The existing loader checks original Phase 6 weight/scaler/provenance hashes.
+Restored original caches must match those references. Newly trained cache files
+may differ and trigger reconstruction of the locked networks; record that mode
+and additional CPU time. Do not call reconstructed weights identical to the
+original frozen realization. Keep protocol/cache checks enabled and stop on
+inconsistent locks/provenance instead of modifying historical models or protocols.
+Distinguish genuine reestimation from historical cache replay in the evidence.
+
+### Duration and acceptance criteria
+
+Phase 6 recorded about **20.14 minutes** of CPU fitting on the original stack,
+excluding preprocessing, scoring, figures and other phases (source:
+[Phase 6 computational cost](phase6_lstm_gru.md#computational-cost)). ARIMA rolling
+validation, Python/R installation, acquisition and possible Phase 7 neural
+reconstruction add time. Reserve a longer uninterrupted CPU session and measure
+each stage; no universal total runtime has been established.
+
+Mark section 8.3 PASS only after the FULL notebook runs top to bottom on a clean
+machine/environment without the author's preinstalled `.venv`, data, R library
+or model caches, using the documented snapshot/package prerequisites. Retain
+revision, environment, input hashes, commands/exit codes, training logs, executed
+notebook, generated prediction panel/metrics and output comparisons. Declare
+numerical comparison tolerances before execution and record differences. Verify
+all reference scientific hashes and the official response remain unchanged.
+A guarded stop is an honest failed/partial reproduction, not PASS. No FULL
+acceptance run has been performed in this corrective review.
 
 ## Phase inputs, outputs and cost
 

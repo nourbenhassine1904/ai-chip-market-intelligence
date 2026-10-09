@@ -1,8 +1,10 @@
 # Phase 9A — Repository audit
 
 Audit baseline: `cdfb4e1649bff7cd583936f06dcb74c79f1f2a30`, `v0.11.0-phase8`, branch
-`feature/final-deliverables`, initial working tree clean. HEAD is the Phase 8
-merge on main; Phase 9A starts from this merge. No push/PR/merge/tag is performed.
+`feature/final-deliverables`, initial working tree clean. This baseline is the
+Phase 8 merge on main from which Phase 9A started; it does not describe the
+current HEAD or publication state. Select a delivery revision containing the
+Phase 9A files as explained in [team_setup_windows.md](team_setup_windows.md).
 
 ## Scope and organization
 
@@ -10,8 +12,10 @@ Read README, ignore/attributes, base/dev requirements, protocol, decisions,
 data dictionary, all Phase 1–8 technical documents, and inventory of every
 Python/R/test source. No AGENTS.md was found in the repository. No official
 requirements PDF was found among repository files or the supplied attachment
-resources; the checklist uses the user's enumerated requirements, without
-claiming access to that PDF.
+resources; the checklist uses the user's enumerated requirements and the section
+8.3 end-to-end notebook requirement subsequently supplied by the user, without
+claiming access to the full PDF. The absent PDF limits documentary verification;
+it is not itself a required scientific deliverable.
 
 `data/` holds ignored local raw/processed CSVs; only placeholders are committed.
 `python/` contains nine historical executable scripts. `r/` contains four real
@@ -139,7 +143,13 @@ packages from PyPI. No server notebook dependency is required.
   the current notebook and Phase 8 document explain the completed chronology.
 - LLM model/version/generation metadata and independent human-review provenance
   remain unavailable. Do not infer them or call baselines blinded/human-only.
-- Official PDF is unavailable; the 15–25-page final report is deferred to Phase 9B.
+- The successful FAST notebook run does not demonstrate the section 8.3
+  end-to-end requirement. Notebook compliance and FULL data/runtime readiness
+  remain PARTIAL; the minimal untested implementation plan is in the reproduction guide.
+- The official PDF is unavailable, limiting documentary review rather than
+  constituting a missing scientific deliverable. The 15–25-page final report
+  is deferred to Phase 9B. The corrected checklist has 29 PASS, 3 PARTIAL and
+  1 MISSING across 33 checks.
 
 Validation evidence and remaining work are in
 [phase9a_reproducibility.md](phase9a_reproducibility.md). No FULL model run or new

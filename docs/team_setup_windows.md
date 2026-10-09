@@ -15,12 +15,22 @@ git status --short
 git tag --list v0.11.0-phase8
 ```
 
-Phase 9A is a **local** commit on `feature/final-deliverables`, not pushed by this
-task. A remote clone currently contains Phase 8, not necessarily this notebook.
-Use a team-supplied repository copy/bundle containing the local Phase 9A commit,
-or its revision once subsequently shared by the owner. `v0.11.0-phase8` is the
-scientific baseline and does not contain Phase 9A additions. Do not claim the
-unpublished notebook is already available on GitHub.
+Choose a revision that contains the Phase 9A notebook and guides. Before
+integration, this can be `feature/final-deliverables`; after integration, use
+main or a specific delivery commit containing the same files. Availability
+depends on the selected revision. Check available branches and files:
+
+```powershell
+git branch -a
+git log -1 --oneline
+Test-Path -LiteralPath 'notebooks/AI_Chip_Market_Intelligence.ipynb'
+Test-Path -LiteralPath 'docs/reproduction_guide.md'
+```
+
+If a file is absent, check out a delivery revision containing it before continuing.
+`v0.11.0-phase8` identifies the scientific baseline; it does not contain the
+Phase 9A additions. The versioned market outputs are available separately from
+the ignored market snapshots and neural caches.
 
 ## B–E. Python, R and dependencies
 
@@ -169,6 +179,10 @@ The executed notebooks go to ignored `.cache/phase9a/`, not historical outputs.
 Read the phase links in README and `llm/human_analysis/phase8_human_vs_llm_comparison.md`.
 Tables and figures are **published historical results**. FAST arithmetic checks
 are **newly reproduced verifications**, not model reestimation.
+Successful FAST execution does not satisfy the full section 8.3 requirement by
+itself. The [minimal FULL plan](reproduction_guide.md#minimal-plan-for-section-83-full-reproduction)
+documents the remaining implementation, data/package preparation and clean-machine
+test; no FULL training run has been demonstrated by Phase 9A.
 
 ## L. Troubleshooting
 
