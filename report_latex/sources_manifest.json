@@ -1,0 +1,1170 @@
+{
+  "scope": "Documentary copies/displays from frozen repository; no model or statistical test rerun",
+  "canonical_report": "report/rapport_final.md",
+  "historical_figures": 15,
+  "new_process_figure": "figures/pipeline.tex (TikZ, documentary synthesis)",
+  "tables_count": 14,
+  "figures": [
+    {
+      "caption_original": "Figure 1 — Trajectoires comparables en base 100",
+      "source": "outputs/figures/phase2/normalized_prices_base100.png",
+      "copy": "figures/normalized_prices_base100.png",
+      "sha256": "30a26bc8b8031789841574b11f8e5339923ead2afa4a190c422875f15c0c8963"
+    },
+    {
+      "caption_original": "Figure 2 — Log-rendements des trois actifs",
+      "source": "outputs/figures/phase2/log_returns.png",
+      "copy": "figures/log_returns.png",
+      "sha256": "a22f596c0778baf8f5cc8b2669556b9dcb324ffa36eecdaf860d9c2e3fc91567"
+    },
+    {
+      "caption_original": "Figure 3 — ACF et PACF des rendements NVDA",
+      "source": "outputs/figures/phase2/nvda_log_return_acf_pacf_train.png",
+      "copy": "figures/nvda_log_return_acf_pacf_train.png",
+      "sha256": "96f6db44d4e342b5bdfa1364b4284f4221cc80969c06e73f8ac93f92d2ae4cd5"
+    },
+    {
+      "caption_original": "Figure 4 — RMSE de validation ARIMA à dix séances",
+      "source": "outputs/figures/phase3b/phase3b_rmse_by_model_h10.png",
+      "copy": "figures/phase3b_rmse_by_model_h10.png",
+      "sha256": "b2f3dd4f29a39b3eda03e0e63f263108c1ac3287e09a660b45f37b59f0d22bd6"
+    },
+    {
+      "caption_original": "Figure 5 — Réponses impulsionnelles du VAR",
+      "source": "outputs/figures/phase4/phase4_var_irf.png",
+      "copy": "figures/phase4_var_irf.png",
+      "sha256": "8361f2d41a600d1c73921ff08dc2cba4b7a326bf724258608c7cecddf97680b8"
+    },
+    {
+      "caption_original": "Figure 6 — Volatilité conditionnelle NVDA",
+      "source": "outputs/figures/phase5/phase5_conditional_volatility.png",
+      "copy": "figures/phase5_conditional_volatility.png",
+      "sha256": "615fd9b9677473c925756b5894c719039493e34966565facc6b771b632083cce"
+    },
+    {
+      "caption_original": "Figure 7 — Apprentissage de LSTM C",
+      "source": "outputs/figures/phase6/phase6_lstm_loss_curve.png",
+      "copy": "figures/phase6_lstm_loss_curve.png",
+      "sha256": "74e97e57fe316447b1d5fd8518ca8d676d0e5c86603a3d14adceaef734ab5d12"
+    },
+    {
+      "caption_original": "Figure 8 — Apprentissage de GRU C",
+      "source": "outputs/figures/phase6/phase6_gru_loss_curve.png",
+      "copy": "figures/phase6_gru_loss_curve.png",
+      "sha256": "9f78ac3bfcff6f79ff83bad3034b6613653ef33662d9284ac241abf0708733ff"
+    },
+    {
+      "caption_original": "Figure 9 — RMSE final à cinq séances",
+      "source": "outputs/figures/phase7/phase7_rmse_comparison_h5.png",
+      "copy": "figures/phase7_rmse_comparison_h5.png",
+      "sha256": "9f5c643bf34d720b1ea883248dc96b1c668d99d86d0cc9510c1f40d7429d9538"
+    },
+    {
+      "caption_original": "Figure 10 — RMSE final à dix séances",
+      "source": "outputs/figures/phase7/phase7_rmse_comparison_h10.png",
+      "copy": "figures/phase7_rmse_comparison_h10.png",
+      "sha256": "02d32c13438a6dfd0fea705e920d202ced9bd174449dfb3e36bb08b07262c52d"
+    },
+    {
+      "caption_original": "Figure A1 — ACF et PACF du prix ajusté",
+      "source": "outputs/figures/phase2/nvda_adj_close_acf_pacf_train.png",
+      "copy": "figures/nvda_adj_close_acf_pacf_train.png",
+      "sha256": "9c14d29728fdca59859a5c93e8fe7dbf1d319a750e7c39a5b8c780186ac0e475"
+    },
+    {
+      "caption_original": "Figure A2 — Diagnostics R du modèle de moyenne",
+      "source": "outputs/figures/phase3/nvda_arima_checkresiduals_r.png",
+      "copy": "figures/nvda_arima_checkresiduals_r.png",
+      "sha256": "401ed193ad1d675def08792c334cb21eb75323b0adb823182da515cbf8809cc2"
+    },
+    {
+      "caption_original": "Figure B1 — FEVD du VAR",
+      "source": "outputs/figures/phase4/phase4_var_fevd.png",
+      "copy": "figures/phase4_var_fevd.png",
+      "sha256": "5ab5af07cab0f40b255e279ddb9a1599bbb4763fdc6c77a911c816440411a952"
+    },
+    {
+      "caption_original": "Figure B2 — ACF des résidus standardisés au carré",
+      "source": "outputs/figures/phase5/phase5_squared_standardized_residual_acf.png",
+      "copy": "figures/phase5_squared_standardized_residual_acf.png",
+      "sha256": "3874f9b164ee63cfce338cebbcc6843cec293ce82ae2b1d4de0265bbe29a4d49"
+    },
+    {
+      "caption_original": "Figure C1 — Prix réels et prévisions à dix séances",
+      "source": "outputs/figures/phase7/phase7_actual_vs_forecasts_h10.png",
+      "copy": "figures/phase7_actual_vs_forecasts_h10.png",
+      "sha256": "4c68e4b238c5bb02b98b3f2bf286b3419c940c4b43e991ef316d8887b87394dc"
+    }
+  ],
+  "tables": [
+    {
+      "name": "data",
+      "sources": [
+        "outputs/tables/phase1_5_processed_manifest.csv",
+        "outputs/tables/phase2_split_metadata.csv"
+      ],
+      "headers": [
+        "Ensemble",
+        "Séances",
+        "Début",
+        "Fin"
+      ],
+      "displayed_rows": [
+        [
+          "Canonique",
+          "2200",
+          "2018-01-02",
+          "2026-10-02"
+        ],
+        [
+          "TRAIN",
+          "1980",
+          "2018-01-02",
+          "2025-11-14"
+        ],
+        [
+          "TEST",
+          "220",
+          "2025-11-17",
+          "2026-10-02"
+        ]
+      ],
+      "caption": "Tableau 1 — Périodes et effectifs. Sources : `outputs/tables/phase1_5_processed_manifest.csv` et `outputs/tables/phase2_split_metadata.csv`. Unité : séances observées ; dates ISO. Le partage est effectué sur les lignes canoniques avant exclusion des NA structurels."
+    },
+    {
+      "name": "descriptive",
+      "sources": [
+        "outputs/tables/phase2_descriptive_stats.csv"
+      ],
+      "headers": [
+        "Actif",
+        "n",
+        "Moyenne %",
+        "Écart-type %",
+        "Kurtosis exc."
+      ],
+      "displayed_rows": [
+        [
+          "NVDA",
+          "1979",
+          "0,185",
+          "3,244",
+          "4,698"
+        ],
+        [
+          "AMD",
+          "1979",
+          "0,157",
+          "3,451",
+          "3,571"
+        ],
+        [
+          "SOXX",
+          "1979",
+          "0,085",
+          "2,219",
+          "5,126"
+        ]
+      ],
+      "caption": "Tableau 2 — Distribution des log-rendements sur TRAIN. Source : `outputs/tables/phase2_descriptive_stats.csv`, filtre `scope=train`, `series=Log_Return`. Moyenne et écart-type en pourcentage quotidien ; kurtosis excédentaire sans unité ; arrondi à trois décimales."
+    },
+    {
+      "name": "stationarity",
+      "sources": [
+        "outputs/tables/phase2_stationarity_summary.csv"
+      ],
+      "headers": [
+        "Série",
+        "Actifs",
+        "ADF",
+        "KPSS",
+        "Lecture conjointe"
+      ],
+      "displayed_rows": [
+        [
+          "Adj_Close",
+          "NVDA, AMD, SOXX",
+          "Non rejet",
+          "Rejet",
+          "Non-stationnarité soutenue"
+        ],
+        [
+          "Log_Price",
+          "NVDA, AMD, SOXX",
+          "Non rejet",
+          "Rejet",
+          "Non-stationnarité soutenue"
+        ],
+        [
+          "Log_Return",
+          "NVDA, AMD, SOXX",
+          "Rejet",
+          "Non rejet",
+          "Stationnarité soutenue"
+        ]
+      ],
+      "caption": "Tableau 3 — Synthèse ADF/KPSS. Source : `outputs/tables/phase2_stationarity_summary.csv`. Périmètre : TRAIN ; trois actifs. Résultats catégoriels sans unité ; aucune nouvelle p-value calculée."
+    },
+    {
+      "name": "granger",
+      "sources": [
+        "outputs/tables/phase4_granger_causality_comparison.csv"
+      ],
+      "headers": [
+        "Prédicteur → cible",
+        "p brute",
+        "p Holm",
+        "À 5 % après Holm"
+      ],
+      "displayed_rows": [
+        [
+          "NVDA → AMD",
+          "0,464045",
+          "1,000000",
+          "Non soutenu"
+        ],
+        [
+          "NVDA → SOXX",
+          "0,464486",
+          "1,000000",
+          "Non soutenu"
+        ],
+        [
+          "AMD → NVDA",
+          "0,231963",
+          "0,927853",
+          "Non soutenu"
+        ],
+        [
+          "AMD → SOXX",
+          "0,737034",
+          "1,000000",
+          "Non soutenu"
+        ],
+        [
+          "SOXX → NVDA",
+          "0,000066",
+          "0,000394",
+          "Soutenu"
+        ],
+        [
+          "SOXX → AMD",
+          "0,009167",
+          "0,045834",
+          "Soutenu"
+        ]
+      ],
+      "caption": "Tableau 4 — Tests de Granger conditionnels. Source : `outputs/tables/phase4_granger_causality_comparison.csv`. Périmètre : VAR(9), TRAIN ; six tests dirigés, Wald à neuf restrictions par équation. P-values sans unité, R affiché, décisions R/Python concordantes ; correction Holm sur les six tests, arrondi à six décimales."
+    },
+    {
+      "name": "garch",
+      "sources": [
+        "outputs/tables/phase5_garch_model_comparison.csv",
+        "outputs/tables/phase5_garch_persistence.csv"
+      ],
+      "headers": [
+        "Langue / loi",
+        "ω",
+        "α",
+        "β",
+        "α+β",
+        "Demi-vie"
+      ],
+      "displayed_rows": [
+        [
+          "R / Normal",
+          "0,4417",
+          "0,1126",
+          "0,8516",
+          "0,9642",
+          "19,00"
+        ],
+        [
+          "R / Student-t",
+          "0,3066",
+          "0,0950",
+          "0,8793",
+          "0,9743",
+          "26,61"
+        ],
+        [
+          "Python / Normal",
+          "0,4371",
+          "0,1116",
+          "0,8529",
+          "0,9645",
+          "19,18"
+        ],
+        [
+          "Python / Student-t",
+          "0,3030",
+          "0,0940",
+          "0,8805",
+          "0,9745",
+          "26,85"
+        ]
+      ],
+      "caption": "Tableau 5 — Paramètres et persistance. Source : `outputs/tables/phase5_garch_model_comparison.csv` et `outputs/tables/phase5_garch_persistence.csv`. Périmètre : 1979 innovations TRAIN ; ω en points de pourcentage², α/β/persistance sans unité, demi-vie en séances. Arrondis à quatre décimales, demi-vie à deux."
+    },
+    {
+      "name": "final_metrics",
+      "sources": [
+        "outputs/tables/phase7_final_metrics.csv"
+      ],
+      "headers": [
+        "Modèle",
+        "h",
+        "MSE USD²",
+        "RMSE USD",
+        "MAE USD",
+        "MAPE %"
+      ],
+      "displayed_rows": [
+        [
+          "Naive",
+          "5",
+          "93,810",
+          "9,686",
+          "7,688",
+          "3,847"
+        ],
+        [
+          "ARIMA(2,1,2)",
+          "5",
+          "93,995",
+          "9,695",
+          "7,703",
+          "3,880"
+        ],
+        [
+          "VAR(9)",
+          "5",
+          "95,344",
+          "9,764",
+          "7,845",
+          "3,947"
+        ],
+        [
+          "LSTM C",
+          "5",
+          "274,924",
+          "16,581",
+          "13,398",
+          "6,584"
+        ],
+        [
+          "GRU C",
+          "5",
+          "187,608",
+          "13,697",
+          "10,766",
+          "5,311"
+        ],
+        [
+          "Naive",
+          "10",
+          "131,923",
+          "11,486",
+          "9,075",
+          "4,490"
+        ],
+        [
+          "ARIMA(2,1,2)",
+          "10",
+          "130,866",
+          "11,440",
+          "9,404",
+          "4,709"
+        ],
+        [
+          "VAR(9)",
+          "10",
+          "132,360",
+          "11,505",
+          "9,253",
+          "4,634"
+        ],
+        [
+          "LSTM C",
+          "10",
+          "181,648",
+          "13,478",
+          "9,911",
+          "4,910"
+        ],
+        [
+          "GRU C",
+          "10",
+          "215,001",
+          "14,663",
+          "11,172",
+          "5,464"
+        ]
+      ],
+      "caption": "Tableau 6 — Comparaison finale unique des cinq modèles à h5 et h10. Source : `outputs/tables/phase7_final_metrics.csv`. Périmètre : holdout final, 211 origines communes par ligne ; h en séances ; MSE en USD ajustés², RMSE/MAE en USD ajustés, MAPE en %. Arrondi à trois décimales, sans nouveau calcul des modèles."
+    },
+    {
+      "name": "dm",
+      "sources": [
+        "outputs/tables/phase7_diebold_mariano.csv"
+      ],
+      "headers": [
+        "A contre Naive",
+        "h",
+        "p brute",
+        "p Holm",
+        "Conclusion"
+      ],
+      "displayed_rows": [
+        [
+          "ARIMA(2,1,2)",
+          "5",
+          "0,96563",
+          "1",
+          "Non rejet"
+        ],
+        [
+          "VAR(9)",
+          "5",
+          "0,768531",
+          "1",
+          "Non rejet"
+        ],
+        [
+          "LSTM C",
+          "5",
+          "1,21421e-05",
+          "4,85686e-05",
+          "Naive"
+        ],
+        [
+          "GRU C",
+          "5",
+          "0,000191962",
+          "0,000575887",
+          "Naive"
+        ],
+        [
+          "ARIMA(2,1,2)",
+          "10",
+          "0,936111",
+          "1",
+          "Non rejet"
+        ],
+        [
+          "VAR(9)",
+          "10",
+          "0,97401",
+          "1",
+          "Non rejet"
+        ],
+        [
+          "LSTM C",
+          "10",
+          "0,0747353",
+          "0,224206",
+          "Non rejet"
+        ],
+        [
+          "GRU C",
+          "10",
+          "0,00124138",
+          "0,00496551",
+          "Naive"
+        ]
+      ],
+      "caption": "Tableau 7 — DM bilatéral des challengers contre Naive. Source : `outputs/tables/phase7_diebold_mariano.csv`, filtre `model_b=Naive`. Périmètre : 211 pertes appariées par horizon ; p-values sans unité, six chiffres significatifs. « Naive » signifie rejet à 5 % après Holm et perte moyenne plus faible pour Naive ; « non rejet » ne signifie pas équivalence."
+    },
+    {
+      "name": "llm",
+      "sources": [
+        "llm/human_analysis/phase8_hallucination_audit.csv"
+      ],
+      "headers": [
+        "Section",
+        "Affirmations",
+        "Supported",
+        "Autres catégories détectées"
+      ],
+      "displayed_rows": [
+        [
+          "A",
+          "11",
+          "11",
+          "0"
+        ],
+        [
+          "B",
+          "8",
+          "8",
+          "0"
+        ],
+        [
+          "C",
+          "6",
+          "6",
+          "0"
+        ],
+        [
+          "D",
+          "10",
+          "10",
+          "0"
+        ],
+        [
+          "Total",
+          "35",
+          "35",
+          "0"
+        ]
+      ],
+      "caption": "Tableau 8 — Audit des affirmations de la réponse officielle. Source : `llm/human_analysis/phase8_hallucination_audit.csv`. Périmètre : une réponse A/B/C/D et 35 affirmations matérielles regroupées ; unité : lignes d’audit, non observations indépendantes. Comptages issus du CSV ; catégories sans unité."
+    },
+    {
+      "name": "costs",
+      "sources": [
+        "outputs/tables/phase7_model_tradeoffs.csv"
+      ],
+      "headers": [
+        "Modèle",
+        "Fit s",
+        "Prévision s",
+        "Paramètres",
+        "Interprétabilité"
+      ],
+      "displayed_rows": [
+        [
+          "Naive",
+          "0,000",
+          "0,032",
+          "0",
+          "Haute"
+        ],
+        [
+          "ARIMA(2,1,2)",
+          "0,413",
+          "2,616",
+          "6",
+          "Moyenne"
+        ],
+        [
+          "VAR(9)",
+          "0,007",
+          "0,137",
+          "84",
+          "Moyenne"
+        ],
+        [
+          "LSTM C",
+          "66,368",
+          "20,378",
+          "18570",
+          "Faible"
+        ],
+        [
+          "GRU C",
+          "74,530",
+          "27,994",
+          "14282",
+          "Faible"
+        ]
+      ],
+      "caption": "Tableau 9 — Coût observé des cinq modèles de prix. Source : `outputs/tables/phase7_model_tradeoffs.csv`. Entraînement : fits TRAIN de Phase 7 pour ARIMA/VAR, refits Phase 6 pour les réseaux ; recherche de configurations exclue. Prévision : secondes pour les 211 origines et dix sorties ; paramètres selon la définition propre à chaque modèle. Arrondis à trois décimales."
+    },
+    {
+      "name": "arima_diagnostics",
+      "sources": [
+        "outputs/tables/phase3_arima_diagnostic_summary.csv"
+      ],
+      "headers": [
+        "Langue",
+        "Modèle avec drift",
+        "LB(10)",
+        "LB(20)",
+        "ARCH-LM(5)"
+      ],
+      "displayed_rows": [
+        [
+          "R",
+          "ARIMA(2,1,2)",
+          "0,869791",
+          "0,784385",
+          "1.50217e-12"
+        ],
+        [
+          "Python",
+          "ARIMA(1,1,1)",
+          "0,067465",
+          "0,118122",
+          "1.09996e-13"
+        ]
+      ],
+      "caption": "Diagnostics des modèles de moyenne provisoires de Phase 3A. TRAIN ; p-values Ljung-Box et ARCH-LM, sans unité. Six décimales ou six chiffres significatifs. Jarque-Bera rejette dans les deux langages ; zéro numérique par sous-flux."
+    },
+    {
+      "name": "arima_validation",
+      "sources": [
+        "outputs/tables/phase3b_arima_validation_metrics.csv"
+      ],
+      "headers": [
+        "Langue",
+        "Candidat",
+        "h",
+        "n / prévu",
+        "RMSE",
+        "MAE"
+      ],
+      "displayed_rows": [
+        [
+          "Python",
+          "(1,1,1) + drift",
+          "5",
+          "53 / 59",
+          "7,838",
+          "6,032"
+        ],
+        [
+          "Python",
+          "(1,1,1) + drift",
+          "10",
+          "53 / 59",
+          "8,780",
+          "6,496"
+        ],
+        [
+          "Python",
+          "(2,1,2) + drift",
+          "5",
+          "54 / 59",
+          "7,351",
+          "5,434"
+        ],
+        [
+          "Python",
+          "(2,1,2) + drift",
+          "10",
+          "54 / 59",
+          "8,672",
+          "6,619"
+        ],
+        [
+          "Python",
+          "Naive",
+          "5",
+          "59 / 59",
+          "7,724",
+          "5,856"
+        ],
+        [
+          "Python",
+          "Naive",
+          "10",
+          "59 / 59",
+          "9,369",
+          "7,253"
+        ],
+        [
+          "R",
+          "(1,1,1) + drift",
+          "5",
+          "59 / 59",
+          "7,848",
+          "5,934"
+        ],
+        [
+          "R",
+          "(1,1,1) + drift",
+          "10",
+          "59 / 59",
+          "9,081",
+          "6,731"
+        ],
+        [
+          "R",
+          "(2,1,2) + drift",
+          "5",
+          "59 / 59",
+          "7,847",
+          "5,938"
+        ],
+        [
+          "R",
+          "(2,1,2) + drift",
+          "10",
+          "59 / 59",
+          "9,080",
+          "6,729"
+        ],
+        [
+          "R",
+          "Naive",
+          "5",
+          "59 / 59",
+          "7,724",
+          "5,856"
+        ],
+        [
+          "R",
+          "Naive",
+          "10",
+          "59 / 59",
+          "9,369",
+          "7,253"
+        ]
+      ],
+      "caption": "Validation interne ARIMA : sous-ensemble pédagogique Naive/(1,1,1)/(2,1,2). h en séances ; RMSE/MAE en USD ajustés, trois décimales. Scores sur origines disponibles : panels Python incomplets, non appariés à Naive dans ce tableau ; les gains de la règle utilisent les panels appariés."
+    },
+    {
+      "name": "var_johansen",
+      "sources": [
+        "outputs/tables/phase4_r_python_summary.csv",
+        "outputs/tables/phase4_johansen_rank_comparison.csv"
+      ],
+      "headers": [
+        "Indicateur TRAIN",
+        "R",
+        "Python"
+      ],
+      "displayed_rows": [
+        [
+          "Ordre proposé AIC/BIC",
+          "1",
+          "1"
+        ],
+        [
+          "Ordre retenu",
+          "9",
+          "9"
+        ],
+        [
+          "Module compagnon maximal",
+          "0,840223",
+          "0,840223"
+        ],
+        [
+          "Portmanteau, p à 20",
+          "0,058790",
+          "0,058790"
+        ],
+        [
+          "Portmanteau, p à 30",
+          "0,156800",
+          "0,156800"
+        ],
+        [
+          "Rang Johansen",
+          "0",
+          "0"
+        ],
+        [
+          "VECM justifié",
+          "Non",
+          "Non"
+        ],
+        [
+          "Trace Johansen au rang 0",
+          "21,570119",
+          "21,570119"
+        ],
+        [
+          "Valeur critique native à 5 %",
+          "31,5200",
+          "29,7961"
+        ]
+      ],
+      "caption": "Décisions et diagnostics multivariés. VAR sur rendements ; Johansen principal à trois retards en niveaux. P-values, module et trace sans unité ; tables critiques natives conservées."
+    },
+    {
+      "name": "neural_comparison",
+      "sources": [
+        "outputs/tables/phase6_locked_lstm.csv",
+        "outputs/tables/phase6_locked_gru.csv"
+      ],
+      "headers": [
+        "Spécification TRAIN",
+        "LSTM C",
+        "GRU C"
+      ],
+      "displayed_rows": [
+        [
+          "Configuration",
+          "C",
+          "C"
+        ],
+        [
+          "Fenêtre, séances",
+          "60",
+          "60"
+        ],
+        [
+          "Unités récurrentes",
+          "64",
+          "64"
+        ],
+        [
+          "Dropout",
+          "0,20",
+          "0,20"
+        ],
+        [
+          "Paramètres entraînables",
+          "18570",
+          "14282"
+        ],
+        [
+          "Ratio RMSE moyen de sélection",
+          "2,319180",
+          "1,651779"
+        ],
+        [
+          "Epochs du refit verrouillé",
+          "38",
+          "36"
+        ]
+      ],
+      "caption": "Configurations verrouillées et score de sélection interne. Ratio : moyenne des six ratios RMSE modèle/Naive par fold et horizon ; ce n'est pas le ratio des RMSE poolées. Aucune métrique holdout n'est utilisée."
+    },
+    {
+      "name": "recommendation",
+      "sources": [
+        "outputs/tables/phase7_recommendation_checks.csv",
+        "outputs/tables/phase7_final_model_recommendation.csv"
+      ],
+      "headers": [
+        "Modèle",
+        "Ratio RMSE moyen",
+        "Ratio MAE moyen",
+        "Éligible"
+      ],
+      "displayed_rows": [
+        [
+          "Naive",
+          "1,000000",
+          "1,000000",
+          "Non"
+        ],
+        [
+          "ARIMA(2,1,2)",
+          "0,998486",
+          "1,019088",
+          "Non"
+        ],
+        [
+          "VAR(9)",
+          "1,004898",
+          "1,020023",
+          "Non"
+        ],
+        [
+          "LSTM C",
+          "1,442668",
+          "1,417520",
+          "Non"
+        ],
+        [
+          "GRU C",
+          "1,345390",
+          "1,315777",
+          "Non"
+        ]
+      ],
+      "caption": "Application de la règle finale pré-déclarée. Ratios sans unité, six décimales. Naive est le benchmark, pas un challenger ; aucun challenger éligible. Modèle recommandé : Naive."
+    }
+  ],
+  "source_files": [
+    {
+      "path": "docs/data_dictionary.md",
+      "sha256": "f9d2a5ecacbc6d092ff4c435ff3bded1063b113a587c0997a53d77b2a37227a2"
+    },
+    {
+      "path": "docs/decisions.md",
+      "sha256": "6b1938f1916386da2230daa49f153e3a3a478cae8d80eed4822f0d3655c5e30b"
+    },
+    {
+      "path": "docs/final_figure_selection.md",
+      "sha256": "1fc48b2d9181b237dc153ead0835e01a1dac910195d6ca710880ac762664319c"
+    },
+    {
+      "path": "docs/final_requirements_checklist.md",
+      "sha256": "37016a88fc59c7d7b91b6d88e6697ff3da43e6d0749e444bf7c30e4c3401d395"
+    },
+    {
+      "path": "docs/phase1_5_data_preparation.md",
+      "sha256": "837371634188c7227bd6413fe0e0c6d057c45e3541cc76e0dcc074e14361fed2"
+    },
+    {
+      "path": "docs/phase1_data_acquisition.md",
+      "sha256": "57f573d69ca367979f51da0c188e6b716826001263cf969f2ef33268d3126950"
+    },
+    {
+      "path": "docs/phase2_eda_stationarity.md",
+      "sha256": "9bdcab7b2079ea46fa693acddb939e6db6b0c0ad3cb5b7d2a911098866054a7c"
+    },
+    {
+      "path": "docs/phase3a_arima_identification.md",
+      "sha256": "74b5aca131c17304df31db86663013d1197ead7f32128a1f417d1fd1f5d88ce5"
+    },
+    {
+      "path": "docs/phase3b_arima_validation.md",
+      "sha256": "5dce5fc50d10918c9b9d2e3e22af42e09c32c5f85f978460ed591cf091dbafef"
+    },
+    {
+      "path": "docs/phase3b_validation_candidates.csv",
+      "sha256": "28a868b9d851355f25f5c67630b681e7027b00d872333f33367dae65ed70ca08"
+    },
+    {
+      "path": "docs/phase3b_validation_protocol.csv",
+      "sha256": "36942b6232ddfe88d5d8f0dda5e9db85eb562946c354b22af64230e8b7f29c4d"
+    },
+    {
+      "path": "docs/phase4_protocol.csv",
+      "sha256": "3833e0b4c1cb57309854c3cd65308ef78e054271230fe2a95aea5d9122347c7c"
+    },
+    {
+      "path": "docs/phase4_var_vecm.md",
+      "sha256": "cf3b413063ce0dc0f9ce1bd6c32766ae30de717b6aa06f7a071bbd26be16f285"
+    },
+    {
+      "path": "docs/phase5_garch.md",
+      "sha256": "f462b190c1b9a5d7429e02103b8a6578ae2928378ebe3e83b9326648902d5cec"
+    },
+    {
+      "path": "docs/phase5_protocol.csv",
+      "sha256": "c11b1e30a7013db624808fd159b230140c8276eb112ee495a10d040c5c081f8d"
+    },
+    {
+      "path": "docs/phase5_selection_rule.md",
+      "sha256": "64f035cfb937ac62cb1b498220ab2b461681d5af9e56a7d8e049322e0cf96d9e"
+    },
+    {
+      "path": "docs/phase6_lstm_gru.md",
+      "sha256": "942ce0d4e7c42efed55795d23db12f8aae42b04d6227f8d08a6a1f169a88eb6a"
+    },
+    {
+      "path": "docs/phase6_protocol.json",
+      "sha256": "376066fc96dfee52f7ec220fd9b215380b54f235c9d593020bc04c3523bce625"
+    },
+    {
+      "path": "docs/phase6_selection_rule.md",
+      "sha256": "a2677f41fbe497cb0e25c546da5e018a630fa2da97945b1209290722860835c2"
+    },
+    {
+      "path": "docs/phase7_final_evaluation.md",
+      "sha256": "36c52762b3390a44022a9ceba657409befbcb36e38760ffa10062def84c52a23"
+    },
+    {
+      "path": "docs/phase7_final_evaluation_protocol.json",
+      "sha256": "c0d6eb9a7496041dc6cad76ced1607f9e2c47bb53f69e15d7de1e4dfdbac60de"
+    },
+    {
+      "path": "docs/phase7_final_evaluation_protocol.md",
+      "sha256": "bd3c481ff986bb0e98a4a31c5a1b3899d645eeb86576635e890bd152571469f7"
+    },
+    {
+      "path": "docs/phase8_llm_analysis.md",
+      "sha256": "eb93ca605ebf2e94d43dc58a5807d0b7e42fd75ccde86804e1653ddf16afd406"
+    },
+    {
+      "path": "docs/phase9a_repository_audit.md",
+      "sha256": "91ae0b20e52f5666efe8bde7eed21bb848b3cc92642b68121ee6cd234c566665"
+    },
+    {
+      "path": "docs/phase9a_reproducibility.md",
+      "sha256": "ac0bcf194ea826ccb2ca5cdf3a0c3a709df9b512125bcef9e7e815e8751c5d0c"
+    },
+    {
+      "path": "docs/phase9b_report_audit.md",
+      "sha256": "aebb300f202ee294cf605cb035547633eb2dd5601754be8f692dc9810163b72b"
+    },
+    {
+      "path": "docs/phase9b_results_traceability.csv",
+      "sha256": "1fe2d081783e006084bb8e5b1991e5756b5e62b9f161ea86f73413f1a5ec7f53"
+    },
+    {
+      "path": "docs/phase9c_full_execution_audit.md",
+      "sha256": "6c5cd8d0a4e8943e149074740c6185e43c0df889c52b73e85852014122eea3d9"
+    },
+    {
+      "path": "docs/phase9c_full_reproduction.md",
+      "sha256": "c03f6396a83288d050f2f59ffca1571383af463b5ae9d404a2443e794514bdba"
+    },
+    {
+      "path": "docs/phase9c_full_summary.json",
+      "sha256": "ccf7c5ad544b8737697333ff9d84a450ccb23d5a40e136b3a23d24ccb52cbf23"
+    },
+    {
+      "path": "docs/phase9c_preflight_audit.md",
+      "sha256": "122dc60ae0db788373491bcdd14780ee63a5b6fe7c13a5435c0893b2ab27edb1"
+    },
+    {
+      "path": "docs/protocol.md",
+      "sha256": "904947b1abdd22b4c6678f506d0c0510341c97facb95ee80e5c6b0a424f8bbd4"
+    },
+    {
+      "path": "docs/reproduction_guide.md",
+      "sha256": "944a2a51628dd88f59925dec53f49119c36d455933474843d044199cac8874f7"
+    },
+    {
+      "path": "llm/human_analysis/phase8_hallucination_audit.csv",
+      "sha256": "e7b10cc9a48dcfb4260e015f3314518d0a162c172358ae410852f7ace261aad4"
+    },
+    {
+      "path": "llm/responses/phase8_official_llm_response.md",
+      "sha256": "eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4"
+    },
+    {
+      "path": "outputs/figures/phase2/log_returns.png",
+      "sha256": "a22f596c0778baf8f5cc8b2669556b9dcb324ffa36eecdaf860d9c2e3fc91567"
+    },
+    {
+      "path": "outputs/figures/phase2/normalized_prices_base100.png",
+      "sha256": "30a26bc8b8031789841574b11f8e5339923ead2afa4a190c422875f15c0c8963"
+    },
+    {
+      "path": "outputs/figures/phase2/nvda_adj_close_acf_pacf_train.png",
+      "sha256": "9c14d29728fdca59859a5c93e8fe7dbf1d319a750e7c39a5b8c780186ac0e475"
+    },
+    {
+      "path": "outputs/figures/phase2/nvda_log_return_acf_pacf_train.png",
+      "sha256": "96f6db44d4e342b5bdfa1364b4284f4221cc80969c06e73f8ac93f92d2ae4cd5"
+    },
+    {
+      "path": "outputs/figures/phase3/nvda_arima_checkresiduals_r.png",
+      "sha256": "401ed193ad1d675def08792c334cb21eb75323b0adb823182da515cbf8809cc2"
+    },
+    {
+      "path": "outputs/figures/phase3b/phase3b_rmse_by_model_h10.png",
+      "sha256": "b2f3dd4f29a39b3eda03e0e63f263108c1ac3287e09a660b45f37b59f0d22bd6"
+    },
+    {
+      "path": "outputs/figures/phase4/phase4_var_fevd.png",
+      "sha256": "5ab5af07cab0f40b255e279ddb9a1599bbb4763fdc6c77a911c816440411a952"
+    },
+    {
+      "path": "outputs/figures/phase4/phase4_var_irf.png",
+      "sha256": "8361f2d41a600d1c73921ff08dc2cba4b7a326bf724258608c7cecddf97680b8"
+    },
+    {
+      "path": "outputs/figures/phase5/phase5_conditional_volatility.png",
+      "sha256": "615fd9b9677473c925756b5894c719039493e34966565facc6b771b632083cce"
+    },
+    {
+      "path": "outputs/figures/phase5/phase5_squared_standardized_residual_acf.png",
+      "sha256": "3874f9b164ee63cfce338cebbcc6843cec293ce82ae2b1d4de0265bbe29a4d49"
+    },
+    {
+      "path": "outputs/figures/phase6/phase6_gru_loss_curve.png",
+      "sha256": "9f78ac3bfcff6f79ff83bad3034b6613653ef33662d9284ac241abf0708733ff"
+    },
+    {
+      "path": "outputs/figures/phase6/phase6_lstm_loss_curve.png",
+      "sha256": "74e97e57fe316447b1d5fd8518ca8d676d0e5c86603a3d14adceaef734ab5d12"
+    },
+    {
+      "path": "outputs/figures/phase7/phase7_actual_vs_forecasts_h10.png",
+      "sha256": "4c68e4b238c5bb02b98b3f2bf286b3419c940c4b43e991ef316d8887b87394dc"
+    },
+    {
+      "path": "outputs/figures/phase7/phase7_rmse_comparison_h10.png",
+      "sha256": "02d32c13438a6dfd0fea705e920d202ced9bd174449dfb3e36bb08b07262c52d"
+    },
+    {
+      "path": "outputs/figures/phase7/phase7_rmse_comparison_h5.png",
+      "sha256": "9f5c643bf34d720b1ea883248dc96b1c668d99d86d0cc9510c1f40d7429d9538"
+    },
+    {
+      "path": "outputs/tables/phase1_5_processed_manifest.csv",
+      "sha256": "9a47867fdb378b6f7d8ace2aafcbe83a407e2ef74503f01ce1408b49cff9a21a"
+    },
+    {
+      "path": "outputs/tables/phase2_descriptive_stats.csv",
+      "sha256": "69091847c78e4d197f2cde10949222702ab3eb33795c6c3814d548072e51d25d"
+    },
+    {
+      "path": "outputs/tables/phase2_split_metadata.csv",
+      "sha256": "c63e071265433fbc47597940a69c230fcf07ddb2a7d8a963106b4fd25fb7afe5"
+    },
+    {
+      "path": "outputs/tables/phase2_stationarity_summary.csv",
+      "sha256": "f4c3feaefc171d6b153a2b17de5eaa3f00582641230131aa65fc8ee84cfea863"
+    },
+    {
+      "path": "outputs/tables/phase3_arima_diagnostic_summary.csv",
+      "sha256": "5074c3f4adb80af4ba65bd0a4c15b1beac172c80d4a91048bef982ff59309e04"
+    },
+    {
+      "path": "outputs/tables/phase3b_arima_validation_metrics.csv",
+      "sha256": "98115a840d38a04755fae5e09ab75f21eb71c50ca03ac9e8c24f22bd7803efd1"
+    },
+    {
+      "path": "outputs/tables/phase4_granger_causality_comparison.csv",
+      "sha256": "3bb07df77614dce60f64121a7890d0feccd2d824e72dab9cc596d7ec17fb4a34"
+    },
+    {
+      "path": "outputs/tables/phase4_johansen_rank_comparison.csv",
+      "sha256": "ee4fff653065daaa91786f509f098e2412563c78ce680569b3809dc860892d08"
+    },
+    {
+      "path": "outputs/tables/phase4_r_python_summary.csv",
+      "sha256": "0a9429dcf3369db94692d39e34b1b000b0a1dd029ca061aed6d3e7f1d6b08884"
+    },
+    {
+      "path": "outputs/tables/phase5_garch_model_comparison.csv",
+      "sha256": "73d90ce0d9e176b9d74eb91ab094d9c8e6b49ff5c2b164e1ecd5985dc9a14dfa"
+    },
+    {
+      "path": "outputs/tables/phase5_garch_persistence.csv",
+      "sha256": "15944cbf94f3a6e0c4eee703c64a13536bcf029813ca49b8505976ddf8dfeade"
+    },
+    {
+      "path": "outputs/tables/phase6_locked_gru.csv",
+      "sha256": "729e96757b9bf842bdc9d40f2bb6cfdd70c90181e63070d833681d31e908293f"
+    },
+    {
+      "path": "outputs/tables/phase6_locked_lstm.csv",
+      "sha256": "dcf9b950ab59a48ff99db4dc221165ca1089d213fd5ff632b5104c1e6ed6441f"
+    },
+    {
+      "path": "outputs/tables/phase7_diebold_mariano.csv",
+      "sha256": "9a3bf3d5997a7b53d41cead164de1892287b446172ffaf2b722ae05f8ce4a9e2"
+    },
+    {
+      "path": "outputs/tables/phase7_final_metrics.csv",
+      "sha256": "d0fd0f3c6a77c9e1c10dc338393594fafa213b697a3580ebd2b60b6dccafc97b"
+    },
+    {
+      "path": "outputs/tables/phase7_final_model_recommendation.csv",
+      "sha256": "93e252d33e50f3696ab2d9dd330259a295b53fe4cb25101ea3a611c426c354e5"
+    },
+    {
+      "path": "outputs/tables/phase7_model_tradeoffs.csv",
+      "sha256": "7671e5c68637bfa3ddf8edff9bad1275f79524bd8d58c24e252bd56990673cfc"
+    },
+    {
+      "path": "outputs/tables/phase7_recommendation_checks.csv",
+      "sha256": "bb72ac625bf8e3fbda40a21286e98d50addff26021dbb3e003e3ea2b021d1472"
+    },
+    {
+      "path": "report/README.md",
+      "sha256": "13a812cf7f8f745f6b855bea0a99f5dbb8e9872a6b0583fb9129f33aa8e74cf1"
+    },
+    {
+      "path": "report/rapport_final.docx",
+      "sha256": "cb0047cebab714d5340610fd20789c4f096f88af175661a3a9d0838f8fc3dbc4"
+    },
+    {
+      "path": "report/rapport_final.md",
+      "sha256": "19e4587d592d3b1cfd9485ac32cb9b2eef9a6d6510605ad315f88da4d70cfc18"
+    },
+    {
+      "path": "report/rapport_final.pdf",
+      "sha256": "3966bf38baa3bc81f5a1c64fd62a24c352aae3e208db4344c0df9952ecfac470"
+    },
+    {
+      "path": "report/report_sources.py",
+      "sha256": "ab901773943074283fee90fc1906fce093327d4c6496294562a1dbf9e380c1a5"
+    }
+  ],
+  "llm_section_b_sha256": "16e95e810b14e0bd3e05d9d579bc092c54e3e9e2aa5f86d8cdba4076e6bfbb22",
+  "official_recommendation": "Naive"
+}

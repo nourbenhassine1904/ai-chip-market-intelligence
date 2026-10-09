@@ -1,0 +1,26 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase6_locked_lstm.csv; outputs/tables/phase6_locked_gru.csv
+\begin{table}[!htbp]
+\centering
+\caption{Configurations verrouillées et score de sélection interne. Ratio : moyenne des six ratios RMSE modèle/Naive par fold et horizon ; ce n'est pas le ratio des RMSE poolées. Aucune métrique holdout n'est utilisée.}
+\label{tab:neural_comparison}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrr}
+\toprule
+\textbf{Spécification TRAIN} & \textbf{LSTM C} & \textbf{GRU C} \\
+\midrule
+Configuration & C & C \\
+Fenêtre, séances & 60 & 60 \\
+Unités récurrentes & 64 & 64 \\
+Dropout & 0,20 & 0,20 \\
+Paramètres entraînables & 18570 & 14282 \\
+Ratio RMSE moyen de sélection & 2,319180 & 1,651779 \\
+Epochs du refit verrouillé & 38 & 36 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Sources : outputs/tables/phase6\_locked\_lstm.csv ; outputs/tables/phase6\_locked\_gru.csv.
+\end{minipage}
+\end{table}

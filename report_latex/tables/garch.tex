@@ -1,0 +1,23 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase5_garch_model_comparison.csv; outputs/tables/phase5_garch_persistence.csv
+\begin{table}[!htbp]
+\centering
+\caption{Paramètres et persistance.}
+\label{tab:garch}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrrrrr}
+\toprule
+\textbf{Langue / loi} & \textbf{\(\omega\)} & \textbf{\(\alpha\)} & \textbf{\(\beta\)} & \textbf{\(\alpha\)+\(\beta\)} & \textbf{Demi-vie} \\
+\midrule
+R / Normal & 0,4417 & 0,1126 & 0,8516 & 0,9642 & 19,00 \\
+R / Student-t & 0,3066 & 0,0950 & 0,8793 & 0,9743 & 26,61 \\
+Python / Normal & 0,4371 & 0,1116 & 0,8529 & 0,9645 & 19,18 \\
+Python / Student-t & 0,3030 & 0,0940 & 0,8805 & 0,9745 & 26,85 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{outputs/tables/phase5_garch_model_comparison.csv} et \sourcepath{outputs/tables/phase5_garch_persistence.csv}. Périmètre : 1979 innovations TRAIN ; \(\omega\) en points de pourcentage\textsuperscript{2}, \(\alpha\)/\(\beta\)/persistance sans unité, demi-vie en séances. Arrondis à quatre décimales, demi-vie à deux.
+\end{minipage}
+\end{table}

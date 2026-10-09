@@ -1,0 +1,24 @@
+\section{Artefacts génératifs et reproduction}
+\label{app:D}
+
+\textbf{Prompt et réponse intégrale.} Le prompt autonome est conservé dans \sourcepath{llm/prompts/phase8_official_llm_prompt.md} ; les faits et sources dans \sourcepath{llm/prompts/phase8_project_facts.md} et \sourcepath{llm/prompts/phase8_source_manifest.json}. La réponse intégrale A/B/C/D se trouve dans \sourcepath{llm/responses/phase8_official_llm_response.md}. Elle est conservée sans correction ni suppression, y compris son suffixe éditorial. Empreinte SHA-256 : \sourcepath{eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4}.
+
+
+
+\textbf{Comparaison et audit.} \sourcepath{llm/human_analysis/phase8_human_vs_llm_comparison.md} contient la comparaison détaillée avec les baselines de développement assistées puis revues. \sourcepath{llm/human_analysis/phase8_hallucination_audit.csv} conserve les extraits, 35 supports, sources exactes et réserves. Le disclaimer académique est dans \sourcepath{llm/prompts/phase8_investment_disclaimer.md}. Ces artefacts doivent accompagner le dépôt remis : les chemins sont internes, pas des pages web publiques certifiées.
+
+
+
+\textbf{Code Python et R.} La chaîne scientifique Python est constituée de \sourcepath{python/00_data_acquisition.py}, \sourcepath{python/01_data_preparation.py}, \sourcepath{python/01_data_eda.py}, \sourcepath{python/02_arima.py}, \sourcepath{python/02b_arima_validation.py}, \sourcepath{python/03_var_vecm.py}, \sourcepath{python/04_garch.py}, \sourcepath{python/05_lstm_gru.py} et \sourcepath{python/06_evaluation.py}. Les quatre vrais scripts R sont \sourcepath{r/02_arima.R}, \sourcepath{r/02b_arima_validation.R}, \sourcepath{r/03_var_vecm.R} et \sourcepath{r/04_garch.R}. \sourcepath{r/01_data_eda.R} reste un placeholder et n’est pas compté comme EDA R implémentée.
+
+
+
+\textbf{Guides et packages.} \sourcepath{docs/team_setup_windows.md} décrit l’installation explicite Python/RStudio. \sourcepath{requirements.txt} et \sourcepath{requirements-dev.txt} listent les packages Python ; les packages R sont forecast, tseries, FinTS, vars, urca et rugarch. \sourcepath{docs/reproduction_guide.md} distingue FAST et FULL et précise la préparation d’un clone isolé. TensorFlow CPU doit être validé dans l’environnement de reproduction ; la documentation officielle précise la voie d’installation Windows \href{https://www.tensorflow.org/install/pip}{TensorFlow install}.
+
+
+
+\textbf{État §8.3 après 9C3.} Le notebook FULL et son orchestrateur existent ; le runner FULL a terminé dans un sandbox préparé. La machine vierge et l’exécution de toutes les cellules du notebook en mode FULL restent PARTIAL. Les écarts GRU et la protection de Phase 7 sont documentés dans \sourcepath{docs/phase9c_full_execution_audit.md}. Le chapitre 11 expose cet état ultérieur, sans modifier le rapport source 9B. La réponse LLM demeure documentaire et son identité générative n’est pas garantie.
+
+
+
+\textbf{Périmètre documentaire.} Le PDF officiel du cahier des charges n’était pas intégré au dépôt lors de l’audit automatisé. Cette limite d’accès ne constitue pas un livrable scientifique obligatoire manquant. Aucune vérification indépendante exhaustive du PDF officiel n’est revendiquée. Les exigences transmises, dont l’annexe de vulgarisation LLM (§5), la pagination et §8.3, restent explicitement prises en compte.

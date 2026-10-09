@@ -1,0 +1,37 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Introduction générale et objectifs}
+\label{sec:introduction}
+
+\subsection{Problématique et choix du terrain}
+
+
+
+Prévoir un prix financier impose de distinguer ce que les observations décrivent de ce qu’elles permettent réellement d’anticiper. Une tendance visible, une forte corrélation ou un ajustement satisfaisant sur le passé ne garantissent pas une faible erreur sur des observations futures. Notre question est donc précise : les modèles univariés, multivariés ou récurrents améliorent-ils suffisamment la prévision du prix ajusté de NVDA, à cinq et dix séances, pour remplacer la persistance du dernier prix ? Deux questions complémentaires concernent les interdépendances des rendements et la dynamique du risque.
+
+
+
+Le secteur des semi-conducteurs fournit un cadre cohérent pour étudier simultanément des entreprises et une exposition sectorielle. NVDA et AMD constituent les deux séries d’entreprise retenues par le protocole. SOXX, l’iShares Semiconductor ETF, vise une exposition indicielle aux entreprises américaines du secteur ; cette fonction sectorielle est documentée par son émetteur \cite{R1}. L’étude ne suppose ni composition constante du fonds, ni indépendance de SOXX vis-à-vis des entreprises du secteur. Ce panier n’est pas une mesure exhaustive du marché mondial des semi-conducteurs.
+
+
+
+NVDA est la cible principale fixée avant la modélisation. AMD et SOXX apportent un contexte multivarié. Ce choix permet de confronter l’information propre à NVDA à celle de séries proches, sans transformer une association statistique en mécanisme économique établi. Aucune attribution de mouvement boursier à une annonce, une crise ou une innovation technologique n’est nécessaire à notre comparaison.
+
+
+
+\subsection{Une démarche articulée autour de trois objectifs}
+
+
+
+La prévision du prix mobilise Naive, ARIMA, VAR et les réseaux LSTM/GRU. ARIMA décrit la dépendance de la moyenne après différenciation ; VAR étudie les retards conjoints des rendements ; les réseaux apprennent une relation non linéaire entre une fenêtre passée et dix niveaux futurs. GARCH traite séparément la variance des innovations. Une meilleure représentation du risque n’équivaut donc pas à une meilleure prévision de prix.
+
+
+
+La démarche suit trois étapes : identifier des propriétés sur TRAIN, verrouiller des choix après validation temporelle interne, puis mesurer les performances finales sur une période réservée. La documentation méthodologique distingue elle aussi l’ajustement et l’évaluation sur des données nouvelles \cite{R2}. Les diagnostics influencent la construction des modèles ; ils ne se substituent pas aux erreurs de prévision finales.
+
+
+
+Le rapport présente successivement les données, le protocole méthodologique, l’EDA et la stationnarité, ARIMA et sa validation, les modèles multivariés, la volatilité et les réseaux récurrents. Il compare ensuite les prévisions sur le holdout, examine le LLM et distingue les preuves de reproduction disponibles. La conclusion sépare prévision, explication statistique et analyse du risque.
+
+
+
+Source interne : \sourcepath{docs/protocol.md}, décisions D001--D011 dans \sourcepath{docs/decisions.md}.

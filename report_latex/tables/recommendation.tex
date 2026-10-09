@@ -1,0 +1,24 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase7_recommendation_checks.csv; outputs/tables/phase7_final_model_recommendation.csv
+\begin{table}[!htbp]
+\centering
+\caption{Application de la règle finale pré-déclarée. Ratios sans unité, six décimales. Naive est le benchmark, pas un challenger ; aucun challenger éligible. Modèle recommandé : Naive.}
+\label{tab:recommendation}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrrc}
+\toprule
+\textbf{Modèle} & \textbf{Ratio RMSE moyen} & \textbf{Ratio MAE moyen} & \textbf{Éligible} \\
+\midrule
+Naive & 1,000000 & 1,000000 & Non \\
+ARIMA(2,1,2) & 0,998486 & 1,019088 & Non \\
+VAR(9) & 1,004898 & 1,020023 & Non \\
+LSTM C & 1,442668 & 1,417520 & Non \\
+GRU C & 1,345390 & 1,315777 & Non \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Sources : outputs/tables/phase7\_recommendation\_checks.csv ; outputs/tables/phase7\_final\_model\_recommendation.csv.
+\end{minipage}
+\end{table}

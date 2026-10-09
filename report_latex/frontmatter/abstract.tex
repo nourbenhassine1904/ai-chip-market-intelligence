@@ -1,0 +1,6 @@
+\section*{Résumé}
+Cette étude examine la prévision du prix ajusté de NVIDIA, les interdépendances entre NVIDIA, AMD et SOXX, et le risque de volatilité. Les transformations et diagnostics sont décidés sur TRAIN ; les modèles sont ensuite comparés sur un holdout chronologique selon un protocole gelé. Les analyses mettent en évidence des rendements compatibles avec la stationnarité, une précédence prédictive conditionnelle de SOXX et une variance persistante. Elles ne démontrent pas une supériorité prédictive générale des modèles complexes. Naive reste recommandé : ARIMA possède un léger avantage de RMSE à dix séances, mais échoue à la règle complète de remplacement. Les réseaux conservent leurs résultats défavorables. L’audit du LLM porte sur 35 affirmations soutenues, sans établir une fiabilité universelle. Le notebook FAST vérifie les résultats gelés. Le runner FULL a terminé dans un sandbox préparé ; le notebook intégral sur machine vierge reste PARTIAL et les variations GRU de reproduction sont exposées séparément des résultats officiels.
+
+
+
+\textbf{Mots-clés.} Séries temporelles, validation temporelle, ARIMA, VAR, Granger, GARCH, LSTM, GRU, Naive, audit LLM.

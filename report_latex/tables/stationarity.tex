@@ -1,0 +1,22 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase2_stationarity_summary.csv
+\begin{table}[!htbp]
+\centering
+\caption{Synthèse ADF/KPSS.}
+\label{tab:stationarity}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{XXXXX}
+\toprule
+\textbf{Série} & \textbf{Actifs} & \textbf{ADF} & \textbf{KPSS} & \textbf{Lecture conjointe} \\
+\midrule
+Adj\_Close & NVDA, AMD, SOXX & Non rejet & Rejet & Non-stationnarité soutenue \\
+Log\_Price & NVDA, AMD, SOXX & Non rejet & Rejet & Non-stationnarité soutenue \\
+Log\_Return & NVDA, AMD, SOXX & Rejet & Non rejet & Stationnarité soutenue \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{outputs/tables/phase2_stationarity_summary.csv}. Périmètre : TRAIN ; trois actifs. Résultats catégoriels sans unité ; aucune nouvelle p-value calculée.
+\end{minipage}
+\end{table}

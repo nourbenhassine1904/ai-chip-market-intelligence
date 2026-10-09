@@ -1,0 +1,12 @@
+\section{Diagnostics univariés complémentaires}
+\label{app:A}
+
+\historicalfigure{nvda_adj_close_acf_pacf_train.png}{ACF et PACF du prix ajusté}{Persistance des niveaux NVDA. Source : \sourcepath{outputs/figures/phase2/nvda_adj_close_acf_pacf_train.png}. Périmètre : TRAIN, 2018-01-02--2025-11-14. Unité : corrélation sans dimension ; retards en séances. La décroissance lente motive l’analyse de stationnarité, sans établir une structure autorégressive exploitable en niveau.}{0.32}
+
+
+
+\historicalfigure{nvda_arima_checkresiduals_r.png}{Diagnostics R du modèle de moyenne}{Résidus du R ARIMA(2,1,2) avec drift. Source : \sourcepath{outputs/figures/phase3/nvda_arima_checkresiduals_r.png}. Périmètre : TRAIN, 2018-01-02--2025-11-14 ; résidus natifs du graphique R. Unité : log-prix pour les résidus, corrélation pour l’ACF, densité pour la distribution. La convention native inclut l’innovation initiale ; les tableaux formels la retirent, expliquant la petite différence de Ljung-Box. Une autocorrélation non détectée ne valide pas normalité et variance constante.}{0.32}
+
+
+
+Tableaux détaillés associés : \sourcepath{outputs/tables/phase3_arima_residual_diagnostics_r.csv}, \sourcepath{outputs/tables/phase3_arima_residual_diagnostics_python.csv}, \sourcepath{outputs/tables/phase3_optimizer_sensitivity_python.csv}. Ils conservent les avertissements et conventions que les deux graphiques ne peuvent résumer.

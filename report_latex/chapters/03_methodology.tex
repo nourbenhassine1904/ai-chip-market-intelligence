@@ -1,0 +1,53 @@
+\section{Protocole méthodologique et architecture du projet}
+\label{sec:methodology}
+\subsection{Trois objets scientifiques distincts}
+La prévision du prix ajusté de NVDA, les interdépendances conditionnelles des
+rendements de NVDA, AMD et SOXX et la variance des innovations constituent trois objets
+différents. La qualité d'un diagnostic de moyenne ou de variance n'est pas un
+gain de prévision de prix. Le schéma de la figure~\ref{fig:pipeline} situe ces
+analyses et leurs livrables ; GARCH reste hors du classement final des prix.
+
+\subsection{Temporalité, validation interne et holdout}
+Le dataset est partagé chronologiquement avant la sélection des modèles :
+1980 lignes TRAIN puis 220 lignes TEST. Les décisions de transformation et les
+diagnostics de modélisation reposent sur TRAIN. Les figures descriptives couvrant
+toute la période sont identifiées comme telles ; leur existence n'est pas
+présentée comme un accès anticipé du nouvel évaluateur final.
+
+ARIMA utilise une validation interne rolling-origin ; les réseaux utilisent
+trois folds expanding-window et une validation d'arrêt interne distincte des
+blocs externes. Les scalers sont ajustés dans les seuls préfixes permis.
+L'observation connue à une nouvelle origine peut enrichir la fenêtre passée,
+sans autoriser un nouveau fit sur le holdout.
+
+Avant le scoring final, les spécifications, paramètres et règles sont gelés.
+Tous les modèles de prix sont comparés sur les mêmes 211 origines à cinq et dix
+séances observées. Les coefficients/poids/scalers restent fixes ; seule
+l'information déjà observée peut avancer. Le benchmark est
+\begin{equation}
+\label{eq:naive}
+\widehat P_{t+h\mid t}^{\,\mathrm{Naive}}=P_t,\qquad h\in\{5,10\}.
+\end{equation}
+Son rôle de référence ne prouve ni bruit blanc des innovations ni optimalité
+universelle. Le lock Naive interne de Phase 3B, le challenger ARIMA(2,1,2)
+pré-déclaré et la recommandation finale sont trois décisions distinctes.
+
+\input{figures/pipeline}
+\FloatBarrier
+
+\subsection{Règles de décision et comparaison R/Python}
+Les règles autorisent SARIMA, VECM ou un ordre GARCH supérieur uniquement si
+leurs gates scientifiques sont ouverts. L'absence d'estimation quand la
+condition n'est pas soutenue est une décision documentée, pas un résultat
+manquant à inventer. Les conventions et tables critiques natives R/Python
+restent explicites, même lorsqu'elles diffèrent.
+
+Le remplacement final de Naive exige simultanément RMSE et MAE non pires aux
+deux horizons, au moins 1\,\% de gain sur la moyenne des ratios RMSE et le soutien
+DM/Holm pré-déclaré, sans horizon significativement pire. Les résultats TEST
+ne permettent aucun retuning. Non-rejet et équivalence, corrélation et causalité,
+variance et direction du prix restent distingués.
+
+\sourcecaption{Sources internes : \sourcepath{docs/protocol.md},
+\sourcepath{docs/decisions.md}, protocoles gelés des Phases 3B, 4, 5, 6 et 7.
+Le schéma est une synthèse documentaire ; il ne crée aucun résultat scientifique.}

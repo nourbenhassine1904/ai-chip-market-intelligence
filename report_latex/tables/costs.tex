@@ -1,0 +1,24 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase7_model_tradeoffs.csv
+\begin{table}[!htbp]
+\centering
+\caption{Coût observé des cinq modèles de prix.}
+\label{tab:costs}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{XrrrX}
+\toprule
+\textbf{Modèle} & \textbf{Fit s} & \textbf{Prévision s} & \textbf{Paramètres} & \textbf{Interprétabilité} \\
+\midrule
+Naive & 0,000 & 0,032 & 0 & Haute \\
+ARIMA(2,1,2) & 0,413 & 2,616 & 6 & Moyenne \\
+VAR(9) & 0,007 & 0,137 & 84 & Moyenne \\
+LSTM C & 66,368 & 20,378 & 18570 & Faible \\
+GRU C & 74,530 & 27,994 & 14282 & Faible \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{outputs/tables/phase7_model_tradeoffs.csv}. Entraînement : fits TRAIN de Phase 7 pour ARIMA/VAR, refits Phase 6 pour les réseaux ; recherche de configurations exclue. Prévision : secondes pour les 211 origines et dix sorties ; paramètres selon la définition propre à chaque modèle. Arrondis à trois décimales.
+\end{minipage}
+\end{table}

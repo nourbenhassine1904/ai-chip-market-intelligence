@@ -1,0 +1,69 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{VAR, Granger, Johansen et décision VECM}
+\label{sec:var}
+
+\subsection{VAR sur les rendements stationnaires}
+
+
+
+Le VAR modélise le vecteur des trois log-rendements, dans l’ordre NVDA, AMD, SOXX, à partir de ses retards et d’une constante. Chaque équation reçoit ainsi son passé et celui des autres séries. Les 1979 rendements TRAIN valides constituent l’entrée ; les log-prix non stationnaires ne sont pas utilisés dans ce VAR standard.
+
+
+
+\begin{equation}\label{eq:var} \boldsymbol r_t=\boldsymbol c+\sum_{i=1}^{p}A_i\boldsymbol r_{t-i}+\boldsymbol\varepsilon_t.\end{equation}
+
+
+
+Les critères AIC, BIC, HQIC et FPE proposent tous un retard 1. Leur calcul repose sur le même échantillon de réponses à tous les ordres 1--10, conformément au principe de \sourcepath{VARselect} \cite{R7}. Toutefois, VAR(1) échoue aux diagnostics sériels à 20 et 30 séances : p\(\approx\)0,000210 et 0,001378. Seuls les ordres 9 et 10 satisfont les deux non-rejets exigés. VAR(9), moins complexe et de meilleur BIC parmi ces modèles éligibles, est retenu. Il ne s’agit donc pas d’un désaccord AIC/BIC, mais d’une sélection conditionnée par l’adéquation résiduelle.
+
+
+
+Le système contient 84 coefficients de moyenne, distincts des six composantes uniques de covariance. Le module compagnon maximal vaut 0,840223, inférieur à 1. La stabilité rend possible l’analyse des réponses aux innovations ; elle ne valide pas toutes les hypothèses. Les p-values Portmanteau de VAR(9), 0,058790 à 20 et 0,156800 à 30 séances, ne prouvent pas l’absence de dépendance, et la première reste proche du seuil. La normalité multivariée est fortement rejetée.
+
+
+
+\subsection{Précédence prédictive et correction multiple}
+
+
+
+\input{tables/granger}
+
+
+
+Le passé de SOXX apporte une information prédictive supplémentaire pour NVDA et AMD dans ce système. SOXX\(\rightarrow\)AMD reste plus proche du seuil après Holm. Les autres directions ne sont pas soutenues ; leur non-rejet ne prouve pas une absence de prévisibilité. Granger est une précédence prédictive conditionnelle, sans identification causale économique. Holm contrôle la multiplicité de six tests, sans corriger la sélection préalable du lag, les ruptures ou l’hétéroscédasticité des tests Wald conventionnels.
+
+
+
+Sources : \sourcepath{outputs/tables/phase4_r_python_summary.csv}, \sourcepath{outputs/tables/phase4_var_lag_selection_comparison.csv}, \sourcepath{docs/phase4_var_vecm.md}.
+
+
+
+
+
+\subsection{Johansen et dynamique des innovations}
+
+
+
+La cointégration concerne des combinaisons stationnaires de niveaux individuellement non stationnaires. Johansen reçoit donc les 1980 log-prix TRAIN. La spécification principale utilise trois retards en niveaux, soit deux retards de différences \cite{R8}. Elle est distincte du VAR(9) sur rendements et n’hérite pas de son adéquation sérielle. Les statistiques concordent, mais les tables critiques natives R/Python diffèrent et sont conservées.
+
+
+
+Au rang nul, la trace vaut 21,570119, sous les seuils à 5 \% de 31,52 en R et 29,7961 en Python. La procédure séquentielle retient le rang 0 ; les sensibilités voisines à deux et quatre retards en niveaux donnent aussi 0. La cointégration n’est pas soutenue dans ces spécifications. Le VECM n’est donc pas justifié, et aucun coefficient \(\alpha\) ou \(\beta\) de VECM n’est inventé. Le résultat dépend des retards, termes déterministes et de la puissance des tests.
+
+
+
+\historicalfigure{phase4_var_irf.png}{Réponses impulsionnelles du VAR}{IRF orthogonalisées du VAR(9). Source : \sourcepath{outputs/figures/phase4/phase4_var_irf.png}. Périmètre : TRAIN, 2018-01-02--2025-11-14 ; horizons 0--20 séances. Unité : points de pourcentage de rendement quotidien pour une innovation orthogonalisée d’un écart-type. Ordre de Cholesky : NVDA, AMD, SOXX ; bandes Python asymptotiques ponctuelles à 95 \%.}{0.42}
+
+
+
+Les réponses de la figure~\ref{fig:phase4_var_irf.png} oscillent puis s’atténuent, ce qui est cohérent avec le système stable. L’identification récursive impose certaines réponses contemporaines nulles par construction ; les innovations ne sont pas des interventions économiques observées. Les bandes ne sont ni simultanées ni conçues ici pour garantir une robustesse à la volatilité variable.
+
+
+
+La FEVD, reproduite en annexe B, répartit à vingt séances la variance d’erreur NVDA entre ses propres innovations (97,517 \%), AMD (0,591 \%) et SOXX (1,892 \%). Ces parts dépendent de l’ordre de Cholesky. Une Granger significative peut coexister avec une faible part FEVD : les deux analyses ne mesurent pas le même objet, et aucune ne garantit un gain de prévision de prix sur TEST.
+
+
+
+Sources : \sourcepath{outputs/tables/phase4_johansen_rank_comparison.csv}, \sourcepath{outputs/tables/phase4_vecm_decision.csv}, \sourcepath{outputs/tables/phase4_var_fevd.csv}.
+
+\input{tables/var_johansen}

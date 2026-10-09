@@ -1,0 +1,25 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase4_granger_causality_comparison.csv
+\begin{table}[!htbp]
+\centering
+\caption{Tests de Granger conditionnels.}
+\label{tab:granger}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{XrrX}
+\toprule
+\textbf{Prédicteur \(\rightarrow\) cible} & \textbf{p brute} & \textbf{p Holm} & \textbf{À 5 \% après Holm} \\
+\midrule
+NVDA \(\rightarrow\) AMD & 0,464045 & 1,000000 & Non soutenu \\
+NVDA \(\rightarrow\) SOXX & 0,464486 & 1,000000 & Non soutenu \\
+AMD \(\rightarrow\) NVDA & 0,231963 & 0,927853 & Non soutenu \\
+AMD \(\rightarrow\) SOXX & 0,737034 & 1,000000 & Non soutenu \\
+SOXX \(\rightarrow\) NVDA & 0,000066 & 0,000394 & Soutenu \\
+SOXX \(\rightarrow\) AMD & 0,009167 & 0,045834 & Soutenu \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{outputs/tables/phase4_granger_causality_comparison.csv}. Périmètre : VAR(9), TRAIN ; six tests dirigés, Wald à neuf restrictions par équation. P-values sans unité, R affiché, décisions R/Python concordantes ; correction Holm sur les six tests, arrondi à six décimales.
+\end{minipage}
+\end{table}

@@ -1,0 +1,123 @@
+\section{Reproductibilité, traçabilité et livrables}
+\label{sec:reproduction}
+\subsection{FAST : vérifier les artefacts de l'étude historique}
+Le notebook Jupyter de Phase 9A a exécuté 52 cellules de revue des sorties gelées,
+dans la référence et une copie sans données ni caches de modèles. Il affiche les
+résultats et contrôle arithmétiquement les métriques depuis les prévisions
+officielles. Cela ne reproduit pas les acquisitions, les estimations R/Python ni
+les entraînements neuronaux. Les prévisions et recommandations des chapitres
+précédents proviennent exclusivement des fichiers historiques.
+
+\subsection{FULL : pipeline exécuté dans un sandbox préparé}
+La préparation 9C1 a implémenté un notebook FULL et un orchestrateur séparés,
+avec défaut PREFLIGHT et autorisation FULL explicite. Le run ultérieur a
+réellement exécuté les scripts scientifiques dans le clone indépendant
+\sourcepath{C:/Temp/ai-chip-full-9c1-e3cd311}, basé sur le point scientifique
+\sourcepath{e3cd311e4177807c2d422e74f3290d93cef35dab}.
+L'audit 9C3 relève \texttt{PIPELINE\_EXECUTED},
+\texttt{PARTIAL\_PENDING\_CLEAN\_MACHINE\_REVIEW} et l'absence de fichier d'échec.
+
+Les 17 subprocess scientifiques couvrent préparation, EDA, ARIMA et validation
+R/Python, VAR/Johansen, GARCH, réseaux puis Phase 7. Tous leurs codes de sortie
+sont zéro, ainsi que ceux du checkpoint et du gate. Le contrôle LLM interne est
+documentaire : réponse intacte et 35 affirmations historiques présentes avec
+sources existantes ; aucune nouvelle génération.
+Les sept snapshots ont leurs SHA historiques. Les 358 fichiers protégés par le
+manifeste de ce run sont inchangés. Cela décrit une preuve dans un environnement
+préparé, pas une installation sur une machine vierge.
+
+\begin{table}[!htbp]
+\centering
+\caption{Trois preuves de reproduction à distinguer au terme de 9C3.}
+\label{tab:reproduction_status}
+\small
+\begin{tabularx}{\linewidth}{lXl}
+\toprule
+Preuve & État effectivement démontré & Statut \\
+\midrule
+A : sandbox & Runner scientifique FULL terminé, logs et résultats nouveaux & Exécuté \\
+B : machine vierge & Packages Python/R copiés d'installations existantes & PARTIAL \\
+C : notebook FULL & Seule une exécution PREFLIGHT du notebook est conservée & PARTIAL \\
+§8.3 intégral & Notebook complet sur machine vierge non démontré & PARTIAL \\
+\bottomrule
+\end{tabularx}
+\sourcecaption{Source : \sourcepath{docs/phase9c_full_execution_audit.md}.
+Exécution du runner et identité numérique sont deux exigences différentes.}
+\end{table}
+
+\subsection{Différences observées, sans remplacement des résultats officiels}
+Sur 210 fichiers, 116 sont identiques en bytes et 94 diffèrent : 64 fins de ligne,
+20 durées/provenance, quatre images, un journal de réestimation et cinq fichiers
+avec valeurs scientifiques différentes. Les contenus ont été caractérisés ;
+le mécanisme numérique des variations GRU reste non établi.
+
+Les refits Phase 6 conservent la même charge utile de poids HDF5 que les
+historiques, mais les fichiers \texttt{.keras} ont des SHA différents par
+leurs métadonnées/configurations sérialisées. Le loader original Phase 7
+exigeant les empreintes de fichiers pré-déclarées, il a reconstruit les réseaux
+C sur TRAIN avant l'accès TEST. Les poids numériques LSTM reconstruits sont
+identiques ; 12865 paramètres GRU diffèrent, au maximum de
+\(2{,}8312206268310547\times10^{-7}\).
+
+Le nouveau panel modifie 304 prévisions GRU. Quatre écarts MSE/RMSE dépassent
+la tolérance descriptive historique \(10^{-6}\), maintenue ; les quatre écarts
+MAE/MAPE sont plus petits que ce seuil mais non nuls. Certaines valeurs DM et
+ratios varient aussi. Les décisions DM/Holm, l'éligibilité et Naive restent
+inchangés. Ces résultats de reproduction ne remplacent aucune valeur
+officielle des tableaux du chapitre~\ref{sec:evaluation}.
+
+La seed 42, les opérations déterministes demandées et TensorFlow 2.21.0 CPU ne
+constituent pas une garantie d'identité entre environnements~\cite{R16}.
+Le message oneDNN des logs ne prouve pas la cause de cette variation.
+Ni tolérance, ni spécification, ni réponse LLM n'ont été modifiées pour obtenir
+une correspondance.
+
+\subsection{Prérequis et actions restantes pour §8.3}
+Un essai futur sur machine vierge exige les snapshots originaux vérifiés, ou
+un téléchargement contrôlé arrêté si ses bytes divergent ; Python 3.12.3,
+les packages listés et leurs versions documentées ; R 4.5.2 avec forecast,
+tseries, FinTS, vars, urca et rugarch ; TensorFlow CPU et les outils notebook.
+Les scripts doivent être les sources réelles, avec les synthèses après les
+exécutions R/Python. Le placeholder R EDA n'est pas une implémentation.
+
+L'essai doit rester dans une nouvelle copie indépendante, avec l'historique et
+les protocoles originaux, archivage des seules sorties copiées et espace Phase 7
+initialement vide. Le checkpoint TRAIN précède le gate authentique, puis le
+gel des modèles et l'ouverture TEST du nouvel évaluateur. L'ancien runtime
+n'est pas une preuve de ce nouveau run. La réponse LLM officielle est chargée,
+préservée et auditée comme document historique.
+
+Le notebook doit terminer toutes ses cellules en mode FULL et conserver outputs,
+logs, packages, hashes et provenance. Son paramètre \texttt{SOURCE\_REVISION}
+doit correspondre au manifeste du nouveau clone ; l'exécuteur PREFLIGHT
+n'injecte pas ce paramètre. Ces étapes sur machine vierge et notebook intégral
+ne sont pas démontrées par l'exécution CLI existante.
+
+Les 17 commandes du run audité cumulent 839,065 s, contre 845,982 s avec le
+checkpoint/gate. Ces sommes excluent une partie des copies et contrôles et ne
+sont pas le temps mural FULL. Le coût neuronal historique de 20,14 minutes est
+un autre run et une autre mesure, pas une promesse de durée.
+
+\subsection{Périmètre documentaire et version LaTeX}
+Le PDF officiel du cahier des charges n'était pas intégré au dépôt lors de
+l'audit automatisé. Cette limite ne signifie ni inexistence du cahier des
+charges ni livrable scientifique obligatoire manquant. La checklist 9A reste
+une preuve datée, avec un rapport alors différé ; le rapport Word/PDF 9B existe
+désormais. Aucun total historique n'est présenté comme une certification
+exhaustive actuelle des clauses du PDF.
+
+Cette version LaTeX est additive : quinze images historiques copiées à SHA
+identique, tableaux affichés depuis les CSV gelés, schéma TikZ documentaire et
+annexe LLM fidèle. Elle ne modifie ni les exports Word/PDF de référence, ni
+les protocoles, ni la recommandation. Le contenu est réparti en fichiers UTF-8
+\texttt{.tex}, figures locales et BibTeX pour faciliter la relecture et la
+portabilité vers un éditeur LaTeX, notamment une adaptation ultérieure dans Prism.
+Aucune intégration de service externe n'a été testée.
+
+\sourcecaption{Sources : \sourcepath{docs/phase9a_reproducibility.md},
+\sourcepath{docs/phase9c_preflight_audit.md},
+\sourcepath{docs/phase9c_full_reproduction.md},
+\sourcepath{docs/phase9c_full_execution_audit.md},
+\sourcepath{docs/phase9c_full_summary.json},
+\sourcepath{docs/final_requirements_checklist.md}. Les audits 9A/9B/9C1
+sont lus comme preuves historiques ; 9C3 fournit l'état de reproduction ultérieur.}

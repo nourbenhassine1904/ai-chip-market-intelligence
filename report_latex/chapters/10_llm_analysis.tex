@@ -1,0 +1,37 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Analyse critique du LLM et audit des affirmations}
+\label{sec:llm}
+
+\subsection{Une interprétation rétrospective structurée}
+
+
+
+Le LLM reçoit les faits après la modélisation et l’évaluation finale. Le prompt officiel demande quatre sections : A, hypothèses de modèles ; B, vulgarisation ; C, interprétation d’investissement simulée ; D, revue critique. Il contient les résultats, leurs sources et les précautions. Le LLM ne propose donc pas une sélection prospective indépendante ; il reformule un dossier déjà connu.
+
+
+
+La section A relie stationnarité, dépendance et variance aux familles étudiées. B traduit les concepts pour un lecteur non technique. C conserve une simulation académique, sans allocation, ordre d’achat/vente ni rendement garanti. D rappelle la portée des non-rejets, les différences prix/risque et la décision Naive. Les formulations correctes contribuent à la synthèse, sans ajouter de résultat scientifique.
+
+
+
+Les analyses de base ont été assistées puis revues par l’équipe. Elles ne constituent pas une évaluation humaine indépendante aveugle. La comparaison est documentaire et rétrospective, sans compétition expérimentale pure humain/IA. L’identité exacte du modèle, sa version et ses métadonnées de génération ne sont pas disponibles. Le commit d’enregistrement ne permet pas d’inférer l’heure de génération.
+
+
+
+\input{tables/llm}
+
+
+
+\subsection{Apports et réserves}
+
+
+
+Les 35 affirmations sont classées supported ; aucune hallucination numérique n’est détectée dans les valeurs matérielles vérifiées. Ce résultat borné ne mesure pas la fiabilité générale d’un LLM. Le prompt fournit lui-même les faits : leur reprise fidèle ne démontre ni prévision autonome ni accès indépendant aux sources. Certaines citations locales sont imprécises, notamment pour la corrélation et la persistance GARCH ; l’audit restitue leurs sources exactes. Un suffixe éditorial figure dans C et reste conservé dans l’artefact officiel.
+
+
+
+La réponse souligne utilement qu’un ARCH-LM non rejeté ne prouve pas la disparition universelle des effets ARCH. Les baselines sont plus détaillées sur les folds, scalers, couvertures de convergence et coûts. Les risques généraux de p-values inventées, de fausse causalité, de surinterprétation et de confiance excessive motivent le contrôle des sources ; ils ne sont pas transformés artificiellement en anomalies détectées dans cette réponse.
+
+
+
+Le prompt et la réponse intégrale sont référencés en annexe D, sans correction de l’original ; la section B vulgarisée est reproduite fidèlement en annexe E comme texte du LLM. L’interprétation financière demeure éducative : l’étude ne teste pas une stratégie de trading et ne fournit pas de mesure de profit après frais.

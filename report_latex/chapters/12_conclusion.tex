@@ -1,0 +1,49 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Discussion, limites et conclusion générale}
+\label{sec:conclusion}
+
+\subsection{Prévoir expliquer et quantifier le risque}
+
+
+
+Le résultat Naive invite à séparer trois critères de réussite. Un modèle peut retirer une autocorrélation de la moyenne, représenter une variance persistante ou décrire une interaction entre actifs, sans réduire suffisamment la perte de prix finale. Les diagnostics ARIMA, les tests multivariés et GARCH remplissent ces objectifs analytiques distincts. Leur utilité scientifique ne se résume donc pas à la première place d’un classement RMSE.
+
+
+
+La persistance du prix et la faible dépendance linéaire des rendements offrent un contexte plausible à la compétitivité du dernier prix observé. Cette interprétation reste une lecture du dossier, sans démonstration d’un mécanisme causal. Le diagnostic défavorable du random walk demeure : une règle de prévision peut être compétitive tout en étant incomplète comme description des innovations. La recommandation combine résultats, seuil pratique, inférence et parcimonie pré-déclarés.
+
+
+
+VAR révèle un contenu prédictif conditionnel du passé de SOXX. Ce résultat n’implique pas automatiquement une meilleure reconstruction du prix NVDA à cinq ou dix séances. Granger teste des restrictions de coefficients de rendement ; le classement final agrège des pertes de prix. GARCH, pour sa part, indique une variance fortement persistante, sans prédire une hausse ou une baisse. Mélanger ces objectifs créerait une conclusion financière que les sorties ne soutiennent pas.
+
+
+
+
+
+\subsection{Portée statistique et limites}
+
+
+
+Le holdout de 220 observations est unique. Les 211 origines fournissent des erreurs chevauchantes, sans être 211 expériences indépendantes. HAC et HLN prennent en compte une forme de dépendance, mais ne neutralisent pas toutes les ruptures, les pertes lourdes ou les limites de comparaisons entre modèles imbriqués. Holm couvre les familles déclarées par horizon, pas toutes les analyses possibles du projet. Aucun résultat ne certifie une supériorité future sur d’autres actifs ou régimes.
+
+
+
+Les réseaux sont évalués avec une seule seed et trois configurations par architecture. La déterminisation demandée à TensorFlow reste liée à l’environnement et ne garantit pas une identité bit à bit entre versions ou plateformes \cite{R16}. Les versions historiques sont enregistrées, mais une partie des packages reste définie par plages et les snapshots/poids locaux ne sont pas distribués dans un clone ordinaire. Yahoo peut réviser ses historiques ; le contrôle des empreintes est indispensable.
+
+
+
+
+
+\subsection{Conclusion générale et prolongements}
+
+
+
+Sur les données et horizons étudiés, aucun challenger ne satisfait la règle complète de remplacement : Naive constitue la recommandation finale de prix. Le dossier conserve néanmoins une analyse cohérente de la stationnarité, des interactions de rendement et du risque conditionnel. Le LLM apporte une synthèse pédagogique qui reste soumise aux sources et à un audit limité.
+
+
+
+Les prolongements envisageables sont des variables exogènes disponibles à l’origine, des approches hybrides, plusieurs seeds et une évaluation de risque indépendante. Prophet pourrait faire l’objet d’un protocole distinct ; il n’a pas été implémenté. Le holdout consommé ne doit pas devenir un jeu de tuning. Enfin, aucune stratégie de trading, allocation ou rentabilité après coûts n’a été testée : les conclusions restent statistiques et académiques.
+
+
+
+Sources : \sourcepath{docs/phase9a_reproducibility.md}, \sourcepath{docs/reproduction_guide.md}, \sourcepath{docs/final_requirements_checklist.md}.

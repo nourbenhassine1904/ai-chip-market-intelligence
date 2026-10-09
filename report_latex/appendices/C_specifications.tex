@@ -1,0 +1,16 @@
+\section{Trajectoires finales et spécifications techniques}
+\label{app:C}
+
+\historicalfigure{phase7_actual_vs_forecasts_h10.png}{Prix réels et prévisions à dix séances}{Trajectoires alignées sur les dates cibles. Source : \sourcepath{outputs/figures/phase7/phase7_actual_vs_forecasts_h10.png}. Périmètre : TEST final, cibles 2025-12-01--2026-10-02, 211 origines par modèle. Unité : prix NVDA en USD ajustés. Les deux panneaux conservent Naive ; les trajectoires montrent les écarts neuronaux sans effacer les résultats défavorables. La proximité de courbes n’établit pas une égalité statistique.}{0.32}
+
+
+
+Le fichier \sourcepath{outputs/tables/phase7_final_predictions.csv} contient les 2110 lignes officielles, soit cinq modèles \(\times\) deux horizons \(\times\) 211 origines. Son empreinte SHA-256 est \sourcepath{c49642b267f443b32649703341e3b83a045df75dc911e496e0d14d22b8ccee50}. Les métriques, DM et intervalles sont référencés plutôt que régénérés. Les événements d’accès, locks et comparaisons d’empreintes figurent dans \sourcepath{outputs/tables/phase7_runtime_audit.json} et les CSV de provenance Phase 7.
+
+
+
+Les spécifications neuronales sont détaillées dans \sourcepath{docs/phase6_protocol.json} et \sourcepath{outputs/tables/phase6_configuration_scores.csv} ; les trois blocs temporels dans \sourcepath{outputs/tables/phase6_temporal_folds.csv} ; les scalers dans \sourcepath{outputs/tables/phase6_scaler_audit.csv}. Les poids locaux restent exclus de Git. TensorFlow 2.21.0 et Keras 3.15.1 ont été utilisés sur CPU ; le protocole demande des opérations déterministes et une seed 42, sans garantie interplateforme.
+
+
+
+Versions classiques historiques : Python 3.12.3, statsmodels 0.15.0, pmdarima 2.1.1, arch 8.0.0 ; R 4.5.2, forecast 9.0.2, tseries 0.10.63, FinTS 0.4.9, vars 1.6.1, urca 1.3.4, rugarch 1.5.6. Les tables \sourcepath{phase*_runtime_versions*.csv} constituent la référence complète et distinguent les étapes.

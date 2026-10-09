@@ -1,0 +1,27 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase7_diebold_mariano.csv
+\begin{table}[!htbp]
+\centering
+\caption{DM bilatéral des challengers contre Naive.}
+\label{tab:dm}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{XrrrX}
+\toprule
+\textbf{A contre Naive} & \textbf{h} & \textbf{p brute} & \textbf{p Holm} & \textbf{Conclusion} \\
+\midrule
+ARIMA(2,1,2) & 5 & 0,96563 & 1 & Non rejet \\
+VAR(9) & 5 & 0,768531 & 1 & Non rejet \\
+LSTM C & 5 & \(1{,}21421\times 10^{-5}\) & \(4{,}85686\times 10^{-5}\) & Naive \\
+GRU C & 5 & 0,000191962 & 0,000575887 & Naive \\
+ARIMA(2,1,2) & 10 & 0,936111 & 1 & Non rejet \\
+VAR(9) & 10 & 0,97401 & 1 & Non rejet \\
+LSTM C & 10 & 0,0747353 & 0,224206 & Non rejet \\
+GRU C & 10 & 0,00124138 & 0,00496551 & Naive \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{outputs/tables/phase7_diebold_mariano.csv}, filtre \sourcepath{model_b=Naive}. Périmètre : 211 pertes appariées par horizon ; p-values sans unité, six chiffres significatifs. « Naive » signifie rejet à 5 \% après Holm et perte moyenne plus faible pour Naive ; « non rejet » ne signifie pas équivalence.
+\end{minipage}
+\end{table}

@@ -1,0 +1,63 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Analyse exploratoire et stationnarité}
+\label{sec:eda}
+
+\subsection{Dispersion et dépendance des rendements}
+
+
+
+\historicalfigure{log_returns.png}{Log-rendements des trois actifs}{Variations quotidiennes des prix ajustés. Source : \sourcepath{outputs/figures/phase2/log_returns.png}. Périmètre : descriptif complet, 2018-01-02--2026-10-02, TEST marqué. Unité : pourcentage logarithmique quotidien. Les amplitudes regroupées suggèrent une dynamique de variance ; elles n’identifient pas une cause économique.}{0.32}
+
+
+
+Les rendements de la figure~\ref{fig:log_returns.png} oscillent autour de niveaux bien plus faibles que leur dispersion. Certaines séquences concentrent de grands mouvements, puis laissent place à des périodes plus calmes. Ce volatility clustering motive des diagnostics de variance ; le graphique seul ne constitue pas un test ARCH. Les statistiques utilisées pour les choix sont celles de TRAIN, même lorsque le contexte visuel couvre l’ensemble de la période.
+
+
+
+\input{tables/descriptive}
+
+
+
+Le tableau~\ref{tab:descriptive} sépare deux dimensions du risque. AMD a la dispersion la plus élevée, tandis que SOXX a la kurtosis excédentaire la plus élevée. Une kurtosis élevée décrit des queues épaisses relatives à la forme normale et ne signifie pas nécessairement une volatilité globale supérieure. Les corrélations de Pearson contemporaines sur TRAIN sont positives : NVDA/AMD 0,685, NVDA/SOXX 0,819 et AMD/SOXX 0,745. Ces associations motivent l’étude multivariée, sans démontrer de causalité.
+
+
+
+Les seuils IQR calculés sur TRAIN repèrent 74 rendements atypiques pour NVDA, 89 pour AMD et 74 pour SOXX. Ils sont tous conservés : une observation atypique peut être une variation de marché réelle. La supprimer automatiquement modifierait précisément le risque que l’étude cherche à décrire.
+
+
+
+Sources : \sourcepath{outputs/tables/phase2_return_correlation_train.csv}, \sourcepath{outputs/tables/phase2_outlier_summary.csv}.
+
+
+
+
+
+\subsection{ACF PACF et tests complémentaires}
+
+
+
+La forte persistance des niveaux apparaît dans l’ACF des prix ajustés, reproduite en annexe A. Après différenciation logarithmique, la dépendance linéaire diminue fortement. L’ACF mesure l’association avec chaque retard ; la PACF isole la contribution d’un retard après les retards intermédiaires. Des pics isolés au-delà de bandes pointwise ne suffisent pas à fixer un ordre : ces bandes ne contrôlent pas simultanément tous les retards inspectés.
+
+
+
+\historicalfigure{nvda_log_return_acf_pacf_train.png}{ACF et PACF des rendements NVDA}{Dépendance après différence logarithmique. Source : \sourcepath{outputs/figures/phase2/nvda_log_return_acf_pacf_train.png}. Périmètre : TRAIN, 2018-01-02--2025-11-14, 1979 rendements valides. Unité : corrélation sans dimension ; retards en séances, bandes ponctuelles à 95 \%.}{0.32}
+
+
+
+ADF teste une racine unitaire ; KPSS teste la stationnarité autour des termes déterministes spécifiés~\cite{R4,R5}. Les niveaux utilisent constante et tendance ; les rendements une constante. L’ADF choisit ses retards par AIC et KPSS par sa règle automatique. Leur lecture conjointe est plus informative qu’un test isolé.
+
+
+
+\input{tables/stationarity}
+
+
+
+Pour NVDA log-prix, ADF donne p=0,461103 et KPSS une borne publiée de 0,01, avec p réelle inférieure. Pour son log-rendement, ADF donne environ 7,91 \(\times\) 10\textsuperscript{-27} ; KPSS publie 0,10, avec p réelle supérieure. Les tests soutiennent d=1 sans prouver un processus exactement I(1). Les bornes KPSS ne sont pas des probabilités exactes ; les zéros numériques ne désignent pas une probabilité mathématiquement nulle.
+
+
+
+La STL robuste sur log-prix TRAIN, de période cinq séances, reste exploratoire. Ses lissages sont bilatéraux à l’intérieur de TRAIN et ne servent pas de features causales. Les différences par jour de semaine et une composante STL visible ne démontrent pas une saisonnalité exploitable. Cette réserve sera reprise dans la décision de ne pas estimer SARIMA.
+
+
+
+Source : \sourcepath{outputs/tables/phase2_stationarity_tests.csv}, \sourcepath{docs/phase2_eda_stationarity.md}.
