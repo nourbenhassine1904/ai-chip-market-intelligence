@@ -1,0 +1,471 @@
+{
+  "source_base_commit": "932abda9de3dfb8b0e9b7d03785b5ca953da43ec",
+  "source_base_tag": "v0.10.0-phase7",
+  "hash_convention": "SHA-256 of UTF-8 text with CRLF normalized to LF; table values displayed with Python format(float(value), .6g); CSV row order preserved; empty cells displayed as NA.",
+  "source_sha256_normalized_lf": {
+    "docs/phase2_eda_stationarity.md": "9bdcab7b2079ea46fa693acddb939e6db6b0c0ad3cb5b7d2a911098866054a7c",
+    "docs/phase3a_arima_identification.md": "74b5aca131c17304df31db86663013d1197ead7f32128a1f417d1fd1f5d88ce5",
+    "docs/phase3b_arima_validation.md": "5dce5fc50d10918c9b9d2e3e22af42e09c32c5f85f978460ed591cf091dbafef",
+    "docs/phase4_var_vecm.md": "cf3b413063ce0dc0f9ce1bd6c32766ae30de717b6aa06f7a071bbd26be16f285",
+    "docs/phase5_garch.md": "f462b190c1b9a5d7429e02103b8a6578ae2928378ebe3e83b9326648902d5cec",
+    "docs/phase5_selection_rule.md": "64f035cfb937ac62cb1b498220ab2b461681d5af9e56a7d8e049322e0cf96d9e",
+    "docs/phase6_lstm_gru.md": "942ce0d4e7c42efed55795d23db12f8aae42b04d6227f8d08a6a1f169a88eb6a",
+    "docs/phase6_selection_rule.md": "a2677f41fbe497cb0e25c546da5e018a630fa2da97945b1209290722860835c2",
+    "docs/phase7_final_evaluation.md": "36c52762b3390a44022a9ceba657409befbcb36e38760ffa10062def84c52a23",
+    "docs/phase7_final_evaluation_protocol.json": "c0d6eb9a7496041dc6cad76ced1607f9e2c47bb53f69e15d7de1e4dfdbac60de",
+    "docs/phase7_final_evaluation_protocol.md": "bd3c481ff986bb0e98a4a31c5a1b3899d645eeb86576635e890bd152571469f7",
+    "llm/human_analysis/phase2_interpretation.md": "9624a725c9e2e03136ab834d09c708a19d9716c0a2e0ed4eab5793c2d2000e34",
+    "llm/human_analysis/phase3a_arima_interpretation.md": "82bfe5311887bf08ec352371f3c28fb210be7a085b21cb83da9224ec39b3caa0",
+    "llm/human_analysis/phase3b_arima_validation_interpretation.md": "e46e4459191c6ed5bd0e7bfdbfd1f17f392219149a03c200ee30a52c8ef2980a",
+    "llm/human_analysis/phase4_var_vecm_interpretation.md": "e1798f5c853fb7735c7bd88b678fa19d8093f8138a805992aa09ae3f2f84c932",
+    "llm/human_analysis/phase5_garch_interpretation.md": "42cf160d321f376d7fbd7999438ef23e6b308a5888f7d6dec1c3227319f5d240",
+    "llm/human_analysis/phase6_lstm_gru_interpretation.md": "5b2ac366c251736d5ca1726d9fbf7fec19c4505c1e212a28cdbae71e3ee3da6d",
+    "llm/human_analysis/phase7_final_evaluation_interpretation.md": "469585c8c41a8593c25a13d3a167e83ec37864a298788a28b98df5be4850ea1d",
+    "outputs/tables/phase2_descriptive_stats.csv": "7cecc5e4f315180e32206d349bf9576ca8902a7330d1316936eb230775cd29d2",
+    "outputs/tables/phase2_return_correlation_train.csv": "566d6c366868bdddefaf3d09bc7049bcf91c1a6b4c98d419f7d1edd3a24701ca",
+    "outputs/tables/phase2_split_metadata.csv": "0e70bc9053f16975735962a1447e81dfa1be53d8e4b81461e9d6e7838dbc7041",
+    "outputs/tables/phase2_stationarity_tests.csv": "615f4197917c2d779df12d2574be4640608b16323abf60ddb8daa3b85a11d254",
+    "outputs/tables/phase3_arima_residual_diagnostics_python.csv": "689cf4565cf48216127ebca5ad29df2459718006c0414d7b8227bf844615367b",
+    "outputs/tables/phase3_arima_residual_diagnostics_r.csv": "59ae88f7f7a6f0bd5d88223287ae5d47d77ede768eaf63314ee580ab409a824b",
+    "outputs/tables/phase3b_arima_validation_metrics.csv": "9e41fb9144bdbf2edba4af7dda106471291a356d8d902af1695a344005d28556",
+    "outputs/tables/phase3b_locked_arima_model.csv": "5d9dc7d49b56a546fc09f07091028d014be736ffa8973e70744a8887613b9a35",
+    "outputs/tables/phase4_granger_causality_comparison.csv": "e31c211c91d25647fe7b3b53ecc25fb647dc6bd32b723f0594826f82c4fdb823",
+    "outputs/tables/phase4_johansen_rank_comparison.csv": "66fa445e59b95fc14db6e5c605dd052b30b87e25d4784bda0bcf2598624121dc",
+    "outputs/tables/phase4_r_python_summary.csv": "53391c79f91a2bf2a0c2a5ff20dcb53ac796e77d4cc1e31d3048477b1af29061",
+    "outputs/tables/phase4_var_fevd.csv": "88edadd4d1e8d278467aef5354b69d008869e81fab0951dc90acaf116f77c10d",
+    "outputs/tables/phase5_garch_model_comparison.csv": "188011cbb1cdb076248ca9e5139900fb4d08d88a90e5bdf87dfd7b2c9658914b",
+    "outputs/tables/phase5_garch_standardized_residual_diagnostics.csv": "770965ab2733d3b9bbabb963796f38a2d74d2a769e32d5f3dffb3e5be59f8830",
+    "outputs/tables/phase5_higher_order_gate.csv": "1d47385c6fd992e3544d44a38f9468ec2f3febbb68776b8df2f32751882b87ca",
+    "outputs/tables/phase5_locked_garch_model.csv": "1212e32151b05c7cd83861d8e3fc103509db6340e459f81de064b75b958cb5e1",
+    "outputs/tables/phase5_volatility_forecast_train_end.csv": "6d5c64bf87d01d4411c44753d59a30324d19915c2b8db7c753f56b405a123ce4",
+    "outputs/tables/phase6_full_train_refits.csv": "3e4ed2ff428bc2ad3853c57e118874ffc9c070d6ce746090207476150838c473",
+    "outputs/tables/phase6_locked_gru.csv": "5b5756622df23f2b5656f1ea538cf638d4b0166443e42feffe90132a4eb63565",
+    "outputs/tables/phase6_locked_lstm.csv": "107e2776a528b1c189b1fe9f04b58df4c475a919efc56167a0cff13ce864c100",
+    "outputs/tables/phase6_model_complexity.csv": "156997b0d9fb1042009c06fc3adf2859856e5b42ae4989fc44ed9f9f91b4d42a",
+    "outputs/tables/phase6_training_runs.csv": "481197cc78d25a9f45b3df54e11398b67e956e26852fe9dbd302c9f28ee2de5f",
+    "outputs/tables/phase6_validation_metrics_summary.csv": "59ec0c308ddbccba9aaeb251328ab1e6fdcc4599cabd12295c94fb18f8c831b5",
+    "outputs/tables/phase7_arima_interval_coverage.csv": "061abbc1deb188e2342648cff8d9d532927ebba97a13fd210da66c4f730fd715",
+    "outputs/tables/phase7_diebold_mariano.csv": "9a3bf3d5997a7b53d41cead164de1892287b446172ffaf2b722ae05f8ce4a9e2",
+    "outputs/tables/phase7_final_metrics.csv": "d0fd0f3c6a77c9e1c10dc338393594fafa213b697a3580ebd2b60b6dccafc97b",
+    "outputs/tables/phase7_final_model_recommendation.csv": "93e252d33e50f3696ab2d9dd330259a295b53fe4cb25101ea3a611c426c354e5",
+    "outputs/tables/phase7_holdout_manifest.csv": "2a069426a4f7080fd50fa23885ae83c62dd86335d0e14bd398b9d28fc110fa60",
+    "outputs/tables/phase7_target_scope_note.csv": "4841379ae90d7c859fbc0064fd9cc57793d03115df3e0435147f45ea89201311"
+  },
+  "tables": [
+    {
+      "id": "split",
+      "source": "outputs/tables/phase2_split_metadata.csv",
+      "columns": [
+        "total_rows",
+        "train_rows",
+        "test_rows",
+        "train_ratio",
+        "test_ratio",
+        "train_start",
+        "train_end",
+        "test_start",
+        "test_end"
+      ],
+      "where": {},
+      "expected_rows": 1
+    },
+    {
+      "id": "stationarity",
+      "source": "outputs/tables/phase2_stationarity_tests.csv",
+      "columns": [
+        "ticker",
+        "series",
+        "test",
+        "p_value",
+        "regression",
+        "decision_5pct",
+        "p_value_bound"
+      ],
+      "where": {
+        "scope": [
+          "train"
+        ]
+      },
+      "expected_rows": 18
+    },
+    {
+      "id": "correlation",
+      "source": "outputs/tables/phase2_return_correlation_train.csv",
+      "columns": [
+        "ticker",
+        "NVDA",
+        "AMD",
+        "SOXX"
+      ],
+      "where": {},
+      "expected_rows": 3
+    },
+    {
+      "id": "tails",
+      "source": "outputs/tables/phase2_descriptive_stats.csv",
+      "columns": [
+        "ticker",
+        "count",
+        "standard_deviation",
+        "kurtosis"
+      ],
+      "where": {
+        "scope": [
+          "train"
+        ],
+        "series": [
+          "Log_Return"
+        ]
+      },
+      "expected_rows": 3
+    },
+    {
+      "id": "arima_r",
+      "source": "outputs/tables/phase3_arima_residual_diagnostics_r.csv",
+      "columns": [
+        "model",
+        "test",
+        "lag",
+        "statistic",
+        "p_value",
+        "df"
+      ],
+      "where": {},
+      "expected_rows": 6
+    },
+    {
+      "id": "arima_python",
+      "source": "outputs/tables/phase3_arima_residual_diagnostics_python.csv",
+      "columns": [
+        "model",
+        "test",
+        "lag",
+        "statistic",
+        "p_value",
+        "df"
+      ],
+      "where": {},
+      "expected_rows": 6
+    },
+    {
+      "id": "validation",
+      "source": "outputs/tables/phase3b_arima_validation_metrics.csv",
+      "columns": [
+        "language",
+        "model",
+        "horizon",
+        "n_forecasts",
+        "failed_fits",
+        "RMSE",
+        "MAE",
+        "MAPE"
+      ],
+      "where": {},
+      "expected_rows": 20
+    },
+    {
+      "id": "arima_lock",
+      "source": "outputs/tables/phase3b_locked_arima_model.csv",
+      "columns": [
+        "model",
+        "order",
+        "drift",
+        "status"
+      ],
+      "where": {},
+      "expected_rows": 1
+    },
+    {
+      "id": "var",
+      "source": "outputs/tables/phase4_r_python_summary.csv",
+      "columns": [
+        "language",
+        "aic_proposed_lag",
+        "bic_proposed_lag",
+        "selected_lag",
+        "stable",
+        "max_companion_modulus",
+        "serial_p20",
+        "serial_p30",
+        "johansen_rank",
+        "vecm_justified"
+      ],
+      "where": {},
+      "expected_rows": 2
+    },
+    {
+      "id": "granger",
+      "source": "outputs/tables/phase4_granger_causality_comparison.csv",
+      "columns": [
+        "cause",
+        "effect",
+        "p_value_r",
+        "p_value_holm_r",
+        "p_value_python",
+        "p_value_holm_python",
+        "decision_agrees"
+      ],
+      "where": {},
+      "expected_rows": 6
+    },
+    {
+      "id": "johansen",
+      "source": "outputs/tables/phase4_johansen_rank_comparison.csv",
+      "columns": [
+        "level_lags",
+        "null_rank_at_most",
+        "trace_statistic_r",
+        "critical_5pct_r",
+        "trace_statistic_python",
+        "critical_5pct_python",
+        "selected_rank_r",
+        "selected_rank_python"
+      ],
+      "where": {
+        "specification": [
+          "main"
+        ]
+      },
+      "expected_rows": 3
+    },
+    {
+      "id": "fevd",
+      "source": "outputs/tables/phase4_var_fevd.csv",
+      "columns": [
+        "response",
+        "shock",
+        "horizon",
+        "variance_share_pct",
+        "order"
+      ],
+      "where": {
+        "language": [
+          "R"
+        ],
+        "response": [
+          "NVDA"
+        ],
+        "horizon": [
+          "20"
+        ]
+      },
+      "expected_rows": 3
+    },
+    {
+      "id": "garch",
+      "source": "outputs/tables/phase5_garch_model_comparison.csv",
+      "columns": [
+        "language",
+        "distribution",
+        "alpha1",
+        "beta1",
+        "persistence",
+        "shape_df_if_applicable",
+        "AIC",
+        "BIC",
+        "tail_quantile_rmse"
+      ],
+      "where": {},
+      "expected_rows": 4
+    },
+    {
+      "id": "post_arch",
+      "source": "outputs/tables/phase5_garch_standardized_residual_diagnostics.csv",
+      "columns": [
+        "language",
+        "model",
+        "lag",
+        "p_value",
+        "p_value_holm_variance",
+        "reject_for_gate"
+      ],
+      "where": {
+        "test": [
+          "ARCH-LM"
+        ]
+      },
+      "expected_rows": 12
+    },
+    {
+      "id": "garch_lock",
+      "source": "outputs/tables/phase5_locked_garch_model.csv",
+      "columns": [
+        "locked_garch_specification",
+        "distribution",
+        "selection_reason"
+      ],
+      "where": {},
+      "expected_rows": 1
+    },
+    {
+      "id": "volatility",
+      "source": "outputs/tables/phase5_volatility_forecast_train_end.csv",
+      "columns": [
+        "language",
+        "model",
+        "origin_date",
+        "horizon",
+        "forecast_variance",
+        "forecast_sigma",
+        "locked"
+      ],
+      "where": {
+        "horizon": [
+          "10"
+        ]
+      },
+      "expected_rows": 4
+    },
+    {
+      "id": "lstm",
+      "source": "outputs/tables/phase6_locked_lstm.csv",
+      "columns": [
+        "model",
+        "configuration",
+        "lookback",
+        "units",
+        "dropout",
+        "trainable_parameters",
+        "average_RMSE_ratio",
+        "seed"
+      ],
+      "where": {},
+      "expected_rows": 1
+    },
+    {
+      "id": "gru",
+      "source": "outputs/tables/phase6_locked_gru.csv",
+      "columns": [
+        "model",
+        "configuration",
+        "lookback",
+        "units",
+        "dropout",
+        "trainable_parameters",
+        "average_RMSE_ratio",
+        "seed"
+      ],
+      "where": {},
+      "expected_rows": 1
+    },
+    {
+      "id": "neural_validation",
+      "source": "outputs/tables/phase6_validation_metrics_summary.csv",
+      "columns": [
+        "model",
+        "configuration",
+        "horizon",
+        "n_forecasts",
+        "RMSE",
+        "MAE",
+        "MAPE"
+      ],
+      "where": {
+        "configuration": [
+          "C",
+          "baseline"
+        ]
+      },
+      "expected_rows": 6
+    },
+    {
+      "id": "neural_cost",
+      "source": "outputs/tables/phase6_model_complexity.csv",
+      "columns": [
+        "model",
+        "configuration",
+        "total_training_seconds",
+        "median_best_epoch"
+      ],
+      "where": {
+        "configuration": [
+          "C"
+        ]
+      },
+      "expected_rows": 2
+    },
+    {
+      "id": "refits",
+      "source": "outputs/tables/phase6_full_train_refits.csv",
+      "columns": [
+        "model",
+        "configuration",
+        "train_rows",
+        "refit_epochs",
+        "training_seconds"
+      ],
+      "where": {},
+      "expected_rows": 2
+    },
+    {
+      "id": "holdout",
+      "source": "outputs/tables/phase7_holdout_manifest.csv",
+      "columns": [
+        "train_rows",
+        "test_rows",
+        "test_first_date",
+        "test_last_date",
+        "common_origins",
+        "first_test_access_utc"
+      ],
+      "where": {},
+      "expected_rows": 1
+    },
+    {
+      "id": "final_metrics",
+      "source": "outputs/tables/phase7_final_metrics.csv",
+      "columns": [
+        "model",
+        "horizon",
+        "n_forecasts",
+        "MSE",
+        "RMSE",
+        "MAE",
+        "MAPE",
+        "rank_RMSE"
+      ],
+      "where": {},
+      "expected_rows": 10
+    },
+    {
+      "id": "dm",
+      "source": "outputs/tables/phase7_diebold_mariano.csv",
+      "columns": [
+        "model_a",
+        "model_b",
+        "horizon",
+        "mean_loss_diff",
+        "dm_statistic",
+        "p_value",
+        "p_value_holm_if_applicable",
+        "hac_lag",
+        "decision_5pct"
+      ],
+      "where": {},
+      "expected_rows": 10
+    },
+    {
+      "id": "intervals",
+      "source": "outputs/tables/phase7_arima_interval_coverage.csv",
+      "columns": [
+        "horizon",
+        "95pct_coverage",
+        "mean_interval_width",
+        "nominal_coverage"
+      ],
+      "where": {},
+      "expected_rows": 2
+    },
+    {
+      "id": "recommendation",
+      "source": "outputs/tables/phase7_final_model_recommendation.csv",
+      "columns": [
+        "final_recommended_price_model",
+        "rule",
+        "reason"
+      ],
+      "where": {},
+      "expected_rows": 1
+    }
+  ]
+}
