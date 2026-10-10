@@ -22,7 +22,9 @@
 \hypersetup{colorlinks=true,linkcolor=academicblue,citecolor=academicblue,urlcolor=academicblue,
   pdftitle={AI-Chip Market Intelligence},pdfauthor={Équipe du projet - à compléter}}
 \urlstyle{tt}
-\newcommand{\sourcepath}[1]{\nolinkurl{#1}}
+% Prefer breaks at path/file separators, keeping name fragments readable.
+\newcommand{\sourcepath}[1]{\begingroup\Urlmuskip=0mu plus 2mu\def\UrlBreaks{\do\/\do\_\do\-\do\.}\nolinkurl{#1}\endgroup}
+\newcommand{\sourcehash}[1]{\nolinkurl{#1}}
 \newcommand{\sourcecaption}[1]{\par\smallskip{\footnotesize #1\par}}
 \newcommand{\historicalfigure}[4]{%
   \begin{figure}[!htbp]

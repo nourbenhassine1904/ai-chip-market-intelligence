@@ -22,11 +22,11 @@ Les scalers X et y sont ajustés sur le préfixe TRAIN de chaque fold ; le scale
 
 
 
-\historicalfigure{phase6_lstm_loss_curve.png}{Apprentissage de LSTM C}{Loss LSTM C, fold 3. Source : \sourcepath{outputs/figures/phase6/phase6_lstm_loss_curve.png}. Périmètre : optimisation et validation d’arrêt internes au TRAIN du fold 3, terminé le 2025-02-05 ; epochs sans date de marché. Unité : MSE des log-prix standardisés, sans unité. Le bloc externe et TEST ne pilotent pas l’arrêt.}{0.25}
 
 
 
-La chute initiale de loss de la figure~\ref{fig:phase6_lstm_loss_curve.png} indique un apprentissage de l’objectif interne. La remontée tardive de la loss d’arrêt motive la restauration des poids de l’epoch 38. Elle ne démontre pas une bonne généralisation : celle-ci doit être jugée sur les origines externes.
+
+La chute initiale de loss de la figure~\ref{fig:phase6_lstm_loss_curve.png} (annexe F) indique un apprentissage de l’objectif interne. La remontée tardive de la loss d’arrêt motive la restauration des poids de l’epoch 38. Elle ne démontre pas une bonne généralisation : celle-ci doit être jugée sur les origines externes.
 
 
 
@@ -44,7 +44,7 @@ La grille fixe A : fenêtre 20, 32 unités, dropout 0,10 ; B : fenêtre 60, 32 u
 
 
 
-\historicalfigure{phase6_gru_loss_curve.png}{Apprentissage de GRU C}{Loss GRU C, fold 3. Source : \sourcepath{outputs/figures/phase6/phase6_gru_loss_curve.png}. Périmètre : TRAIN interne du fold 3, terminé le 2025-02-05. Unité : MSE des log-prix standardisés ; axe horizontal en epochs. 48 epochs effectuées, poids de l’epoch 38 restaurés, comme pour LSTM.}{0.25}
+
 
 
 
@@ -53,6 +53,10 @@ La figure~\ref{fig:phase6_gru_loss_curve.png} montre elle aussi une stabilisatio
 
 
 C est retenu séparément pour LSTM et GRU. LSTM C contient 18570 paramètres, GRU C 14282. Leurs ratios moyens RMSE de sélection valent respectivement 2,319180 et 1,651779, donc plus de deux fois et environ une fois et demie la référence selon ce score interne. Les deux réseaux perdent face à Naive en RMSE et MAE poolées aux deux horizons. GRU est meilleur que LSTM dans cette validation ; cela ne constitue pas une supériorité architecturale générale.
+
+\input{tables/neural_validation}
+
+Le tableau~\ref{tab:neural_validation} porte exclusivement sur les blocs externes des trois folds à l’intérieur de TRAIN (Phase 6), et non sur la loss d’arrêt interne. Ses erreurs poolées diffèrent du score de sélection moyen des ratios par fold. Les résultats TEST Phase 7 du chapitre~\ref{sec:evaluation} concernent une autre période et 211 origines communes : les deux évaluations ne sont pas interchangeables.
 
 
 

@@ -1,6 +1,11 @@
 \section{Diagnostics univariés complémentaires}
 \label{app:A}
 
+\historicalfigure{nvda_log_price_stl_train.png}{Décomposition STL robuste du log-prix NVDA}{Série observée, tendance, composante saisonnière et résidus, dans cet ordre. Source : \sourcepath{outputs/figures/phase2/nvda_log_price_stl_train.png}. Périmètre : TRAIN, 2018-01-02--2025-11-14 ; période imposée de cinq séances, robust=True. Unité : logarithme naturel du prix ajusté exprimé en USD ; composantes additives sur cette échelle, dates de marché en abscisse. Les échelles verticales diffèrent ; la composante extraite ne prouve pas une saisonnalité exploitable.}{0.43}
+
+\FloatBarrier
+\clearpage
+
 \historicalfigure{nvda_adj_close_acf_pacf_train.png}{ACF et PACF du prix ajusté}{Persistance des niveaux NVDA. Source : \sourcepath{outputs/figures/phase2/nvda_adj_close_acf_pacf_train.png}. Périmètre : TRAIN, 2018-01-02--2025-11-14. Unité : corrélation sans dimension ; retards en séances. La décroissance lente motive l’analyse de stationnarité, sans établir une structure autorégressive exploitable en niveau.}{0.32}
 
 

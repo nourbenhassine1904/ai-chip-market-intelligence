@@ -1,9 +1,9 @@
 {
   "scope": "Documentary copies/displays from frozen repository; no model or statistical test rerun",
   "canonical_report": "report/rapport_final.md",
-  "historical_figures": 15,
+  "historical_figures": 17,
   "new_process_figure": "figures/pipeline.tex (TikZ, documentary synthesis)",
-  "tables_count": 14,
+  "tables_count": 15,
   "figures": [
     {
       "caption_original": "Figure 1 — Trajectoires comparables en base 100",
@@ -94,6 +94,18 @@
       "source": "outputs/figures/phase7/phase7_actual_vs_forecasts_h10.png",
       "copy": "figures/phase7_actual_vs_forecasts_h10.png",
       "sha256": "4c68e4b238c5bb02b98b3f2bf286b3419c940c4b43e991ef316d8887b87394dc"
+    },
+    {
+      "caption_original": "Décomposition STL du log-prix NVDA sur TRAIN",
+      "source": "outputs/figures/phase2/nvda_log_price_stl_train.png",
+      "copy": "figures/nvda_log_price_stl_train.png",
+      "sha256": "553d9b088457faf1840c86d01e5ce8a7940ba243bd618ca516be0787a3d1c1d5"
+    },
+    {
+      "caption_original": "Corrélations glissantes sur 60 séances TRAIN",
+      "source": "outputs/figures/phase2/rolling_correlations_60d.png",
+      "copy": "figures/rolling_correlations_60d.png",
+      "sha256": "252162757ff6844d4ff59b1fdd71810fe8784722ccfed98adb8ae41203ded3f6"
     }
   ],
   "tables": [
@@ -825,6 +837,64 @@
       "caption": "Configurations verrouillées et score de sélection interne. Ratio : moyenne des six ratios RMSE modèle/Naive par fold et horizon ; ce n'est pas le ratio des RMSE poolées. Aucune métrique holdout n'est utilisée."
     },
     {
+      "name": "neural_validation",
+      "sources": [
+        "outputs/tables/phase6_validation_metrics_summary.csv"
+      ],
+      "headers": [
+        "Candidat",
+        "h",
+        "n",
+        "RMSE",
+        "MAE"
+      ],
+      "displayed_rows": [
+        [
+          "Naive",
+          "5",
+          "561",
+          "7,372",
+          "5,584"
+        ],
+        [
+          "LSTM C",
+          "5",
+          "561",
+          "15,253",
+          "11,797"
+        ],
+        [
+          "GRU C",
+          "5",
+          "561",
+          "10,516",
+          "8,124"
+        ],
+        [
+          "Naive",
+          "10",
+          "561",
+          "10,052",
+          "7,758"
+        ],
+        [
+          "LSTM C",
+          "10",
+          "561",
+          "15,071",
+          "11,397"
+        ],
+        [
+          "GRU C",
+          "10",
+          "561",
+          "13,269",
+          "10,465"
+        ]
+      ],
+      "caption": "Validation temporelle dans TRAIN (Phase 6), distincte du TEST Phase 7. Erreurs poolées sur trois folds, 561 prévisions par candidat et horizon ; h en séances, RMSE/MAE en USD ajustés, trois décimales. Les origines chevauchantes ne sont pas indépendantes."
+    },
+    {
       "name": "recommendation",
       "sources": [
         "outputs/tables/phase7_recommendation_checks.csv",
@@ -869,6 +939,28 @@
         ]
       ],
       "caption": "Application de la règle finale pré-déclarée. Ratios sans unité, six décimales. Naive est le benchmark, pas un challenger ; aucun challenger éligible. Modèle recommandé : Naive."
+    }
+  ],
+  "document_copies": [
+    {
+      "source": "llm/prompts/phase8_official_llm_prompt.md",
+      "copy": "documents/llm/prompts/phase8_official_llm_prompt.md",
+      "sha256": "eb1d62cd1cb9363b85ab80452fb440ff800644652ba5b7edc5f5c183d90426db"
+    },
+    {
+      "source": "llm/responses/phase8_official_llm_response.md",
+      "copy": "documents/llm/responses/phase8_official_llm_response.md",
+      "sha256": "eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4"
+    },
+    {
+      "source": "llm/human_analysis/phase8_human_vs_llm_comparison.md",
+      "copy": "documents/llm/human_analysis/phase8_human_vs_llm_comparison.md",
+      "sha256": "26d6e3141f535d736665a4cec91bc2d78469139a2c3a1e787c6de47c7724681b"
+    },
+    {
+      "source": "llm/human_analysis/phase8_hallucination_audit.csv",
+      "copy": "documents/llm/human_analysis/phase8_hallucination_audit.csv",
+      "sha256": "e7b10cc9a48dcfb4260e015f3314518d0a162c172358ae410852f7ace261aad4"
     }
   ],
   "source_files": [
@@ -1009,6 +1101,14 @@
       "sha256": "e7b10cc9a48dcfb4260e015f3314518d0a162c172358ae410852f7ace261aad4"
     },
     {
+      "path": "llm/human_analysis/phase8_human_vs_llm_comparison.md",
+      "sha256": "26d6e3141f535d736665a4cec91bc2d78469139a2c3a1e787c6de47c7724681b"
+    },
+    {
+      "path": "llm/prompts/phase8_official_llm_prompt.md",
+      "sha256": "eb1d62cd1cb9363b85ab80452fb440ff800644652ba5b7edc5f5c183d90426db"
+    },
+    {
       "path": "llm/responses/phase8_official_llm_response.md",
       "sha256": "eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4"
     },
@@ -1025,8 +1125,16 @@
       "sha256": "9c14d29728fdca59859a5c93e8fe7dbf1d319a750e7c39a5b8c780186ac0e475"
     },
     {
+      "path": "outputs/figures/phase2/nvda_log_price_stl_train.png",
+      "sha256": "553d9b088457faf1840c86d01e5ce8a7940ba243bd618ca516be0787a3d1c1d5"
+    },
+    {
       "path": "outputs/figures/phase2/nvda_log_return_acf_pacf_train.png",
       "sha256": "96f6db44d4e342b5bdfa1364b4284f4221cc80969c06e73f8ac93f92d2ae4cd5"
+    },
+    {
+      "path": "outputs/figures/phase2/rolling_correlations_60d.png",
+      "sha256": "252162757ff6844d4ff59b1fdd71810fe8784722ccfed98adb8ae41203ded3f6"
     },
     {
       "path": "outputs/figures/phase3/nvda_arima_checkresiduals_r.png",
@@ -1081,12 +1189,20 @@
       "sha256": "69091847c78e4d197f2cde10949222702ab3eb33795c6c3814d548072e51d25d"
     },
     {
+      "path": "outputs/tables/phase2_rolling_correlation_summary.csv",
+      "sha256": "6c5ec69451915e5f7c4d2f98db876edeff98ded5aefd748d529a633f2fc1ee63"
+    },
+    {
       "path": "outputs/tables/phase2_split_metadata.csv",
       "sha256": "c63e071265433fbc47597940a69c230fcf07ddb2a7d8a963106b4fd25fb7afe5"
     },
     {
       "path": "outputs/tables/phase2_stationarity_summary.csv",
       "sha256": "f4c3feaefc171d6b153a2b17de5eaa3f00582641230131aa65fc8ee84cfea863"
+    },
+    {
+      "path": "outputs/tables/phase2_weekday_returns.csv",
+      "sha256": "0186098829e61600e4ae6147012948f2b0bf656d9f37c93bae9bb2824cbd5cc9"
     },
     {
       "path": "outputs/tables/phase3_arima_diagnostic_summary.csv",
@@ -1123,6 +1239,10 @@
     {
       "path": "outputs/tables/phase6_locked_lstm.csv",
       "sha256": "dcf9b950ab59a48ff99db4dc221165ca1089d213fd5ff632b5104c1e6ed6441f"
+    },
+    {
+      "path": "outputs/tables/phase6_validation_metrics_summary.csv",
+      "sha256": "3890d9904e7a70595d60a6be5e02872646069a7a79cd9acf5d70a08d7331dda4"
     },
     {
       "path": "outputs/tables/phase7_diebold_mariano.csv",

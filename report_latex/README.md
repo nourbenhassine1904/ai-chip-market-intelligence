@@ -13,9 +13,10 @@ n'est exécuté par les outils de ce dossier.
 | `preamble.tex` | Typographie, marges, couleurs et macros |
 | `frontmatter/` | Couverture, résumé et références internes |
 | `chapters/01_…tex` à `12_…tex` | Contenu scientifique réparti par thème |
-| `appendices/A_…tex` à `E_…tex` | Diagnostics, spécifications et texte original du LLM |
-| `figures/` | Quinze copies PNG historiques et schéma natif `pipeline.tex` |
-| `tables/` | Quatorze tableaux composés depuis les CSV gelés |
+| `appendices/A_…tex` à `F_…tex` | Diagnostics, spécifications, texte original du LLM et courbes d'apprentissage |
+| `figures/` | Dix-sept copies PNG historiques et schéma natif `pipeline.tex` |
+| `tables/` | Quinze tableaux composés depuis les CSV gelés |
+| `documents/llm/` | Quatre documents LLM complets, copies identiques aux originaux |
 | `references.bib` | Dix-sept sources primaires déjà citées dans le rapport canonique |
 | `sources_manifest.json` | Provenance, cellules affichées et empreintes SHA-256 |
 | `rapport_final_latex.pdf` | Export de cette version LaTeX |
@@ -28,9 +29,12 @@ Employer `\label`, `\ref` et `\cite` pour garder une numérotation automatique.
 Les tableaux sont des présentations des valeurs archivées, avec leurs arrondis,
 unités, périmètres et sources. Le panneau ARIMA Python indique les prévisions
 manquantes ; il ne remplace pas les comparaisons appariées du protocole.
-Le quinzième tableau, écrit dans le chapitre 11, distingue les preuves de
-reproduction 9C3. Les quinze figures historiques sont conservées en corps ou
-annexes, et le schéma TikZ constitue la seizième figure.
+Un seizième tableau, écrit dans le chapitre 11, distingue les preuves de
+reproduction 9C3. Les dix-sept figures historiques sont conservées en corps ou
+annexes, et le schéma TikZ constitue la dix-huitième figure. Les compléments
+STL et corrélations glissantes sont en annexes A/B ; les courbes d'apprentissage
+LSTM/GRU sont en annexe F. Le tableau de validation Phase 6 du chapitre 8
+présente Naive, LSTM C et GRU C sur TRAIN et se distingue du TEST Phase 7.
 
 Ne pas retoucher les métriques pour améliorer la mise en page. Une adaptation
 de présentation des tableaux passe par `prepare_assets.py`, puis par une
@@ -77,8 +81,8 @@ Ces commandes requièrent le dépôt complet et ses artefacts gelés :
 ```
 
 Le vérificateur contrôle les chemins locaux, tous les fichiers TeX inclus,
-les labels, les dix-sept citations, les quinze PNG, les quatorze tableaux,
-les SHA des sources et le texte de l'annexe E. Il n'est pas un audit indépendant
+les labels, les dix-sept citations, les dix-sept PNG, les quinze tableaux,
+les SHA des sources, les quatre copies LLM complètes et le texte de l'annexe E. Il n'est pas un audit indépendant
 de chaque clause du PDF officiel du cahier des charges.
 
 Pour recréer uniquement les copies et tableaux documentaires depuis les
@@ -88,7 +92,8 @@ sources actuelles, après revue explicite de leur intégrité :
 .\report_latex\build_latex_report.ps1 -RefreshAssets
 ```
 
-Cette option réécrit les copies PNG, les tableaux, l'extrait texte du LLM et
+Cette option contrôle d'abord les empreintes déjà enregistrées, puis réécrit
+les copies PNG, les tableaux, les quatre documents LLM complets, l'extrait texte du LLM et
 le manifeste **dans ce dossier seulement**. Elle ne valide pas de nouvelles
 sorties scientifiques. Le build normal conserve les empreintes déjà enregistrées.
 
@@ -110,10 +115,12 @@ Avec MiKTeX, ajouter `--disable-installer` à chaque commande pdfLaTeX pour
 conserver l'absence d'installation automatique. Les auxiliaires sont ignorés
 par Git. Cette voie autonome ne contrôle pas les SHA des sources du dépôt.
 
-La structure standard `.tex` + BibTeX + PNG locaux + TikZ facilite une future
-adaptation dans Prism AI ou un autre éditeur LaTeX. Aucun import, compte,
-compilation ou travail collaboratif dans Prism n'a été testé ; une revue de
-cette intégration reste à faire dans l'environnement cible.
+L'utilisateur a réellement importé et compilé la version précédente dans
+Prism AI et a signalé **29 pages affichées**. Cette preuve concerne la version
+avant la revue corrective du 10 octobre 2026. La nouvelle révision est compilée
+et contrôlée localement avec MiKTeX ; une nouvelle compilation et une relecture
+dans Prism restent à effectuer après réimport. Aucune validation de toutes les
+pages de cette révision dans Prism ni du travail collaboratif n'est revendiquée.
 
 ## Limites scientifiques et documentaires
 
@@ -126,6 +133,10 @@ cette intégration reste à faire dans l'environnement cible.
   par l'équipe constituent le périmètre de cette version.
 - L'annexe E identifie le texte original du LLM. Son extrait exact est dans
   `appendices/llm_section_b_original.txt` ; la réponse officielle reste intacte.
+- Remettre tout `report_latex/` sans `_build/`, y compris `documents/llm/` :
+  prompt, réponse, comparaison humaine et audit des hallucinations complets.
+  Leurs chemins et empreintes sont contrôlés par le
+  manifeste ; le PDF seul ne contient que l'extrait vulgarisé et les références.
 - Les champs de couverture doivent être complétés avant remise. La fidélité
   scientifique et la mise en page doivent être relues après toute édition.
 

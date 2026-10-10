@@ -24,6 +24,8 @@ Le tableau~\ref{tab:descriptive} sépare deux dimensions du risque. AMD a la dis
 
 Les seuils IQR calculés sur TRAIN repèrent 74 rendements atypiques pour NVDA, 89 pour AMD et 74 pour SOXX. Ils sont tous conservés : une observation atypique peut être une variation de marché réelle. La supprimer automatiquement modifierait précisément le risque que l’étude cherche à décrire.
 
+La figure~\ref{fig:rolling_correlations_60d.png} en annexe B estime les corrélations contemporaines sur des fenêtres rétrospectives de 60 séances TRAIN. Leurs moyennes valent 0,669 (NVDA/AMD), 0,796 (NVDA/SOXX) et 0,738 (AMD/SOXX) ; les plages respectives sont [0,154 ; 0,936], [0,506 ; 0,956] et [0,348 ; 0,943]. Une corrélation globale masque donc des variations temporelles. Les fenêtres se chevauchent et leurs estimations ne sont pas indépendantes ; elles ne démontrent ni causalité économique ni gain prédictif du VAR. Source : \sourcepath{outputs/tables/phase2_rolling_correlation_summary.csv}.
+
 
 
 Sources : \sourcepath{outputs/tables/phase2_return_correlation_train.csv}, \sourcepath{outputs/tables/phase2_outlier_summary.csv}.
@@ -56,8 +58,12 @@ Pour NVDA log-prix, ADF donne p=0,461103 et KPSS une borne publiée de 0,01, ave
 
 
 
-La STL robuste sur log-prix TRAIN, de période cinq séances, reste exploratoire. Ses lissages sont bilatéraux à l’intérieur de TRAIN et ne servent pas de features causales. Les différences par jour de semaine et une composante STL visible ne démontrent pas une saisonnalité exploitable. Cette réserve sera reprise dans la décision de ne pas estimer SARIMA.
+\subsection{Lecture et limites de la décomposition STL}
+
+La figure~\ref{fig:nvda_log_price_stl_train.png} en annexe A décompose le log-prix NVDA TRAIN selon \(y_t=T_t+S_t+R_t\), avec une période imposée de cinq séances et une estimation robuste. La série observée combine une hausse de long terme et des replis, notamment fin 2018 et en 2022. La tendance lissée restitue ces mouvements dominants en atténuant les fluctuations rapides. La composante saisonnière oscille autour de zéro avec une amplitude faible relativement aux niveaux et variable dans le temps. Les résidus, différence entre observation, tendance et saisonnalité, présentent des pics et une dispersion irrégulière ; ils ne sont pas démontrés comme bruit blanc par cette figure.
+
+Cette lecture concorde avec les diagnostics Phase 2 : ADF/KPSS soutiennent la différenciation des log-prix, tandis que l’ACF des rendements au carré et les extrêmes conservés motivent l’étude de la variance. La robustesse du lissage ne supprime ni les ruptures ni les chocs. Ses filtres bilatéraux utilisent des observations ultérieures à chaque date à l’intérieur de TRAIN : les composantes restent descriptives et ne servent pas de features causales. Cinq séances ne coïncident pas toujours avec une semaine calendaire en présence de jours fériés. La période est imposée, les différences par jour de semaine sont descriptives et aucun test Phase 2 n’établit un cycle stable exploitable. STL ne suffit donc pas à justifier SARIMA ; la décision gelée est reprise au chapitre~\ref{sec:arima}.
 
 
 
-Source : \sourcepath{outputs/tables/phase2_stationarity_tests.csv}, \sourcepath{docs/phase2_eda_stationarity.md}.
+Sources : \sourcepath{outputs/tables/phase2_stationarity_tests.csv}, \sourcepath{outputs/tables/phase2_weekday_returns.csv}, \sourcepath{docs/phase2_eda_stationarity.md}.

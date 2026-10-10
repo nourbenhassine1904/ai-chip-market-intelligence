@@ -1,6 +1,9 @@
 # Phase 9D — Rapport LaTeX modulaire
 
 Audit de création finalisé le **10 octobre 2026** sur `feature/latex-report`.
+Les sections « Livrables créés » à « Validations » ci-dessous décrivent la
+création initiale. La revue corrective finale du même jour est documentée
+séparément en fin d'audit ; ses chiffres et preuves actualisent cette version.
 Point de départ : `24ab075f8117266301e875cb2db2785038d6f822`, identique au
 HEAD de `main` au début de cette branche. Travail additif ; commit local uniquement.
 
@@ -146,11 +149,165 @@ La suite pytest complète n'a pas été relancée pour cette évolution document
 - Le projet TeX utilise exclusivement des chemins locaux relatifs, PNG et BibTeX.
   La compilation directe de `main.tex` ne nécessite pas les scripts Python/R.
   Les contrôles SHA et la préparation documentaire requièrent le dépôt complet.
-- La structure modulaire permet une adaptation ultérieure dans Prism AI.
-  Aucun import ou fonctionnement du service Prism n'a été testé.
+- L'utilisateur a réellement importé et compilé le projet initial dans Prism AI,
+  avec **29 pages affichées**, selon son retour dans la mission corrective.
+  Cette preuve concerne la version initiale ; elle ne valide pas toutes les
+  pages après les modifications ultérieures ni le fonctionnement collaboratif.
 - Les champs de couverture restent à compléter avant remise ; les autres
   limites scientifiques sont celles exposées dans les résultats gelés et 9C3.
 
 Seuls `report_latex/` et ce document sont ajoutés au commit de Phase 9D.
 `main` reste au point de départ ci-dessus. Aucune publication, PR, fusion ou
 création de tag n'est effectuée dans cette mission.
+
+
+## Revue corrective finale — 10 octobre 2026
+
+Cette révision répond à la mission pédagogique finale sur `feature/latex-report`.
+Aucun entraînement, aucune phase statistique, aucune génération LLM ni accès
+de scoring TEST n'a été relancé. Les résultats et décisions gelés sont conservés.
+
+### Compléments scientifiques documentaires
+
+- Chapitre 4 : lecture des quatre panneaux STL NVDA, équation additive,
+  tendance dominante, faible amplitude saisonnière variable et pics résiduels.
+  L'interprétation s'appuie sur la figure réellement examinée et les diagnostics
+  Phase 2 (ADF/KPSS, rendements au carré, extrêmes et jours de semaine).
+  Période de cinq séances imposée, jours fériés, filtres bilatéraux et absence de
+  preuve de cycle stable expliquent pourquoi STL ne justifie pas SARIMA.
+- Annexe A : copie exacte de `nvda_log_price_stl_train.png`, figure 10,
+  page physique 26 ; quatre panneaux, échelles, unité, périmètre et source conservés.
+- Chapitre 4 / annexe B : `rolling_correlations_60d.png`, figure 13,
+  page physique 28. Moyennes TRAIN 0,669 / 0,796 / 0,738 et plages
+  [0,154 ; 0,936] / [0,506 ; 0,956] / [0,348 ; 0,943], arrondies à trois
+  décimales depuis `phase2_rolling_correlation_summary.csv`. Fenêtres passées
+  de 60 séances, chevauchement et absence d'identification causale explicités.
+- Chapitre 8 : `tables/neural_validation.tex`, tableau 9, page physique 17,
+  compare Naive, LSTM C et GRU C à h=5/10. RMSE et MAE en USD ajustés, 561
+  prévisions par candidat/horizon, valeurs arrondies à trois décimales depuis
+  `phase6_validation_metrics_summary.csv`. Validation sur trois folds externes
+  dans TRAIN, distincte de la loss d'arrêt et du TEST Phase 7 (211 origines).
+- Les courbes LSTM/GRU existantes sont déplacées en annexe F, page 33,
+  avec leurs légendes, unités, sources et références conservées.
+- Chapitre 10 : gain de clarté documentaire, absence de gain de temps quantifié,
+  contrôle humain nécessaire et limites de l'interprétation financière simulée.
+  Aucune conclusion financière ni métrique nouvelle n'est introduite.
+
+### Paquet LLM et provenance
+
+Les quatre fichiers complets accompagnent désormais le dossier autonome :
+
+- `report_latex/documents/llm/prompts/phase8_official_llm_prompt.md`
+- `report_latex/documents/llm/responses/phase8_official_llm_response.md`
+- `report_latex/documents/llm/human_analysis/phase8_human_vs_llm_comparison.md`
+- `report_latex/documents/llm/human_analysis/phase8_hallucination_audit.csv`
+
+Copies identiques octet par octet aux originaux ; le manifeste conserve leurs
+sources, destinations et SHA-256. Il couvre maintenant **80 sources**, 17 PNG,
+15 tableaux composés depuis les CSV et les quatre copies LLM intégrales.
+La réponse officielle garde le SHA-256
+`eecb0de3e0dd8e152e93db70ff71f9dad87024b7b2f3e1bee1ede05225f6f3b4`.
+L'extrait B affiché en annexe E est également vérifié sans correction du texte.
+La remise doit inclure tout `report_latex/` sans `_build/`, et non le PDF seul.
+Le rafraîchissement documentaire refuse les changements des sources déjà gelées.
+
+### Pagination, rendu et Prism
+
+| Version | Total physique | Hors annexes | Annexes |
+|---|---:|---:|---:|
+| Avant correction (MiKTeX et retour utilisateur Prism) | 29 | 25 | 4 |
+| Après correction (MiKTeX, PDF final) | 33 | 25 | 8 |
+
+Convention inchangée : couverture, sommaire, résumé et bibliographie inclus
+dans les 25 pages hors annexes ; corps scientifique pages physiques 4–24,
+bibliographie page 25, annexes pages 26–33. L'exigence de 15–25 pages hors
+annexes est respectée sans modifier les résultats. Les chemins préfèrent les
+coupures aux séparateurs ; les empreintes disposent d'une macro distincte.
+Les cinq tableaux déjà présents retouchés conservent exactement leurs cellules
+et ne changent que la composition des chemins sources. Les attributs Git locaux
+déclarent les PDF/PNG binaires pour préserver leurs octets. Les copies LLM
+conservent leurs fins de ligne originales (dont CRLF) et leurs lignes finales ;
+le contrôle Git reconnaît ces conventions uniquement pour ces copies fidèles.
+
+Compilation finale : pdfLaTeX, BibTeX et deux nouvelles passes pdfLaTeX,
+quatre codes de retour zéro, **aucun Overfull**, référence/citation non résolue
+ou caractère manquant. Les 33 pages ont été rendues à 110 dpi et examinées
+visuellement ; les nouvelles figures, le tableau TRAIN et les annexes sont lisibles.
+Après la dernière correction de la mention Prism au chapitre 11, les 33 pages
+ont été rendues à nouveau : seule la page 23 change, et elle est relue.
+
+SHA-256 du PDF final contrôlé : `d0e00bce511136d34f35d478efdbc04b010fb402d7d5097e9427e11d4604bb41`.
+
+L'utilisateur a réellement importé et compilé le projet dans **Prism AI**,
+avec **29 pages affichées** avant cette correction. Ce retour est reconnu
+dans le README, le chapitre 11 et l'audit ; il ne certifie pas les 33 pages
+de cette nouvelle révision dans Prism. Un réimport, une compilation et une
+relecture dans Prism restent à effectuer ; aucune validation future des pages
+ou du travail collaboratif n'est revendiquée.
+
+### Vérifications finales
+
+| Contrôle | Résultat |
+|---|---|
+| Vérificateur LaTeX | PASS : 40 fichiers TeX atteignables, 17 PNG, 15 tableaux, 17 références citées, labels résolus |
+| Chiffres et sources | PASS : affichages identiques aux CSV gelés, arrondis déclarés, unités/périmètres/sources présents |
+| LLM | PASS : quatre copies intégrales exactes, originaux et extrait B intacts |
+| Ruff sur `report_latex` | PASS |
+| Tests livrables, reproduction isolée, LLM et rapport | **194 passed**, 36,07 s |
+| `git diff --check` | PASS, y compris contrôle du diff indexé avant commit |
+| Intégrité avant/après | **373 fichiers protégés inchangés**, y compris les snapshots locaux, les sources historiques, résultats et rapports de référence |
+
+Commande pytest exécutée :
+`python -m pytest tests/test_final_deliverables.py tests/test_full_reproduction.py tests/test_llm_package.py tests/test_final_report.py -q`.
+Ces tests ciblent les contrats documentaires et l'isolation ; aucune phase
+scientifique historique n'a été exécutée. La suite complète n'a pas été relancée.
+
+### Fichiers de cette révision
+
+33 fichiers ajoutés ou modifiés ; liste exacte :
+
+- `docs/phase9d_latex_report.md`
+- `report_latex/.gitattributes`
+- `report_latex/README.md`
+- `report_latex/appendices/A_univariate.tex`
+- `report_latex/appendices/B_multivariate.tex`
+- `report_latex/appendices/C_specifications.tex`
+- `report_latex/appendices/D_artifacts.tex`
+- `report_latex/appendices/E_llm.tex`
+- `report_latex/appendices/F_neural_training.tex`
+- `report_latex/chapters/04_eda_stationarity.tex`
+- `report_latex/chapters/07_garch.tex`
+- `report_latex/chapters/08_lstm_gru.tex`
+- `report_latex/chapters/09_final_evaluation.tex`
+- `report_latex/chapters/10_llm_analysis.tex`
+- `report_latex/chapters/11_reproducibility.tex`
+- `report_latex/documents/llm/human_analysis/phase8_hallucination_audit.csv`
+- `report_latex/documents/llm/human_analysis/phase8_human_vs_llm_comparison.md`
+- `report_latex/documents/llm/prompts/phase8_official_llm_prompt.md`
+- `report_latex/documents/llm/responses/phase8_official_llm_response.md`
+- `report_latex/figures/nvda_log_price_stl_train.png`
+- `report_latex/figures/rolling_correlations_60d.png`
+- `report_latex/main.tex`
+- `report_latex/preamble.tex`
+- `report_latex/prepare_assets.py`
+- `report_latex/rapport_final_latex.pdf`
+- `report_latex/sources_manifest.json`
+- `report_latex/tables/arima_diagnostics.tex`
+- `report_latex/tables/arima_validation.tex`
+- `report_latex/tables/neural_comparison.tex`
+- `report_latex/tables/neural_validation.tex`
+- `report_latex/tables/recommendation.tex`
+- `report_latex/tables/var_johansen.tex`
+- `report_latex/verify_latex_project.py`
+
+### Limites et Git
+
+Les champs d'équipe, enseignant et date de couverture restent à compléter.
+Le PDF officiel du cahier des charges absent du dépôt n'a pas fait l'objet
+d'une certification indépendante exhaustive ; la conformité vérifiée ici porte
+sur les exigences transmises dans cette mission. Les limites scientifiques
+et l'état FULL sur machine vierge restent ceux du dossier gelé.
+
+Branche : `feature/latex-report`. Message du commit local :
+`docs: strengthen LaTeX EDA and model interpretation`.
+Aucun push, aucune PR, fusion ou création de tag dans cette mission.

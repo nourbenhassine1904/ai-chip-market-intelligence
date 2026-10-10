@@ -13,6 +13,12 @@ PROJECT = Path(__file__).resolve().parent
 ROOT = PROJECT.parent
 SOURCE = ROOT / "report/rapport_final.md"
 MANIFEST = PROJECT / "sources_manifest.json"
+LLM_DOCUMENTS = (
+    "llm/prompts/phase8_official_llm_prompt.md",
+    "llm/responses/phase8_official_llm_response.md",
+    "llm/human_analysis/phase8_human_vs_llm_comparison.md",
+    "llm/human_analysis/phase8_hallucination_audit.csv",
+)
 
 
 def digest(path):
@@ -257,6 +263,26 @@ def source_tables():
         "Ratio : moyenne des six ratios RMSE modèle/Naive par fold et horizon ; "
         "ce n'est pas le ratio des RMSE poolées. Aucune métrique holdout n'est utilisée."
     )
+    validation = [
+        r for r in csv_rows("phase6_validation_metrics_summary")
+        if r["model"] == "Naive" or r["configuration"] == "C"
+    ]
+    validation.sort(key=lambda r: (
+        int(r["horizon"]), {"Naive": 0, "LSTM": 1, "GRU": 2}[r["model"]]
+    ))
+    tables["neural_validation"] = (
+        ["Candidat", "h", "n", "RMSE", "MAE"],
+        [[r["model"] + (" C" if r["configuration"] == "C" else ""),
+          r["horizon"], r["n_forecasts"], number(r["RMSE"]), number(r["MAE"])]
+         for r in validation],
+        ["outputs/tables/phase6_validation_metrics_summary.csv"],
+    )
+    captions["neural_validation"] = (
+        "Validation temporelle dans TRAIN (Phase 6), distincte du TEST Phase 7. "
+        "Erreurs poolées sur trois folds, 561 prévisions par candidat et horizon ; "
+        "h en séances, RMSE/MAE en USD ajustés, trois décimales. "
+        "Les origines chevauchantes ne sont pas indépendantes."
+    )
     checks = csv_rows("phase7_recommendation_checks")
     recommendation = csv_rows("phase7_final_model_recommendation")[0]
     if recommendation["final_recommended_price_model"] != "Naive":
@@ -309,6 +335,7 @@ def render_table(name, headers, rows, caption, sources):
         "arima_validation": "lXrrrr",
         "var_johansen": "Xrr",
         "neural_comparison": "Xrr",
+        "neural_validation": "Xrrrr",
         "recommendation": "Xrrc",
     }
     caption = re.sub(r"^Tableau \d+ [—-] ", "", caption)
@@ -316,7 +343,7 @@ def render_table(name, headers, rows, caption, sources):
         caption, original_source = caption.split("Source", 1)
         note = "Source" + original_source
     else:
-        note = "Sources : " + " ; ".join(sources) + "."
+        note = "Sources : " + " ; ".join(chr(96) + s + chr(96) for s in sources) + "."
     content = [
         "% Documentary display only; edit preparation definitions for a refresh.",
         "% Source CSVs: " + "; ".join(sources),
@@ -352,8 +379,14 @@ def expected_assets():
     md = SOURCE.read_text(encoding="utf8")
     images = re.findall(r"!\[([^]]+)\]\(([^)]+)\)", md)
     tables, captions = source_tables()
-    if len(images) != 15 or len(tables) != 14:
+    if len(images) != 15 or len(tables) != 15:
         raise ValueError("Unexpected canonical figure/table coverage")
+    images.extend([
+        ("Décomposition STL du log-prix NVDA sur TRAIN",
+         "../outputs/figures/phase2/nvda_log_price_stl_train.png"),
+        ("Corrélations glissantes sur 60 séances TRAIN",
+         "../outputs/figures/phase2/rolling_correlations_60d.png"),
+    ])
     return images, tables, captions
 
 
@@ -366,8 +399,11 @@ def check_assets():
         if digest(ROOT / record["path"]) != record["sha256"]:
             raise ValueError("Frozen source changed: " + record["path"])
     for record in manifest["figures"]:
-        if digest(PROJECT / record["copy"]) != record["sha256"]:
+        if (digest(PROJECT / record["copy"]) != record["sha256"]
+                or digest(ROOT / record["source"]) != record["sha256"]):
             raise ValueError("Figure copy differs: " + record["copy"])
+    if {r["name"] for r in manifest["tables"]} != set(tables):
+        raise ValueError("Incomplete table manifest")
     for record in manifest["tables"]:
         name = record["name"]
         headers, rows, sources = tables[name]
@@ -377,6 +413,12 @@ def check_assets():
             raise ValueError("Table display differs from frozen source: " + name)
     if len(images) != len(manifest["figures"]):
         raise ValueError("Incomplete figure manifest")
+    if {r["source"] for r in manifest["document_copies"]} != set(LLM_DOCUMENTS):
+        raise ValueError("Incomplete LLM delivery package")
+    for record in manifest["document_copies"]:
+        if (digest(ROOT / record["source"]) != record["sha256"]
+                or digest(PROJECT / record["copy"]) != record["sha256"]):
+            raise ValueError("LLM documentary copy differs: " + record["copy"])
     raw = (ROOT / "llm/responses/phase8_official_llm_response.md").read_bytes()
     section = raw[
         raw.index(b"B. VULGARISATION\n") : raw.index(
@@ -386,12 +428,19 @@ def check_assets():
     if (PROJECT / "appendices/llm_section_b_original.txt").read_bytes() != section:
         raise ValueError("Original LLM excerpt differs")
     print(
-        "PASS: 15 historical figure copies, 14 sourced tables, exact LLM excerpt and source hashes"
+        "PASS: 17 historical figure copies, 15 sourced tables, four exact LLM documents, "
+        "exact LLM excerpt and source hashes"
     )
     return manifest
 
 
 def refresh_assets():
+    # A documentary refresh must never silently accept changed archived sources.
+    if MANIFEST.is_file():
+        previous = json.loads(MANIFEST.read_text(encoding="utf8"))
+        for record in previous["source_files"]:
+            if digest(ROOT / record["path"]) != record["sha256"]:
+                raise ValueError("Frozen source changed: " + record["path"])
     images, tables, captions = expected_assets()
     for name in ("figures", "tables", "appendices"):
         (PROJECT / name).mkdir(parents=True, exist_ok=True)
@@ -430,6 +479,21 @@ def refresh_assets():
             }
         )
         sources.update(files)
+    document_copies = []
+    for relative in LLM_DOCUMENTS:
+        target = PROJECT / "documents" / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / relative, target)
+        document_copies.append({
+            "source": relative,
+            "copy": target.relative_to(PROJECT).as_posix(),
+            "sha256": digest(ROOT / relative),
+        })
+        sources.add(relative)
+    sources.update([
+        "outputs/tables/phase2_rolling_correlation_summary.csv",
+        "outputs/tables/phase2_weekday_returns.csv",
+    ])
     raw = (ROOT / "llm/responses/phase8_official_llm_response.md").read_bytes()
     section = raw[
         raw.index(b"B. VULGARISATION\n") : raw.index(
@@ -469,11 +533,12 @@ def refresh_assets():
     manifest = {
         "scope": "Documentary copies/displays from frozen repository; no model or statistical test rerun",
         "canonical_report": "report/rapport_final.md",
-        "historical_figures": 15,
+        "historical_figures": len(figures),
         "new_process_figure": "figures/pipeline.tex (TikZ, documentary synthesis)",
         "tables_count": len(table_records),
         "figures": figures,
         "tables": table_records,
+        "document_copies": document_copies,
         "source_files": [
             {"path": p, "sha256": digest(ROOT / p)} for p in sorted(sources)
         ],

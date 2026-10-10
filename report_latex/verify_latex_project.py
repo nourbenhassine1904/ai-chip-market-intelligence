@@ -61,14 +61,14 @@ def verify_structure():
     if references != cited or len(references) != 17:
         raise ValueError("Bibliography/citation mismatch: " + str(references ^ cited))
     expected_figures = {path.resolve() for path in (PROJECT / "figures").glob("*.png")}
-    if graphics != expected_figures or len(graphics) != 15:
+    if graphics != expected_figures or len(graphics) != 17:
         raise ValueError(
-            "Historical figure coverage differs from the 15 source figures"
+            "Historical figure coverage differs from the 17 source figures"
         )
-    if sum(path.parent.name == "tables" for path in visited) != 14:
-        raise ValueError("Expected 14 sourced table inputs")
+    if sum(path.parent.name == "tables" for path in visited) != 15:
+        raise ValueError("Expected 15 sourced table inputs")
     print(
-        f"PASS: {len(visited)} reachable TeX files, 15 local PNGs, 17 cited references"
+        f"PASS: {len(visited)} reachable TeX files, 17 local PNGs, 17 cited references"
     )
 
 
