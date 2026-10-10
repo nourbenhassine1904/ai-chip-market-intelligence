@@ -10,8 +10,9 @@ has not been independently read, so other clauses cannot be certified from it.
 
 PASS means evidence exists for the stated item, not universal model adequacy.
 PARTIAL identifies incomplete compliance or supporting reproducibility/provenance
-checks; MISSING includes the report intentionally deferred to Phase 9B.
-**Totals: 29 PASS, 3 PARTIAL, 1 MISSING — 33 reviewed checks.** These counts include
+checks. At the historical Phase 9A audit, the report was deferred to Phase 9B:
+**29 PASS, 3 PARTIAL, 1 MISSING**. Updated for the delivery after Phases 9B–9D:
+**Totals: 30 PASS, 3 PARTIAL, 0 MISSING — 33 reviewed checks.** These counts include
 supporting checks and are not a count of independently verified PDF clauses.
 
 | Requirement | Status | Real evidence / file | Remaining action |
@@ -45,10 +46,10 @@ supporting checks and are not a count of independently verified PDF clauses.
 | Complete LLM section | PASS | `docs/phase8_llm_analysis.md`: Official A/B/C/D prompt and unchanged response, simulated investment disclaimer. | Retain missing generation metadata. |
 | Critical LLM comparison | PASS | `llm/human_analysis/phase8_human_vs_llm_comparison.md`: Completed comparison plus 35-claim sourced audit. | Independence of human-only baselines not attested. |
 | Classic R and Python code | PASS | `r/04_garch.R`: Four real R model scripts and nine real Python pipeline scripts. | R EDA placeholder is not counted as implemented code. |
-| Section 8.3 — end-to-end RMarkdown/Jupyter notebook | PARTIAL | `notebooks/AI_Chip_Market_Intelligence.ipynb`: 52 FAST code cells executed successfully in the reference and data/cache/Git-free contexts; `outputs/tables/phase9a_notebook_execution_audit.csv` documents review of frozen outputs, not end-to-end model execution. | Implement a separate FULL notebook or a genuinely orchestrated isolated mode, provide verified input snapshots and listed package versions, prepare the Phase 7 run area, and execute the entire chain on a clean machine with saved logs/provenance. See the minimal plan in `docs/reproduction_guide.md`. |
-| Strict FULL data/runtime readiness (supporting check) | PARTIAL | `docs/reproduction_guide.md`: Authentic isolated command recipe exists; original snapshots/caches are not distributed and the final checkout retains the Phase 7 immutable-prediction gate. | Package or restore original inputs, reject divergent downloads for strict reproduction, record Python/R versions, validate CPU execution and archive new run outputs separately; demonstrate all stages rather than only `--summarize`. |
+| Section 8.3 — end-to-end RMarkdown/Jupyter notebook | PARTIAL | FAST notebook: 52 cells historically executed for frozen-output review. `notebooks/AI_Chip_Market_Intelligence_FULL.ipynb` now exists and orchestrates the real runner. `docs/phase9c_full_execution_audit.md` confirms the runner completed in a prepared sandbox; only a PREFLIGHT notebook execution is recorded. | Demonstrate the FULL notebook top to bottom on a clean machine with installed listed packages, verified snapshots and saved logs/provenance. Follow `docs/phase9c_full_reproduction.md` and `LIVRAISON.md`; align the notebook's source revision in the isolated copy. |
+| Strict FULL data/runtime readiness (supporting check) | PARTIAL | 9C3 confirms all 17 scientific commands completed with the original snapshot route, genuine checkpoint/gate and isolated outputs. Phase 9E includes seven original SHA-verified CSV snapshots in the ZIP; caches/weights remain excluded. Python/R dependencies were copied for the audited run. | Prove clean-machine package installation and notebook execution; preserve historical protocol/gates and reject divergent inputs. FULL needs complete Git history beyond the ZIP. Keep new outputs separate and document numerical differences; no bit-for-bit guarantee. |
 | LLM generation provenance | PARTIAL | `docs/phase8_llm_analysis.md`: Response preserved; exact model/version/time unknown. | Record only if independently supplied. |
-| Final 15–25-page report | MISSING | `report/README.md`: Only planning placeholder; intentionally deferred. | Phase 9B, no new modeling. |
+| Final 15–25-page report | PASS | Phase 9B Word/PDF exports are present, with 24 pages excluding annexes per `docs/phase9b_render_audit.json`. The final `report_latex/rapport_final_latex.pdf` and editable sources are present; the 9D corrective audit records 25 pages excluding annexes before cover personalization. The cover fields are filled since `ccc7624`. | Preserve historical rendering evidence; no Prism verification of the personalized cover is attested. Submit the final PDF and full delivery ZIP; no new modeling. |
 
 Scientific conclusions, protocols and official LLM response stay frozen. Conditional
 SARIMA/VECM omissions count as justified completion, not secretly fitted models.

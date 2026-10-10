@@ -5,10 +5,10 @@ of NVIDIA, AMD and the Semiconductor Market**
 
 Mini-project for **Séries Temporelles pour Data Science & IA**, TEK-UP University,
 academic year 2026/2027. Phases 1–8 are completed and published through
-`v0.11.0-phase8`. Phase 9A provides the executable FAST notebook and technical
-delivery documentation. Select a repository revision containing these files,
-whether on the review branch or after integration into main. The final report
-belongs to Phase 9B.
+`v0.11.0-phase8`. Phase 9A provides the executable FAST notebook; Phase 9B added
+the Word/PDF report, Phase 9C the isolated FULL orchestrator and execution audit,
+and Phase 9D the final modular LaTeX report (`v0.15.0-phase9d`). Phase 9E packages
+the final university delivery. Select a revision containing the required files.
 
 The study forecasts adjusted **NVDA** prices at **5 and 10 trading sessions**,
 examines dynamic links with **AMD** and **SOXX**, and analyzes conditional
@@ -53,27 +53,33 @@ data, train models or produce a new holdout evaluation. FULL regeneration is
 separate and may differ because of revised Yahoo data or numerical execution.
 The official section 8.3 requirement is an end-to-end RMarkdown/Jupyter notebook
 on a clean machine with the listed packages. FAST has been executed successfully;
-that complete FULL workflow has **not been demonstrated**, so notebook compliance
-with section 8.3 is **PARTIAL**. See the
-[minimal FULL implementation plan](docs/reproduction_guide.md#minimal-plan-for-section-83-full-reproduction).
+the FULL runner has also completed in a **prepared sandbox**, as confirmed by the
+[Phase 9C3 execution audit](docs/phase9c_full_execution_audit.md). Execution of
+the entire FULL notebook on a clean machine remains **not demonstrated**, so
+section 8.3 is **PARTIAL**. The earlier
+[minimal FULL implementation plan](docs/reproduction_guide.md#minimal-plan-for-section-83-full-reproduction)
+is historical; use [the current FULL guide](docs/phase9c_full_reproduction.md)
+and [the delivery guide](LIVRAISON.md) for the implemented orchestrator and limits.
 
 ## Structure
 
 | Folder | Contents |
 | --- | --- |
 | `data/raw`, `data/processed` | Ignored local CSVs; only placeholders in Git |
-| `python/` | Canonical pipeline, classical/neural/evaluation scripts, Phase 9A checks |
+| `python/` | Canonical pipeline, model scripts, FAST checks, FULL orchestrator and ZIP packaging |
 | `r/` | Classical ARIMA, validation, VAR/Johansen and GARCH; EDA placeholder |
-| `notebooks/` | Main executable scientific notebook |
+| `notebooks/` | FAST review notebook and separate FULL orchestrator (safe PREFLIGHT default) |
 | `outputs/tables`, `outputs/figures` | Versioned scientific results/provenance |
 | `docs/` | Protocols, phase reports, Windows/RStudio/reproduction guides |
 | `llm/` | Official prompt/response, development baselines and critical audit |
 | `tests/` | Offline model contracts and delivery/provenance checks |
-| `report/` | Final report planning; full writing deferred to 9B |
+| `report/` | Historical Phase 9B Word/PDF/Markdown report |
+| `report_latex/` | Final PDF, personalized cover, editable TeX, bibliography and annexes |
+| `dist/` | Ignored final submission ZIP and separate ZIP SHA256 |
 
 ## Install and review — Windows PowerShell
 
-From a checkout containing the Phase 9A commit, Python 3.12:
+From a checkout containing the delivery files, Python 3.12:
 
 ```powershell
 py -3.12 -m venv .venv
@@ -99,8 +105,10 @@ not a server UI. Executed notebook copies are ignored under `.cache/phase9a/`.
 
 ## Data, R and team instructions
 
-A clean clone contains **no market CSVs or neural weights**. FAST works with
-the committed outputs only. FULL needs original snapshots or isolated regeneration
+A clean Git clone contains **no market CSVs or neural weights**. The Phase 9E
+submission ZIP includes exactly seven SHA-verified original CSV snapshots, while
+neural weights remain excluded. FAST works with the committed outputs only.
+FULL needs original snapshots or isolated regeneration
 using actual scripts. Yahoo revisions are checked against historical manifests;
 divergent inputs must not replace published outputs. Run
 `python python/phase9a_review.py --data` to audit optional local CSVs.
@@ -127,9 +135,28 @@ holdout or modify the official LLM response.
 | 7 | [Frozen final evaluation](docs/phase7_final_evaluation.md) |
 | 8 | [Official LLM analysis and critique](docs/phase8_llm_analysis.md) |
 | 9A | [Reproducibility and delivery](docs/phase9a_reproducibility.md) |
+| 9B | [Word/PDF report audit](docs/phase9b_report_audit.md) |
+| 9C | [Completed prepared-sandbox FULL audit](docs/phase9c_full_execution_audit.md) |
+| 9D | [Final LaTeX report audit and cover status](docs/phase9d_latex_report.md) |
+| 9E | [Final submission guide](LIVRAISON.md); post-build audit in `docs/final_submission_audit.md` |
 
 For the team: [repository audit](docs/phase9a_repository_audit.md),
 [requirements checklist](docs/final_requirements_checklist.md),
 [report figure selection](docs/final_figure_selection.md), and
 [frozen SHA256 manifest](docs/phase9a_frozen_artifacts_manifest.json).
-Phase 9B will prepare the 15–25-page report from the existing evidence.
+The final submission report is [the LaTeX PDF](report_latex/rapport_final_latex.pdf).
+The Phase 9D corrective audit records 33 total pages / 25 excluding annexes before
+cover personalization; these historical checks do not attest a new Prism review.
+The original Phase 9B Word/PDF exports are retained unchanged.
+
+Read [LIVRAISON.md](LIVRAISON.md) for installation, FAST/FULL boundaries, snapshots
+and archive reconstruction. Build the ignored ZIP without running models:
+
+```powershell
+python -B python/09e_build_submission.py --run-fast
+python -B python/09e_build_submission.py --verify dist/AI_Chip_Market_Intelligence_Remise_2026.zip
+```
+
+FAST here runs only in a temporary extraction. FULL requires a complete Git
+checkout and the preserved protocol history; extraction alone does not demonstrate
+section 8.3. No email or external publication is performed by packaging.
