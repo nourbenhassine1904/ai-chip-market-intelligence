@@ -9,7 +9,7 @@ n'est exécuté par les outils de ce dossier.
 | Fichier / dossier | Usage |
 |---|---|
 | `main.tex` | Ordre des sections, sommaire, bibliographie et annexes |
-| `metadata.tex` | Institution, formation, membres, enseignant, date et année |
+| `metadata.tex` | Institution, spécialité, classe, membres, enseignant, date et année |
 | `preamble.tex` | Typographie, marges, couleurs et macros |
 | `frontmatter/` | Couverture, résumé et références internes |
 | `chapters/01_…tex` à `12_…tex` | Contenu scientifique réparti par thème |
@@ -21,7 +21,9 @@ n'est exécuté par les outils de ce dossier.
 | `sources_manifest.json` | Provenance, cellules affichées et empreintes SHA-256 |
 | `rapport_final_latex.pdf` | Export de cette version LaTeX |
 
-Compléter les champs entre crochets dans `metadata.tex` avant remise. Répartir
+La couverture a été personnalisée dans le commit `ccc7624` avec les quatre
+membres, l'enseignant, la spécialité, la classe et la date de remise.
+Ces champs sont désormais renseignés dans `metadata.tex`. Répartir
 les chapitres entre membres ; les chemins sont relatifs et les fichiers UTF-8.
 Employer `\label`, `\ref` et `\cite` pour garder une numérotation automatique.
 Échapper les caractères réservés de LaTeX, notamment `%`, `&` et `_`.
@@ -45,7 +47,8 @@ schéma TikZ ne sont pas réécrits par le script de compilation.
 
 Prérequis : Python 3.12 (bibliothèque standard uniquement pour les outils),
 une distribution TeX exposant `pdflatex` et `bibtex` dans le PATH, et les packages
-du préambule déjà installés. La compilation a été vérifiée avec MiKTeX 25.12.
+du préambule déjà installés. La compilation a été vérifiée avec MiKTeX 25.12
+lors des audits antérieurs à la personnalisation de la couverture (`ccc7624`).
 Les principales dépendances TeX sont `babel` français, `geometry`, `mathptmx`,
 `amsmath`, `amssymb`, `graphicx`, `booktabs`, `tabularx`, `longtable`, `microtype`,
 `caption`, `placeins`, `xcolor`, `tikz`, `fancyhdr`, `xurl` et `hyperref`.
@@ -117,10 +120,13 @@ par Git. Cette voie autonome ne contrôle pas les SHA des sources du dépôt.
 
 L'utilisateur a réellement importé et compilé la version précédente dans
 Prism AI et a signalé **29 pages affichées**. Cette preuve concerne la version
-avant la revue corrective du 10 octobre 2026. La nouvelle révision est compilée
-et contrôlée localement avec MiKTeX ; une nouvelle compilation et une relecture
-dans Prism restent à effectuer après réimport. Aucune validation de toutes les
-pages de cette révision dans Prism ni du travail collaboratif n'est revendiquée.
+avant la revue corrective du 10 octobre 2026. La révision corrective a ensuite
+été compilée et contrôlée localement avec MiKTeX, avant la personnalisation
+de la couverture dans `ccc7624` ; ces contrôles décrivent un état antérieur.
+Aucun contrôle de la couverture personnalisée dans Prism n'est attesté ici.
+Un réimport, une compilation et une relecture dans Prism restent à effectuer.
+Aucune validation de toutes les pages de la version actuelle dans Prism ni
+du travail collaboratif n'est revendiquée.
 
 ## Limites scientifiques et documentaires
 
@@ -137,7 +143,7 @@ pages de cette révision dans Prism ni du travail collaboratif n'est revendiqué
   prompt, réponse, comparaison humaine et audit des hallucinations complets.
   Leurs chemins et empreintes sont contrôlés par le
   manifeste ; le PDF seul ne contient que l'extrait vulgarisé et les références.
-- Les champs de couverture doivent être complétés avant remise. La fidélité
+- Les champs de couverture sont renseignés depuis `ccc7624`. La fidélité
   scientifique et la mise en page doivent être relues après toute édition.
 
 L'audit de création et les contrôles effectués sont consignés dans

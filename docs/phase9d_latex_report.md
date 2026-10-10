@@ -1,9 +1,12 @@
 # Phase 9D — Rapport LaTeX modulaire
 
 Audit de création finalisé le **10 octobre 2026** sur `feature/latex-report`.
-Les sections « Livrables créés » à « Validations » ci-dessous décrivent la
-création initiale. La revue corrective finale du même jour est documentée
-séparément en fin d'audit ; ses chiffres et preuves actualisent cette version.
+Les sections « Livrables créés » à « Limites et usage ultérieur » ci-dessous
+décrivent l'état historique de la création initiale. La revue corrective finale
+du même jour est documentée séparément ; ses chiffres et preuves concernent
+l'état antérieur à la personnalisation de la couverture dans `ccc7624`.
+Ces audits, paginations et empreintes sont conservés comme preuves historiques.
+L'état actuel de la couverture est précisé en fin de document.
 Point de départ : `24ab075f8117266301e875cb2db2785038d6f822`, identique au
 HEAD de `main` au début de cette branche. Travail additif ; commit local uniquement.
 
@@ -27,8 +30,9 @@ audit. Aucun fichier préexistant n'est modifié.
 | **Total** | **64** | Journaux et images de revue exclus du versionnement |
 
 Entrée : [main.tex](../report_latex/main.tex). Guide d'édition et de compilation :
-[README](../report_latex/README.md). Couverture modifiable dans `metadata.tex` :
-membres, enseignant, date et formation restent clairement à compléter.
+[README](../report_latex/README.md). À la création initiale, les champs membres,
+enseignant, date et formation de `metadata.tex` restaient à compléter
+(état antérieur à `ccc7624`).
 
 ## Contenu et fidélité scientifique
 
@@ -153,8 +157,9 @@ La suite pytest complète n'a pas été relancée pour cette évolution document
   avec **29 pages affichées**, selon son retour dans la mission corrective.
   Cette preuve concerne la version initiale ; elle ne valide pas toutes les
   pages après les modifications ultérieures ni le fonctionnement collaboratif.
-- Les champs de couverture restent à compléter avant remise ; les autres
-  limites scientifiques sont celles exposées dans les résultats gelés et 9C3.
+- À la création initiale, les champs de couverture restaient à compléter
+  avant remise (état antérieur à `ccc7624`) ; les autres limites scientifiques
+  sont celles exposées dans les résultats gelés et 9C3.
 
 Seuls `report_latex/` et ce document sont ajoutés au commit de Phase 9D.
 `main` reste au point de départ ci-dessus. Aucune publication, PR, fusion ou
@@ -164,6 +169,8 @@ création de tag n'est effectuée dans cette mission.
 ## Revue corrective finale — 10 octobre 2026
 
 Cette révision répond à la mission pédagogique finale sur `feature/latex-report`.
+Elle décrit l'état historique antérieur à la personnalisation de la couverture
+dans `ccc7624` ; les contrôles ci-dessous portent sur cette révision antérieure.
 Aucun entraînement, aucune phase statistique, aucune génération LLM ni accès
 de scoring TEST n'a été relancé. Les résultats et décisions gelés sont conservés.
 
@@ -302,7 +309,8 @@ scientifique historique n'a été exécutée. La suite complète n'a pas été r
 
 ### Limites et Git
 
-Les champs d'équipe, enseignant et date de couverture restent à compléter.
+Lors de cette revue corrective, les champs d'équipe, enseignant et date de
+couverture restaient à compléter (état antérieur à `ccc7624`).
 Le PDF officiel du cahier des charges absent du dépôt n'a pas fait l'objet
 d'une certification indépendante exhaustive ; la conformité vérifiée ici porte
 sur les exigences transmises dans cette mission. Les limites scientifiques
@@ -311,3 +319,19 @@ et l'état FULL sur machine vierge restent ceux du dossier gelé.
 Branche : `feature/latex-report`. Message du commit local :
 `docs: strengthen LaTeX EDA and model interpretation`.
 Aucun push, aucune PR, fusion ou création de tag dans cette mission.
+
+## État actuel de la couverture — après `ccc7624`
+
+Le commit `ccc7624` (`docs: personalize final LaTeX report cover`) a personnalisé
+la couverture avec les quatre membres, l'enseignant, la spécialité, la classe
+et la date de remise. Ces champs sont désormais renseignés dans `metadata.tex` ;
+les mentions de champs à compléter ci-dessus décrivent uniquement l'état antérieur.
+
+Les preuves de compilation, de rendu, de pagination et les empreintes des audits
+précédents ne constituent pas une validation de cette nouvelle couverture.
+Aucun contrôle de la couverture personnalisée dans Prism n'est attesté ici ;
+un réimport, une compilation et une relecture dans Prism restent à effectuer.
+
+Cette mise à jour concerne uniquement `docs/phase9d_latex_report.md` et
+`report_latex/README.md`. Aucun code scientifique, PDF, modèle ou résultat
+n'est modifié ; aucune compilation ni phase scientifique n'est relancée.
