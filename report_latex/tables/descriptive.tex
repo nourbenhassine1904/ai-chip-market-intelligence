@@ -1,0 +1,22 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase2_descriptive_stats.csv
+\begin{table}[!htbp]
+\centering
+\caption{Distribution des log-rendements sur TRAIN.}
+\label{tab:descriptive}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrrrr}
+\toprule
+\textbf{Actif} & \textbf{n} & \textbf{Moyenne \%} & \textbf{Écart-type \%} & \textbf{Kurtosis exc.} \\
+\midrule
+NVDA & 1979 & 0,185 & 3,244 & 4,698 \\
+AMD & 1979 & 0,157 & 3,451 & 3,571 \\
+SOXX & 1979 & 0,085 & 2,219 & 5,126 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{outputs/tables/phase2_descriptive_stats.csv}, filtre \sourcepath{scope=train}, \sourcepath{series=Log_Return}. Moyenne et écart-type en pourcentage quotidien ; kurtosis excédentaire sans unité ; arrondi à trois décimales.
+\end{minipage}
+\end{table}

@@ -1,0 +1,31 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase3b_arima_validation_metrics.csv
+\begin{table}[!htbp]
+\centering
+\caption{Validation interne ARIMA : sous-ensemble pédagogique Naive/(1,1,1)/(2,1,2). h en séances ; RMSE/MAE en USD ajustés, trois décimales. Scores sur origines disponibles : panels Python incomplets, non appariés à Naive dans ce tableau ; les gains de la règle utilisent les panels appariés.}
+\label{tab:arima_validation}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{lXrrrr}
+\toprule
+\textbf{Langue} & \textbf{Candidat} & \textbf{h} & \textbf{n / prévu} & \textbf{RMSE} & \textbf{MAE} \\
+\midrule
+Python & (1,1,1) + drift & 5 & 53 / 59 & 7,838 & 6,032 \\
+Python & (1,1,1) + drift & 10 & 53 / 59 & 8,780 & 6,496 \\
+Python & (2,1,2) + drift & 5 & 54 / 59 & 7,351 & 5,434 \\
+Python & (2,1,2) + drift & 10 & 54 / 59 & 8,672 & 6,619 \\
+Python & Naive & 5 & 59 / 59 & 7,724 & 5,856 \\
+Python & Naive & 10 & 59 / 59 & 9,369 & 7,253 \\
+R & (1,1,1) + drift & 5 & 59 / 59 & 7,848 & 5,934 \\
+R & (1,1,1) + drift & 10 & 59 / 59 & 9,081 & 6,731 \\
+R & (2,1,2) + drift & 5 & 59 / 59 & 7,847 & 5,938 \\
+R & (2,1,2) + drift & 10 & 59 / 59 & 9,080 & 6,729 \\
+R & Naive & 5 & 59 / 59 & 7,724 & 5,856 \\
+R & Naive & 10 & 59 / 59 & 9,369 & 7,253 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Sources : \sourcepath{outputs/tables/phase3b_arima_validation_metrics.csv}.
+\end{minipage}
+\end{table}

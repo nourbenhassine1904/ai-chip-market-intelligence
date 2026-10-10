@@ -1,0 +1,22 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase1_5_processed_manifest.csv; outputs/tables/phase2_split_metadata.csv
+\begin{table}[!htbp]
+\centering
+\caption{Périodes et effectifs.}
+\label{tab:data}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrrr}
+\toprule
+\textbf{Ensemble} & \textbf{Séances} & \textbf{Début} & \textbf{Fin} \\
+\midrule
+Canonique & 2200 & 2018-01-02 & 2026-10-02 \\
+TRAIN & 1980 & 2018-01-02 & 2025-11-14 \\
+TEST & 220 & 2025-11-17 & 2026-10-02 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Sources : \sourcepath{outputs/tables/phase1_5_processed_manifest.csv} et \sourcepath{outputs/tables/phase2_split_metadata.csv}. Unité : séances observées ; dates ISO. Le partage est effectué sur les lignes canoniques avant exclusion des NA structurels.
+\end{minipage}
+\end{table}

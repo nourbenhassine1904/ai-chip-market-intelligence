@@ -1,0 +1,71 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Données, préparation et dataset canonique}
+\label{sec:data}
+
+\subsection{Acquisition et alignement des calendriers}
+
+
+
+Les observations journalières proviennent de Yahoo Finance via yfinance. L’acquisition canonique est effectuée en Python, actif par actif, avec conservation des champs OHLC, du prix ajusté et du volume. Le début demandé est le 1er janvier 2018 ; la première séance effectivement observée est le 2 janvier. La borne finale observée est le 2 octobre 2026. Le paramètre \sourcepath{end} de yfinance étant exclusif \cite{R3}, la requête utilise le 3 octobre comme borne technique. Les horizons du projet comptent des séances observées, sans ajouter les week-ends ou jours fériés.
+
+
+
+Les fichiers bruts sont conservés localement et identifiés par SHA-256. Un téléchargement ultérieur peut recevoir un historique révisé : retrouver les mêmes dates ne suffit donc pas à retrouver les mêmes valeurs. Les manifestes distinguent l’identité des données, les paramètres de requête et les versions logicielles. Ils permettent de contrôler la provenance, sans garantir la permanence des données chez le fournisseur.
+
+
+
+La préparation utilise l’intersection des trois calendriers, avec une jointure univoque sur Date. Dans le snapshot étudié, les calendriers coïncident et aucune date n’est perdue. Le dataset canonique contient 2200 lignes et 19 colonnes : Date et six variables financières pour chacun des trois actifs. Aucun remplissage de valeur manquante, ajustement supplémentaire, arrondi ou nettoyage des observations extrêmes n’est appliqué.
+
+
+
+\input{tables/data}
+
+
+
+Les audits d’acquisition et d’alignement ne détectent ni donnée manquante dans les champs canoniques, ni doublon de date, ni valeur infinie, ni prix non positif, ni contradiction OHLC. Ces constats décrivent les contrôles implémentés sur ce snapshot. Des calendriers identiques ne permettent pas de détecter une séance manquante simultanément dans les trois sources.
+
+
+
+\subsection{Prix fourni et prix ajusté}
+
+
+
+Close désigne la clôture historique fournie par Yahoo ; elle incorpore déjà ses ajustements de fractionnement. Adj Close tient également compte des distributions pertinentes. \sourcepath{auto_adjust=False} empêche un ajustement OHLC supplémentaire par yfinance et ne restaure pas un ancien prix brut de fractionnement. Les deux champs sont conservés, mais le prix ajusté est la référence historique et la cible finale. Son unité est l’USD ajusté par action. Un rendement est une variation relative entre deux séances : il ne doit pas être confondu avec un niveau de prix.
+
+
+
+Sources internes : \sourcepath{docs/data_dictionary.md}, \sourcepath{docs/phase1_data_acquisition.md}, \sourcepath{docs/phase1_5_data_preparation.md}.
+
+
+
+
+
+\subsection{Transformations et séparation chronologique}
+
+
+
+Pour un prix ajusté positif P, le log-prix stabilise l’échelle relative des variations. Le log-rendement quotidien est exprimé en pourcentage ; le rendement simple reste une transformation distincte. La volatilité historique est l’écart-type des vingt rendements passés, annualisé par la convention de 252 séances. Cette fenêtre inclut la séance courante et n’utilise aucune observation future.
+
+
+
+\begin{equation}\label{eq:returns} r_t=100\bigl[\ln(P_t)-\ln(P_{t-1})\bigr].\end{equation}
+
+
+
+La première différence est indéfinie à la première ligne. La volatilité exige vingt rendements valides : les vingt premières lignes de cette variable sont donc NA. Ces valeurs structurelles restent explicites ; elles ne sont pas imputées. Les cinq transformations par actif ajoutent quinze colonnes, portant le fichier de features à 34 colonnes. Les variations de volume sont conservées dans ce fichier, sans entrer automatiquement dans tous les modèles.
+
+
+
+TRAIN contient les 1980 premières lignes ; TEST les 220 dernières. La première variation de TEST utilise le dernier prix de TRAIN, déjà connu à cette date. Le split chronologique empêche qu’un modèle apprenne sur un régime futur pour prédire une période antérieure. Les scalers et hyperparamètres sont ensuite ajustés dans les seuls préfixes d’entraînement appropriés, sans estimation sur TEST.
+
+
+
+\historicalfigure{normalized_prices_base100.png}{Trajectoires comparables en base 100}{Prix ajustés normalisés à 100 au premier jour observé. Source : \sourcepath{outputs/figures/phase2/normalized_prices_base100.png}. Périmètre : descriptif complet, 2018-01-02--2026-10-02, frontière TEST indiquée. Unité : indice base 100. Les différences de trajectoire sont descriptives et ne participent pas à la sélection des modèles.}{0.32}
+
+
+
+La figure~\ref{fig:normalized_prices_base100.png} rend comparables les évolutions relatives de prix initialement très différents. Elle montre des progressions irrégulières et des retournements, plutôt qu’une croissance uniforme. La normalisation utilise le premier prix et ne constitue pas un scaler ajusté sur toute la période. La partie TEST peut être visible dans une description historique ; les diagnostics qui déterminent les modèles restent limités à TRAIN. La protection du holdout porte sur le développement et le scoring final, sans prétendre que TEST n’a jamais été traité à des fins descriptives.
+
+
+
+Source interne : \sourcepath{docs/phase2_eda_stationarity.md}, sections Chronological split et Financial transformations.

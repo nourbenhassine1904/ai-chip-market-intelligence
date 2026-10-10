@@ -1,0 +1,56 @@
+% Portable pdfLaTeX preamble. No shell escape, external fonts or remote assets.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage[a4paper,margin=20mm,headheight=14pt]{geometry}
+\usepackage{mathptmx}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,longtable,array}
+\usepackage{microtype}
+\usepackage{caption}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{fancyhdr}
+\usepackage{xurl}
+\usepackage{hyperref}
+\definecolor{academicblue}{HTML}{1F405C}
+\definecolor{lightblue}{HTML}{EEF3F7}
+\definecolor{riskgold}{HTML}{8C692A}
+\hypersetup{colorlinks=true,linkcolor=academicblue,citecolor=academicblue,urlcolor=academicblue,
+  pdftitle={AI-Chip Market Intelligence},pdfauthor={Nour Ben Hassine, Nouhe Ben Khelil, Hadir Felli, Nouha Briki}}
+\urlstyle{tt}
+% Prefer breaks at path/file separators, keeping name fragments readable.
+\newcommand{\sourcepath}[1]{\begingroup\Urlmuskip=0mu plus 2mu\def\UrlBreaks{\do\/\do\_\do\-\do\.}\nolinkurl{#1}\endgroup}
+\newcommand{\sourcehash}[1]{\nolinkurl{#1}}
+\newcommand{\sourcecaption}[1]{\par\smallskip{\footnotesize #1\par}}
+\newcommand{\historicalfigure}[4]{%
+  \begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=\linewidth,height=#4\textheight,keepaspectratio]{figures/#1}
+  \caption{#2}\label{fig:#1}
+  \sourcecaption{#3}
+  \end{figure}}
+\captionsetup{font=small,labelfont=bf,skip=6pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt plus 1pt}
+\setlength{\textfloatsep}{12pt plus 2pt minus 2pt}
+\setlength{\floatsep}{10pt plus 2pt}
+\renewcommand{\topfraction}{0.9}
+\renewcommand{\bottomfraction}{0.8}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.7}
+\setcounter{topnumber}{3}
+\setcounter{totalnumber}{5}
+\setcounter{tocdepth}{1}
+\setcounter{secnumdepth}{2}
+\emergencystretch=2em
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small AI-Chip Market Intelligence}
+\fancyhead[R]{\small Rapport scientifique}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcommand{\chapterfile}[1]{\FloatBarrier\input{chapters/#1}}

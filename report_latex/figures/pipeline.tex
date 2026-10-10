@@ -1,0 +1,65 @@
+% Documentary process diagram; no model execution and no invented result.
+\begin{figure}[!htbp]
+\centering
+\begin{tikzpicture}[
+  font=\small,
+  box/.style={draw=academicblue,rounded corners=2pt,fill=lightblue,
+    align=center,text width=14.8cm,inner sep=6pt},
+  model/.style={box,text width=4.2cm,minimum height=2.4cm},
+  flow/.style={-{Latex[length=2.5mm]},draw=academicblue,thick},
+  risk/.style={flow,draw=riskgold,dashed}]
+\node[box] (input) {\textbf{Entrées et provenance}\\
+  NVDA, AMD, SOXX ; Yahoo/yfinance ; snapshots originaux et SHA256};
+\node[box,below=7mm of input] (data) {\textbf{Préparation et alignement}\\
+  Calendriers communs ; log-prix, rendements et volatilité passée\\
+  Séparation chronologique : TRAIN 90\,\% / TEST 10\,\%};
+\node[box,below=7mm of data] (eda) {\textbf{EDA et stationnarité}\\
+  Description distinguée des décisions TRAIN ; ACF/PACF, ADF/KPSS\\
+  Protocoles scientifiques gelés avant évaluation finale};
+\node[model,anchor=north] (classic) at ($(eda.south)+(-5,-0.9)$)
+  {\textbf{Moyenne et interactions}\\
+  ARIMA et validation\\VAR(9), Granger, Johansen\\
+  Rang 0 : VECM non justifié};
+\node[model,anchor=north] (neural) at ($(eda.south)+(0,-0.9)$)
+  {\textbf{Réseaux récurrents}\\
+  LSTM C / GRU C\\Folds et scalers TRAIN-only\\18 fits + 2 refits};
+\node[model,anchor=north,draw=riskgold,fill=white] (garch)
+  at ($(eda.south)+(5,-0.9)$)
+  {\textbf{Variance conditionnelle}\\
+  ARCH-LM puis GARCH(1,1)\\Normal verrouillé ; sigma\\
+  Hors classement des prix};
+\node[box,text width=9.6cm,anchor=north] (test)
+  at ($(classic.south)!0.5!(neural.south)+(0,-0.7)$)
+  {\textbf{Évaluation finale des prix sur holdout}\\
+  Gate ; modèles gelés ; benchmark Naive\\
+  211 origines communes ; h5/h10\\MSE/RMSE/MAE/MAPE ; DM/Holm};
+\node[box,text width=9.6cm,below=7mm of test] (naive)
+  {\textbf{Recommandation finale : Naive}\\
+  Aucun challenger ne satisfait l'ensemble de la règle pré-déclarée};
+\node[box,anchor=north] (llm) at ($(naive.south)+(2.5,-0.7)$)
+  {\textbf{Analyse LLM rétrospective}\\
+  Réponse officielle conservée ; comparaison critique\\
+  Audit documentaire de 35 affirmations};
+\node[box,below=7mm of llm] (delivery)
+  {\textbf{Reproduction et livrables}\\
+  FAST : artefacts gelés ; FULL : run isolé exécuté, §8.3 PARTIAL\\
+  Notebook FULL et machine vierge à démontrer\\
+  Rapports Word/PDF conservés et projet LaTeX séparé};
+\draw[flow] (input.south) -- (data.north);
+\draw[flow] (data.south) -- (eda.north);
+\draw[flow] (eda.south) -- ++(0,-0.35) -| (classic.north);
+\draw[flow] (eda.south) -- (neural.north);
+\draw[risk] (eda.south) -- ++(0,-0.35) -| (garch.north);
+\draw[flow] (classic.south) -- ([xshift=-2.5cm]test.north);
+\draw[flow] (neural.south) -- ([xshift=2.5cm]test.north);
+\draw[flow] (test.south) -- (naive.north);
+\draw[flow] (naive.south) -- ([xshift=-2.5cm]llm.north);
+\draw[risk] (garch.south) -- (garch.south |- llm.north);
+\draw[flow] (llm.south) -- (delivery.north);
+\end{tikzpicture}
+\caption{Architecture documentaire et processus scientifique du projet.}
+\label{fig:pipeline}
+\sourcecaption{Synthèse des protocoles et audits Phases 1--9C.
+  Traits pleins : chaîne des prévisions de prix ; pointillés : analyse de variance
+  séparée, sans prévision de direction. Aucun modèle n'est réestimé pour cette figure.}
+\end{figure}

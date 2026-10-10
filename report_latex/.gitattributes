@@ -1,0 +1,6 @@
+# Keep generated document/image bytes intact; do not check binary whitespace.
+*.pdf binary
+*.png binary
+# Preserve verbatim LLM documentation, including its original line endings.
+documents/llm/** -text whitespace=cr-at-eol,-blank-at-eof
+appendices/llm_section_b_original.txt -text

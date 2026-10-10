@@ -1,0 +1,24 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: llm/human_analysis/phase8_hallucination_audit.csv
+\begin{table}[!htbp]
+\centering
+\caption{Audit des affirmations de la réponse officielle.}
+\label{tab:llm}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{XrrX}
+\toprule
+\textbf{Section} & \textbf{Affirmations} & \textbf{Supported} & \textbf{Autres catégories détectées} \\
+\midrule
+A & 11 & 11 & 0 \\
+B & 8 & 8 & 0 \\
+C & 6 & 6 & 0 \\
+D & 10 & 10 & 0 \\
+Total & 35 & 35 & 0 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{llm/human_analysis/phase8_hallucination_audit.csv}. Périmètre : une réponse A/B/C/D et 35 affirmations matérielles regroupées ; unité : lignes d’audit, non observations indépendantes. Comptages issus du CSV ; catégories sans unité.
+\end{minipage}
+\end{table}

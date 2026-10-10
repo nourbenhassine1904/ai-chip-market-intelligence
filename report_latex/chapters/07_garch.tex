@@ -1,0 +1,73 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Modélisation ARCH/GARCH et risque de volatilité}
+\label{sec:garch}
+
+\subsection{Filtrer la moyenne avant la variance}
+
+
+
+La variance conditionnelle peut rester prévisible même lorsque les rendements ont peu de dépendance linéaire. Pour isoler les innovations, R et Python appliquent un ARMA(1,1) commun aux rendements NVDA, avec moyenne inconditionnelle. Le filtre est gelé avant l’estimation de variance. Il ne modifie pas le choix Naive pour la prévision du prix.
+
+
+
+Les ARCH-LM pré-GARCH rejettent l’absence d’effets ARCH aux retards 5, 10 et 20, dans les deux implémentations, avec des p-values de l’ordre de 10\textsuperscript{-13} à 10\textsuperscript{-12}. Les diagnostics ouvrent ainsi le gate de variance ; la seule observation visuelle de clusters n’aurait pas suffi. GARCH(1,1) représente cette variance par une constante positive, le carré de l’innovation passée et la variance passée \cite{R9}.
+
+
+
+\begin{equation}\label{eq:garch} \sigma_t^2=\omega+\alpha\varepsilon_{t-1}^{\,2}+\beta\sigma_{t-1}^{\,2}.\end{equation}
+
+
+
+\(\omega\) a l’unité de points de pourcentage au carré ; \(\alpha\) mesure la réaction à une innovation récente et \(\beta\) la mémoire de variance. Les innovations sont exprimées en points de pourcentage, et \(\sigma\) en pourcentage quotidien. Le modèle est symétrique : il réagit au carré du choc, sans différence automatique selon son signe.
+
+
+
+\input{tables/garch}
+
+
+
+La persistance \(\alpha\)+\(\beta\) est proche de 1, mais inférieure à 1 pour les quatre fits. Sous le modèle à paramètres constants, la demi-vie vaut ln(0,5)/ln(\(\alpha\)+\(\beta\)), environ dix-neuf séances pour Normal et vingt-sept pour Student-t. Cette décroissance théorique est une propriété d’estimation ponctuelle, sans intervalle d’incertitude ni garantie de stabilité entre régimes.
+
+
+
+\subsection{Normal et Student t}
+
+
+
+Les queues épaisses motivent une Student-t standardisée de variance unitaire, avec des degrés de liberté proches de 5,76. Elle améliore AIC et BIC dans les deux langages. Cependant, la règle commune exige aussi une amélioration du score de six quantiles de queue dans les deux implémentations. Le score se dégrade en R et s’améliore en Python. Normal reste donc verrouillé selon la règle pré-déclarée ; ce choix ne démontre pas que les queues sont gaussiennes. Student-t reste une alternative crédible.
+
+
+
+\begingroup\small\raggedright
+Sources : \sourcepath{outputs/tables/phase5_arch_lm_pre_garch.csv}, \sourcepath{outputs/tables/phase5_distribution_selection_checks.csv}, \sourcepath{outputs/tables/phase5_locked_garch_model.csv}.
+\par\endgroup
+
+
+
+
+
+\subsection{Diagnostics et sens de la prévision de risque}
+
+
+
+Après standardisation z=\(\varepsilon\)/\(\sigma\), les tests Ljung-Box sur z et z\textsuperscript{2} aux retards 10 et 20, et ARCH-LM aux retards 5, 10 et 20, ne rejettent pas à 5 \%. Les corrections Holm des diagnostics de variance ne changent pas cette conclusion. Aucun ARCH résiduel n’est détecté aux lags testés ; cela ne prouve ni iid ni absence de toute dynamique restante. Le gate d’ordres supérieurs reste fermé, et aucune extension asymétrique n’est estimée.
+
+
+
+\historicalfigure{phase5_conditional_volatility.png}{Volatilité conditionnelle NVDA}{Sigmas ajustées Normal et Student-t. Source : \sourcepath{outputs/figures/phase5/phase5_conditional_volatility.png}. Périmètre : TRAIN, 2018-01-02--2025-11-14 ; première valeur structurellement indéfinie. Unité : pourcentage quotidien, non annualisé. Paramètres estimés sur TRAIN complet ; trajectoires rétrospectives, non disponibles à chaque origine passée sans réestimation.}{0.32}
+
+
+
+Le pic de mars 2020, visible en figure~\ref{fig:phase5_conditional_volatility.png}, concorde descriptivement avec le contexte coronavirus et les conditions financières perturbées évoqués par le FOMC le 15 mars 2020 \cite{R17}. Il ne démontre ni causalité ni effet d’annonce sur NVDA. Les trajectoires R/Python sont proches ; ces sigmas rétrospectifs ne sont pas des features disponibles à une ancienne origine.
+
+
+
+Depuis le 2025-11-14, le modèle Normal prévoit à h=10 une variance de 10,055229 points de pourcentage\textsuperscript{2} en R et 10,038995 en Python. Les sigmas quotidiennes correspondantes sont 3,170998 \% et 3,168437 \%, soit environ 3,17 \%. Il s’agit de l’incertitude de l’innovation au dixième horizon. Ce nombre n’est ni un rendement signé, ni un profit attendu, ni le risque cumulé sur dix séances. La variance des innovations se distingue également de la variance d’erreur du rendement après propagation par le filtre ARMA \cite{R10}.
+
+
+
+L’étude n’évalue pas de perte de volatilité sur un holdout et ne garantit pas la calibration de cette prévision. L’estimation en deux étapes ignore la propagation de l’incertitude des coefficients de moyenne. Des ruptures et effets d’asymétrie peuvent subsister malgré les non-rejets. Ces limites expliquent pourquoi le diagnostic GARCH reste une analyse de risque distincte du classement final de prix.
+
+
+
+Sources : \sourcepath{outputs/tables/phase5_garch_standardized_residual_diagnostics.csv}, \sourcepath{outputs/tables/phase5_volatility_forecast_train_end.csv}, \sourcepath{docs/phase5_garch.md}.

@@ -1,0 +1,21 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase3_arima_diagnostic_summary.csv
+\begin{table}[!htbp]
+\centering
+\caption{Diagnostics des modèles de moyenne provisoires de Phase 3A. TRAIN ; p-values Ljung-Box et ARCH-LM, sans unité. Six décimales ou six chiffres significatifs. Jarque-Bera rejette dans les deux langages ; zéro numérique par sous-flux.}
+\label{tab:arima_diagnostics}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{lXrrr}
+\toprule
+\textbf{Langue} & \textbf{Modèle avec drift} & \textbf{LB(10)} & \textbf{LB(20)} & \textbf{ARCH-LM(5)} \\
+\midrule
+R & ARIMA(2,1,2) & 0,869791 & 0,784385 & \(1{,}50217\times 10^{-12}\) \\
+Python & ARIMA(1,1,1) & 0,067465 & 0,118122 & \(1{,}09996\times 10^{-13}\) \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Sources : \sourcepath{outputs/tables/phase3_arima_diagnostic_summary.csv}.
+\end{minipage}
+\end{table}

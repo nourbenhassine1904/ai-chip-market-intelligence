@@ -1,0 +1,100 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Évaluation finale sur holdout et recommandation}
+\label{sec:evaluation}
+
+\subsection{Un protocole commun gelé avant le scoring}
+
+
+
+Le protocole final est commité avant l’accès TEST du runner de Phase 7, au commit \sourcehash{1e5ad76c6834f4e24fee825c894261597c94c917}. Les 220 lignes du holdout sont évaluées avec 211 origines communes, du 2025-11-14 au 2026-09-18. L’origine initiale est la dernière séance TRAIN. Les mêmes modèles, horizons, dates cibles et observations réelles sont utilisés ; aucun challenger n’est exclu après lecture de ses pertes.
+
+
+
+Les coefficients ARIMA/VAR, poids neuronaux et scalers sont gelés. L’historique observé peut avancer jusqu’à l’origine ; les états ARIMA sont actualisés par \sourcepath{append(refit=False)} \cite{R14}. Le VAR prévoit des rendements, puis reconstitue le log-prix en cumulant les rendements divisés par 100. Les réseaux utilisent les soixante dernières lignes disponibles et leurs dix sorties directes. Toutes les features se terminent au plus tard à l’origine.
+
+
+
+\input{tables/final_metrics}
+
+
+
+Pour une erreur e=prévision-observation, MSE est la moyenne de e\textsuperscript{2}, RMSE sa racine carrée, MAE la moyenne de |e| et MAPE cent fois la moyenne de |e|/prix réel positif. RMSE pénalise davantage les grandes erreurs ; MAE décrit un écart absolu moyen, et MAPE apporte une échelle relative. Les niveaux de prix variant au fil du temps, ces métriques ne sont pas interchangeables.
+
+
+
+Naive est premier en RMSE à h5 et premier en MAE/MAPE aux deux horizons. ARIMA est légèrement premier en RMSE à h10, tout en ayant une MAE supérieure à Naive. Les réseaux présentent des RMSE/MAE supérieures aux deux horizons. GARCH est exclu du classement : sa cible est la variance d’innovation, et aucune perte de volatilité holdout n’est disponible.
+
+
+
+Sources : \sourcepath{outputs/tables/phase7_holdout_manifest.csv}, \sourcepath{outputs/tables/phase7_evaluation_origins.csv}, \sourcepath{outputs/tables/phase7_target_scope_note.csv}.
+
+
+
+
+
+\subsection{Lecture des erreurs selon l’horizon}
+
+
+
+\historicalfigure{phase7_rmse_comparison_h5.png}{RMSE final à cinq séances}{RMSE à h5. Source : \sourcepath{outputs/figures/phase7/phase7_rmse_comparison_h5.png}. Périmètre : TEST final, cibles 2025-11-21--2026-09-25, 211 origines communes. Unité : USD ajustés. Les écarts entre modèles classiques sont faibles face aux pertes neuronales.}{0.32}
+
+
+
+\historicalfigure{phase7_rmse_comparison_h10.png}{RMSE final à dix séances}{RMSE à h10. Source : \sourcepath{outputs/figures/phase7/phase7_rmse_comparison_h10.png}. Périmètre : TEST final, cibles 2025-12-01--2026-10-02, mêmes 211 origines. Unité : USD ajustés. Le premier rang ARIMA ne suffit pas à satisfaire la règle de recommandation.}{0.32}
+
+
+
+Les figures~\ref{fig:phase7_rmse_comparison_h5.png} et~\ref{fig:phase7_rmse_comparison_h10.png} visualisent les valeurs du tableau~\ref{tab:final_metrics}, sans modifier le classement. Les trajectoires alignées sur les dates cibles sont présentées en annexe C. Le RMSE LSTM est plus faible à h10 qu’à h5 : ses sorties directes sont apprises séparément, et une augmentation de l’erreur avec l’horizon n’est pas une nécessité mathématique. Cette observation ne signifie pas que ses prévisions sont précises face au benchmark.
+
+
+
+ARIMA et VAR restent proches de Naive en RMSE, mais cette proximité descriptive doit être confrontée à la MAE, aux conditions pratiques pré-déclarées et à l’inférence sur les pertes appariées. L’évaluation est une comparaison de clôture observée vers clôture future, avec les trois informations de clôture supposées disponibles à l’origine. Elle n’évalue pas l’exécution d’ordres de marché.
+
+
+
+
+
+\subsection{Diebold Mariano et recommandation}
+
+
+
+Diebold-Mariano teste l’égalité de la perte prédictive attendue. Le différentiel est perte A-perte B ; un signe négatif favorise A. Les erreurs se chevauchent : la variance de long terme est estimée par HAC Bartlett/Newey-West, avec retard h-1. La statistique reçoit la correction Harvey-Leybourne-Newbold et une référence t à 210 degrés de liberté, selon les formules documentées dans forecast \cite{R15}. Holm ajuste séparément quatre comparaisons contre Naive par horizon.
+
+
+
+\input{tables/dm}
+
+
+
+ARIMA et VAR n’ont pas d’amélioration statistiquement soutenue face à Naive. À h5, les deux réseaux ont une perte significativement plus élevée après Holm ; à h10, c’est établi pour GRU, tandis que LSTM n’est pas rejeté. Les tests GRU/LSTM constituent une comparaison séparée avec p-values brutes, conservée dans le CSV complet. Un non-rejet DM ne prouve pas la même précision : puissance, dépendance, queues lourdes et modèles imbriqués limitent sa calibration.
+
+
+
+La règle exige RMSE et MAE non pires aux deux horizons, au moins 1 \% de gain sur la moyenne des deux ratios RMSE, une baisse de perte soutenue par Holm à au moins un horizon et aucun horizon significativement pire. ARIMA a un ratio moyen RMSE de 0,998485622, soit seulement 0,1514 \% de gain, une MAE moins bonne et aucun soutien DM. Aucun challenger n’est éligible : \textbf{le modèle final recommandé est Naive}. Ce choix ne prétend ni à une optimalité universelle, ni à un vrai processus générateur de marche aléatoire.
+
+
+
+Les intervalles ARIMA nominalement à 95 \% couvrent 100 \% des cibles observées, avec des largeurs moyennes de 54,202430 USD à h5 et 77,390142 à h10. Des intervalles larges et chevauchants n’établissent pas une calibration future. Ils ne remplacent pas les diagnostics historiques d’ARCH et de non-normalité.
+
+
+
+Sources : \sourcepath{outputs/tables/phase7_recommendation_checks.csv}, \sourcepath{outputs/tables/phase7_final_model_recommendation.csv}, \sourcepath{outputs/tables/phase7_arima_interval_coverage.csv}.
+
+\input{tables/recommendation}
+\subsection{Coût et interprétabilité}
+
+
+
+\input{tables/costs}
+
+
+
+Naive a une interprétation directe et aucun paramètre appris. Les temps classiques sont courts, mais ces mesures ne sont pas un benchmark matériel contrôlé. Les réseaux ont un coût nettement supérieur et des paramètres moins directement interprétables ; les refits affichés ne représentent pas tout leur coût de développement. Le nombre réduit de paramètres GRU ne garantit pas un temps moindre, comme le montre le run observé.
+
+
+
+Les résultats négatifs neuronaux sont utiles : la comparaison n’a pas été réécrite pour obtenir une victoire du deep learning. L’extrapolation du log-prix, la taille d’échantillon et des changements de régime sont des explications possibles, non isolées expérimentalement. La conclusion s’applique aux configurations C, aux features, à la seed et au protocole effectivement étudiés.
+
+
+
+Source de discussion : \sourcepath{docs/phase6_lstm_gru.md}, \sourcepath{docs/phase7_final_evaluation.md}.

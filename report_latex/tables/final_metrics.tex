@@ -1,0 +1,29 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase7_final_metrics.csv
+\begin{table}[!htbp]
+\centering
+\caption{Comparaison finale unique des cinq modèles à h5 et h10.}
+\label{tab:final_metrics}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrrrrr}
+\toprule
+\textbf{Modèle} & \textbf{h} & \textbf{MSE USD\textsuperscript{2}} & \textbf{RMSE USD} & \textbf{MAE USD} & \textbf{MAPE \%} \\
+\midrule
+Naive & 5 & 93,810 & 9,686 & 7,688 & 3,847 \\
+ARIMA(2,1,2) & 5 & 93,995 & 9,695 & 7,703 & 3,880 \\
+VAR(9) & 5 & 95,344 & 9,764 & 7,845 & 3,947 \\
+LSTM C & 5 & 274,924 & 16,581 & 13,398 & 6,584 \\
+GRU C & 5 & 187,608 & 13,697 & 10,766 & 5,311 \\
+Naive & 10 & 131,923 & 11,486 & 9,075 & 4,490 \\
+ARIMA(2,1,2) & 10 & 130,866 & 11,440 & 9,404 & 4,709 \\
+VAR(9) & 10 & 132,360 & 11,505 & 9,253 & 4,634 \\
+LSTM C & 10 & 181,648 & 13,478 & 9,911 & 4,910 \\
+GRU C & 10 & 215,001 & 14,663 & 11,172 & 5,464 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Source : \sourcepath{outputs/tables/phase7_final_metrics.csv}. Périmètre : holdout final, 211 origines communes par ligne ; h en séances ; MSE en USD ajustés\textsuperscript{2}, RMSE/MAE en USD ajustés, MAPE en \%. Arrondi à trois décimales, sans nouveau calcul des modèles.
+\end{minipage}
+\end{table}

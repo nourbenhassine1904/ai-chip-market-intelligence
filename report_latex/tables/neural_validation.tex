@@ -1,0 +1,25 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase6_validation_metrics_summary.csv
+\begin{table}[!htbp]
+\centering
+\caption{Validation temporelle dans TRAIN (Phase 6), distincte du TEST Phase 7. Erreurs poolées sur trois folds, 561 prévisions par candidat et horizon ; h en séances, RMSE/MAE en USD ajustés, trois décimales. Les origines chevauchantes ne sont pas indépendantes.}
+\label{tab:neural_validation}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrrrr}
+\toprule
+\textbf{Candidat} & \textbf{h} & \textbf{n} & \textbf{RMSE} & \textbf{MAE} \\
+\midrule
+Naive & 5 & 561 & 7,372 & 5,584 \\
+LSTM C & 5 & 561 & 15,253 & 11,797 \\
+GRU C & 5 & 561 & 10,516 & 8,124 \\
+Naive & 10 & 561 & 10,052 & 7,758 \\
+LSTM C & 10 & 561 & 15,071 & 11,397 \\
+GRU C & 10 & 561 & 13,269 & 10,465 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Sources : \sourcepath{outputs/tables/phase6_validation_metrics_summary.csv}.
+\end{minipage}
+\end{table}

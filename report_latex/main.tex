@@ -1,0 +1,66 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble}
+\input{metadata}
+\begin{document}
+\hypersetup{pageanchor=false}
+\input{frontmatter/cover}
+\pagenumbering{roman}
+\hypersetup{pageanchor=true}
+\tableofcontents
+\clearpage
+\input{frontmatter/abstract}
+\clearpage
+\pagenumbering{arabic}
+\chapterfile{01_introduction}
+\chapterfile{02_data}
+\chapterfile{03_methodology}
+\chapterfile{04_eda_stationarity}
+\chapterfile{05_arima}
+\chapterfile{06_var_vecm}
+\chapterfile{07_garch}
+\chapterfile{08_lstm_gru}
+\chapterfile{09_final_evaluation}
+\chapterfile{10_llm_analysis}
+\chapterfile{11_reproducibility}
+\chapterfile{12_conclusion}
+\FloatBarrier
+\clearpage
+\phantomsection
+\addcontentsline{toc}{section}{Références bibliographiques}
+\begingroup
+\small
+\bibliographystyle{unsrt}
+\bibliography{references}
+Les sources primaires ci-dessus sont reprises du rapport canonique ; celui-ci
+déclare leur consultation le 9 octobre 2026. Aucune nouvelle consultation
+indépendante n'est revendiquée par cette conversion documentaire.
+\par\medskip
+\input{frontmatter/internal_references}
+\endgroup
+\FloatBarrier
+\clearpage
+\label{end:main}
+\appendix
+\input{appendices/A_univariate}
+\FloatBarrier
+\clearpage
+\input{appendices/B_multivariate}
+\FloatBarrier
+\clearpage
+\input{appendices/C_specifications}
+\FloatBarrier
+\clearpage
+\begingroup
+\footnotesize
+\setlength{\parskip}{2pt plus 1pt}
+\input{appendices/D_artifacts}
+\endgroup
+\FloatBarrier
+\clearpage
+\begingroup\small
+\input{appendices/E_llm}
+\endgroup
+\FloatBarrier
+\clearpage
+\input{appendices/F_neural_training}
+\end{document}

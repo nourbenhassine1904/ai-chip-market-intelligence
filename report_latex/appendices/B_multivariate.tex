@@ -1,0 +1,17 @@
+\section{Décomposition multivariée et variance résiduelle}
+\label{app:B}
+
+\historicalfigure{rolling_correlations_60d.png}{Corrélations glissantes des log-rendements sur 60 séances}{Corrélations de Pearson NVDA/AMD, NVDA/SOXX et AMD/SOXX. Sources : \sourcepath{outputs/figures/phase2/rolling_correlations_60d.png} et \sourcepath{outputs/tables/phase2_rolling_correlation_summary.csv}. Périmètre : TRAIN, 2018-01-02--2025-11-14 ; fenêtres rétrospectives non centrées de 60 rendements valides, premières fenêtres incomplètes exclues. Unité : corrélation sans dimension, de -1 à 1 ; dates de marché en abscisse. Association contemporaine variable, sans identification causale.}{0.30}
+
+\FloatBarrier
+\clearpage
+
+\historicalfigure{phase4_var_fevd.png}{FEVD du VAR}{Décomposition de variance d’erreur de rendement. Source : \sourcepath{outputs/figures/phase4/phase4_var_fevd.png}. Périmètre : VAR(9) TRAIN, horizons 1--20 séances. Unité : parts en \%, somme 100 par réponse et horizon. Ordre NVDA, AMD, SOXX. La prépondérance de la première innovation reflète aussi l’identification récursive ; elle ne mesure pas une causalité structurelle.}{0.32}
+
+
+
+\historicalfigure{phase5_squared_standardized_residual_acf.png}{ACF des résidus standardisés au carré}{Dépendance après filtrage GARCH. Source : \sourcepath{outputs/figures/phase5/phase5_squared_standardized_residual_acf.png}. Périmètre : 1979 innovations TRAIN, 2018-01-03--2025-11-14, R/Python et Normal/Student-t. Unité : corrélation sans dimension ; retards en séances, bandes ponctuelles à 95 \%. L’absence de structure forte concorde avec les non-rejets aux lags testés et ne prouve pas iid.}{0.32}
+
+
+
+Sources détaillées : \sourcepath{outputs/tables/phase4_var_fevd.csv}, \sourcepath{outputs/tables/phase5_garch_standardized_residual_diagnostics.csv}, \sourcepath{outputs/tables/phase5_tail_quantile_comparison.csv}. La table de quantiles explique le choix Normal dépendant de la règle, malgré les meilleurs critères Student-t.

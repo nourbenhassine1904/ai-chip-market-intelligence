@@ -1,0 +1,69 @@
+% Editable chapter, migrated from the canonical Phase 9B report.
+\section{Réseaux LSTM et GRU}
+\label{sec:neural}
+
+\subsection{Fenêtres multivariées et prévention des fuites}
+
+
+
+Les réseaux récurrents peuvent représenter des relations temporelles non linéaires. LSTM conserve un état de cellule et des portes ; GRU utilise une structure plus compacte~\cite{R11,R12}. Leur intérêt potentiel doit être évalué face à Naive : leur présence dans l’étude n’implique aucun avantage prédictif préalable.
+
+
+
+Une fenêtre se termine à l’origine t et commence à t-L+1. Elle contient cinq features : log-prix NVDA, log-rendement NVDA, volatilité historique NVDA sur vingt séances annualisée, log-rendement AMD et log-rendement SOXX. Une couche Dense(10) produit directement les dix log-prix futurs. h5 et h10 sont deux sorties de ce vecteur, sans réinjection récursive des prix prédits. Les niveaux exponentiés ne reçoivent pas de correction de biais lognormal.
+
+
+
+La suppression des vingt lignes de warm-up laisse 1960 lignes TRAIN utilisables. Trois folds expanding-window fournissent chacun 196 séances externes et 187 origines communes, soit 561 prévisions par candidat et horizon. Les blocs externes vont respectivement de juillet 2023 à avril 2024, d’avril 2024 à février 2025, puis de février à novembre 2025. Ils ne sont jamais utilisés pour les gradients ou l’early stopping.
+
+
+
+Les scalers X et y sont ajustés sur le préfixe TRAIN de chaque fold ; le scaler y est scalaire et commun aux dix sorties. Chaque séance est comptée une seule fois, avant duplication en fenêtres. Le dernier dixième de ce TRAIN fournit la loss d’arrêt ; neuf fenêtres de cibles chevauchant la frontière interne sont purgées. Cette portion interne appartient à TRAIN et à l’ajustement du scaler : sa loss est un dispositif d’arrêt, sans être présentée comme un score indépendant.
+
+
+
+
+
+
+
+La chute initiale de loss de la figure~\ref{fig:phase6_lstm_loss_curve.png} (annexe F) indique un apprentissage de l’objectif interne. La remontée tardive de la loss d’arrêt motive la restauration des poids de l’epoch 38. Elle ne démontre pas une bonne généralisation : celle-ci doit être jugée sur les origines externes.
+
+
+
+Sources : \sourcepath{outputs/tables/phase6_temporal_folds.csv}, \sourcepath{outputs/tables/phase6_scaler_audit.csv}, \sourcepath{docs/phase6_lstm_gru.md}.
+
+
+
+
+
+\subsection{Configurations bornées et résultats négatifs}
+
+
+
+La grille fixe A : fenêtre 20, 32 unités, dropout 0,10 ; B : fenêtre 60, 32 unités, dropout 0,10 ; C : fenêtre 60, 64 unités, dropout 0,20. Les deux architectures utilisent Adam, taux 0,001, loss MSE, batch 32, au plus 100 epochs, patience 10, restauration des meilleurs poids et absence de shuffle \cite{R13}. La seed principale est 42. Le score de sélection est la moyenne de six ratios RMSE modèle/Naive, avec même poids pour chaque fold et horizon, et non le ratio des scores USD poolés.
+
+
+
+
+
+
+
+La figure~\ref{fig:phase6_gru_loss_curve.png} montre elle aussi une stabilisation suivie d’une légère dégradation interne. Le dropout est actif pendant l’optimisation et inactif pendant la validation ; l’écart entre les deux losses ne constitue pas à lui seul un test calibré de surapprentissage. Les petites variations finales sont plus lisibles dans l’historique numérique que sur l’échelle dominée par les premières epochs.
+
+
+
+C est retenu séparément pour LSTM et GRU. LSTM C contient 18570 paramètres, GRU C 14282. Leurs ratios moyens RMSE de sélection valent respectivement 2,319180 et 1,651779, donc plus de deux fois et environ une fois et demie la référence selon ce score interne. Les deux réseaux perdent face à Naive en RMSE et MAE poolées aux deux horizons. GRU est meilleur que LSTM dans cette validation ; cela ne constitue pas une supériorité architecturale générale.
+
+\input{tables/neural_validation}
+
+Le tableau~\ref{tab:neural_validation} porte exclusivement sur les blocs externes des trois folds à l’intérieur de TRAIN (Phase 6), et non sur la loss d’arrêt interne. Ses erreurs poolées diffèrent du score de sélection moyen des ratios par fold. Les résultats TEST Phase 7 du chapitre~\ref{sec:evaluation} concernent une autre période et 211 origines communes : les deux évaluations ne sont pas interchangeables.
+
+
+
+Après verrouillage, les refits utilisent tout TRAIN admissible, avec 38 epochs fixes pour LSTM et 36 pour GRU, sans arrêt piloté par TEST. Les 18 entraînements principaux et les deux refits coûtent environ 1208,461 secondes, soit 20,14 minutes sur le CPU observé. Ce temps exclut préparation, scoring, figures et tests ; il ne prédit pas la durée de toute reproduction FULL. Une seed, une grille restreinte, les fenêtres chevauchantes et l’extrapolation de niveaux non stationnaires limitent la portée des conclusions.
+
+
+
+Sources : \sourcepath{outputs/tables/phase6_locked_lstm.csv}, \sourcepath{outputs/tables/phase6_locked_gru.csv}, \sourcepath{outputs/tables/phase6_validation_metrics_summary.csv}, \sourcepath{outputs/tables/phase6_training_runs.csv}, \sourcepath{outputs/tables/phase6_full_train_refits.csv}.
+
+\input{tables/neural_comparison}

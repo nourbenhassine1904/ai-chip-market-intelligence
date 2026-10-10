@@ -1,0 +1,28 @@
+% Documentary display only; edit preparation definitions for a refresh.
+% Source CSVs: outputs/tables/phase4_r_python_summary.csv; outputs/tables/phase4_johansen_rank_comparison.csv
+\begin{table}[!htbp]
+\centering
+\caption{Décisions et diagnostics multivariés. VAR sur rendements ; Johansen principal à trois retards en niveaux. P-values, module et trace sans unité ; tables critiques natives conservées.}
+\label{tab:var_johansen}
+\small
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.16}
+\begin{tabularx}{\linewidth}{Xrr}
+\toprule
+\textbf{Indicateur TRAIN} & \textbf{R} & \textbf{Python} \\
+\midrule
+Ordre proposé AIC/BIC & 1 & 1 \\
+Ordre retenu & 9 & 9 \\
+Module compagnon maximal & 0,840223 & 0,840223 \\
+Portmanteau, p à 20 & 0,058790 & 0,058790 \\
+Portmanteau, p à 30 & 0,156800 & 0,156800 \\
+Rang Johansen & 0 & 0 \\
+VECM justifié & Non & Non \\
+Trace Johansen au rang 0 & 21,570119 & 21,570119 \\
+Valeur critique native à 5 \% & 31,5200 & 29,7961 \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\begin{minipage}{\linewidth}\footnotesize Sources : \sourcepath{outputs/tables/phase4_r_python_summary.csv} ; \sourcepath{outputs/tables/phase4_johansen_rank_comparison.csv}.
+\end{minipage}
+\end{table}
